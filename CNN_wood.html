@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Editorial by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong> Home </strong> </a>
+									<ul class="icons">
+										<li><a href="https://www.linkedin.com/in/arthur-calvi/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1> CNN : application in civil engineering / architecture  </h1>
+									</header>
+									<p> During my first internship, I have worked with the <a href="https://paris-malaquais.archi.fr/la-recherche/p/laboratoire-gsa/">Geometry Structure & Archictecture Laboratory</a> of ENSA Paris-Malaquais in order to tackle the issue of reuse woods. The purpose of this 3-months internship was to enhance the ability of detection algorithm to classify clean and damaged wood. It was my first experience working with Convolutional Neural Network (CNN). I trained a binary classifier from scratch to help distinguish sane and damaged wood. If I had to handle this problem today, I'd rather use transfer learning with a state of the art architecture such as vision transformer.
+									</p>
+
+									<h2 id="filtering-the-false-positives-why-">Filtering the false Positives, why?</h2>
+									<p>In our case, a false positive is an image of clearwood detected by the detection algorithm as an image of wood defect <em>(live or dead knot, pitch pocket, split or stain)</em>. The detection algorithm is used to classify woodboard, woodbeam, ... Thus, a false positive could lead to a negative classification error and then to an economic loss for the manufacturer. As contrary, a false negative is an image of a wood defect that has been detected by the algorithm as clearwood. A false negative could lead to a positive classification error and thus to customer risk. Unfortunately, decreasing the rate of false negatives could only be done by improving the core of the detection algorithm. However, decreasing the rate of false positive is much more easier : you just have to add a filter after the detection which remove the false positives. In this website, I provide a simple binary classifier <em>(Neural network)</em> which is able to distinguish clearwood from defects and which can be used as a false positives filter.</p>
+									<p align="center">
+									<img src="Images/process.PNG" alt="Wood Process" width="400"/>
+									</p>
+
+									<h2 id="the-filter">The Filter</h2>
+									<p>The filter is a convolutional neural network acting like a binary classifier. The architecture of the neural network is almost the same as Yann Lecun one. It is composed by 8 hidden layers, 3x3 kernel for convolution layer and 2x2 kernel for pooling layer. This neural network has approximatively 600k parameters. The both low complexity and low number of parameters of the net facilitate its training on a small dataset.</p>
+									<p align="center">
+									<img src="images/arch.PNG" alt="Neural Network Architecture" width="600"/>
+									</p>
+
+									<h2 id="the-training-dataset">The training dataset</h2>
+									<p>The training dataset is composed by 400 images downloaded on google images. Half of these images are clearwood and the other half contains 5 different types of defect : <em>(1) Live knot, (2) dead knot, (3) stain, (4) pitch pocket, (5) stain</em>. Those 5 categories of defect have been chosen because firstly they are the most common defects encountered and secondly they are the defects used by the <em>Eurocode</em> to visually estimate the mechanical properties of wood.</p>
+									<p align="center">
+									<img src="images/défauts.PNG" alt="Defect categories" width="400"/>
+									</p>
+
+									<p>As the purpose of this project is to create a starting point to automatic wood classification, the dataset contains more than 200 different wood species. This parameter is important because according to the nature of the wood : hardwood of softwood and also the species the aspect of the defects could vary. Therefore, I tried to create the more unbiased dataset I could to provide a binary classifier which performs well on every species of wood. Afterwhile, you can create a dataset with only one specie of wood and then train the neural net on this particular dataset in order to be more accurate on this very specie.</p>
+									<p align="center">
+									<img src="images/images.PNG" alt="Sample of the training dataset" width="500"/>
+									</p>
+
+									<p> For more details, I invite the francophones to read the following report. </p>
+
+
+									<body>
+									<embed src="pdfs/CALVI_Arthur_RAPPORT_Filtrage_faux_positifs_avec_reseau_de_neurones.pdf" type="application/pdf" width="100%" height="1000px" />
+								    </body>
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li><a href="posts.html"> Posts </a></li>
+										<li>
+											<span class="opener">Teaching ENS M1</span>
+											<ul>
+												<li><a href="soon.html">BE1 : Réseaux de neurones et apprentissage automatique </a></li>
+												<li><a href="soon.html">BE2 : Classification avec un réseau de neurones convolutif </a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p> If you have any questions or simply want to talk about a project, feel free to contact me at my e-mail address.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">arthur.calvi@ens-paris-saclay.fr</a></li>
+										<li class="icon solid fa-map-marker-alt"> Paris </li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Arthur Calvi. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
