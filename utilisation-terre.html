@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+
+<!-- https://github.com/sneas/img-comparison-slider-->
+  <html>
+    <head>
+      <title>Arthur Calvi Consulting</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+      <link rel="stylesheet" href="assets/css/main.css" />
+      <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    </head>
+
+    <!-- Explication CNN --> 
+    <section>
+      <header>
+        <h1>Utilisation des terres</h1>
+        <p> Estimation de l'utilisation des terres avec un réseau de neurones convolutif.</p>
+      </header>
+      <div class="content">
+
+        <dl>
+          <dt>Base d'entraînement</dt>
+          <dd>
+            <p>Le réseau de type U-net a été entrainé sur une version modifiée de la base de donnée  <a href="https://www.nature.com/articles/s41597-022-01307-4">DynamicWorld</a> avec les images Sentinel-2. Il prend en entrée 6 bandes : R,G,B, NIR, SWIR1 et SWIR2 ainsi que des données d'élévation du terrain.</p>
+          </dd>
+          <dt>Architecture</dt>
+          <dd>
+            <p>Il s'agit d'une version modifiée de l'architecture U-net ayant 1.6M de paramètres et utilisant des modules d'attention et des convolutions à trous pour améliorer la prise en compte du contexte.</p>
+          </dd>
+        </dl>
+
+      </div>
+    </section>
+    
+    
+    <!-- img-comp-slider -->
+    <section>
+      <header>
+        <h3>Quelques exemples en zone tropicale</h3>
+        <p> Faîtes glisser le slider pour visualiser l'estimation du modèle.</p>
+
+        <img src="./images/legend.png" alt="legend" width=80% height=50% title="legend" class="center"/>
+      </header>
+      <script
+        defer
+        src="https://unpkg.com/img-comparison-slider@7/dist/index.js"
+      ></script>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/img-comparison-slider@7/dist/styles.css"
+      />
+      <style>
+        .slider-example-opacity-and-size {
+          --default-handle-width: 50px;
+        }
+      
+        .slider-example-opacity-and-size:focus {
+          --default-handle-opacity: 0;
+        }
+      </style>
+      <img-comparison-slider class="slider-example-opacity-and-size rendered" tabindex="0">
+        <img slot="first" src="./images/comp-img-sat.png" />
+        <img slot="second" src="./images/comp-img-model.png" /> 
+      </img-comparison-slider>
+      <div style="text-align:center">
+        Exemple sur des rizières aux Philippines 
+      </div>
+
+      <img-comparison-slider class="slider-example-opacity-and-size rendered" tabindex="0">
+        <img slot="first" src="./images/img-cmp-kenya-zoom-sat.png" />
+        <img slot="second" src="./images/img-cmp-kenya-zoom-model.png" /> 
+      </img-comparison-slider>
+      <div style="text-align:center">
+        Exemple sur des cultures au pied du mont Kenya  
+      </div>
+    </section>
+
+      <div>
+      				<!-- Footer -->
+					<footer class="wrapper style1 align-center">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://www.linkedin.com/in/arthur-calvi/" class="icon brands style2 fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+								<li><a href="mailto:arthur.calvi.consulting@gmail.com" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
+							</ul>
+							<p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+
+</html>
+
+
