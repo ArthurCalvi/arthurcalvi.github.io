@@ -3,6 +3,7 @@
 
 <!-- https://github.com/sneas/img-comparison-slider-->
   <html>
+    <!-- Head -->
     <head>
       <title>Arthur Calvi Consulting</title>
       <meta charset="utf-8" />
@@ -11,42 +12,46 @@
       <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     </head>
 
-    <!-- Explication CNN --> 
+     
     <div id="wrapper" class="divided">
-      <!-- One -->
+        <!-- Section Plug-in -->
         <section class="banner style2 orient-center content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
           <div class="content">
-            <h1> Visualization et modélisation de séries temporelles </h1>
-            <p> Développement d'un plug-in pour le software vpv</p>
+            <h1> Visualisation et modélisation de séries temporelles </h1>
+            <p> Développement d'un scipt Python intégré à vpv</p>
             
-            <div class="content">
+            <!-- GIF -->
+            <div class='inner'> 
+              <center> <img src="./images/plug-in-scolyte.gif" alt="" /> </center>
+              <p> Des images sentinel-2 prises dans l'Est de la france sont inspectées. On peut y voir une attaque de scolytes et le rougissement des arbres. La modélisation du plug-in permet de voir le changement de tendance de la bande rouge lors de l'attaque d'insectes. </p>
+              
+            </div>
 
+            <!-- notes -->
+            <div class="content">
               <dl>
                 <dt>VPV</dt>
                 <dd>
-                  <p> <a href="https://github.com/kidanger/vpv"> VPV </a> est un software développé par Jérémy Anger pour la visualisation avancée d'images. </p>
+                  <p> <a href="https://github.com/kidanger/vpv"> VPV </a> est un software développé par Jérémy Anger dans le language Lua pour la visualisation avancée d'images. </p>
                 </dd>
                 <dt>Plug-in</dt>
                 <dd>
-                  <p> <a href="https://github.com/ArthurCalvi/vpv-plugins"> Le plug-in développé </a> permet de visualiser la série temporelle de la valeur moyenne du pixel dans le rectangle de sélection. Plusieurs processus sont disponibles pour traiter la série temporelle d'images satellites : filtration à un percentile pour enlever les images nuageuses, modélisation type BFAST pour analyser la tendance et saisonnalité de la végétation.  </p>
+                  <p> <a href="https://github.com/ArthurCalvi/vpv-plugins"> Le plug-in développé </a> en Python permet de visualiser la série temporelle de la valeur moyenne du pixel dans le rectangle de sélection. Plusieurs processus sont disponibles pour traiter la série temporelle d'images satellites : filtration à un percentile pour enlever les images nuageuses, modélisation type BFAST pour analyser la tendance et saisonnalité de la végétation.  </p>
                 </dd>
               </dl>
       
             </div>
-
-            <h3>Illustration du plug-in</h3>
-            <p> Des images sentinel-2 prises dans l'Est de la france sont inspectées. On peut y voir une attaque de scolytes et le rougissement des arbres. La modélisation du plug-in permet de voir le changement de tendance de la bande rouge lors de l'attaque d'insectes. </p>
-
-            <center> <img src="./images/plug-in-scolyte.gif" alt="" /> </center>
-      
+            
           </div>
+
+          <!-- background -->
           <div class="image">
             <img src="images/background2.jpeg" alt="" />
           </div>
         </section>
 
       <div>
-      				<!-- Footer -->
+      		<!-- Footer -->
 					<footer class="wrapper style1 align-center">
 						<div class="inner">
 							<ul class="icons">
