@@ -21,193 +21,196 @@
   <!-- Main Content -->
   <article class="content-section">
     <h1>Reproducing Google Dynamic World: A Kayrros Internship Project</h1>
+    
+    <div class="article-meta">
+      <span class="date">2022</span>
+      <span class="institution">Kayrros</span>
+    </div>
 
-    <p>
-      <strong>By:</strong> Arthur Calvi (Intern at Kayrros, supervised by Aurélien De Truchis, 2022)
-    </p>
+    <div class="article-content">
+      <article class="research-article">
+        <p>
+          <strong>By:</strong> Arthur Calvi (Intern at Kayrros, supervised by Aurélien De Truchis, 2022)
+        </p>
 
-    <h2>Introduction &amp; Inspiration</h2>
-    <p>
-      In 2022, I joined <strong>Kayrros</strong> as an intern under the supervision of 
-      <em>Aurélien De Truchis</em> with a mission: adapt and enhance the 
-      <em>Google Dynamic World</em> approach for robust, high-resolution land use and 
-      land cover classification. 
-    </p>
+        <h2>Introduction &amp; Inspiration</h2>
+        <p>
+          In 2022, I joined <strong>Kayrros</strong> as an intern under the supervision of 
+          <em>Aurélien De Truchis</em> with a mission: adapt and enhance the 
+          <em>Google Dynamic World</em> approach for robust, high-resolution land use and 
+          land cover classification. 
+        </p>
 
-    <p>
-      <strong>Google Dynamic World</strong> is an AI-driven, 10 m resolution, near real-time 
-      land cover dataset that categorizes Earth into nine classes: 
-      <em>Water, Trees, Grass, Crops, Shrub &amp; Scrub, Flooded Vegetation, Built-Up Area, 
-      Bare Ground, and Snow &amp; Ice</em>. While Dynamic World is already remarkable, 
-      it sometimes struggles with temporal consistency and certain niche environments. 
-      My work at Kayrros aimed at making a lightweight yet robust deep learning pipeline 
-      that can handle multiple satellite data sources across biomes and seasons.
-    </p>
+        <p>
+          <strong>Google Dynamic World</strong> is an AI-driven, 10 m resolution, near real-time 
+          land cover dataset that categorizes Earth into nine classes: 
+          <em>Water, Trees, Grass, Crops, Shrub &amp; Scrub, Flooded Vegetation, Built-Up Area, 
+          Bare Ground, and Snow &amp; Ice</em>. While Dynamic World is already remarkable, 
+          it sometimes struggles with temporal consistency and certain niche environments. 
+          My work at Kayrros aimed at making a lightweight yet robust deep learning pipeline 
+          that can handle multiple satellite data sources across biomes and seasons.
+        </p>
 
-    <h2>Method Overview</h2>
-    <p>
-      My project drew from the <em>U-Net</em> family of CNN architectures, famous 
-      for its success in medical imaging and remote sensing. However, I employed 
-      specific modifications to meet production constraints and further improve 
-      consistency over time:
-    </p>
-    <ul>
-      <li><strong>Data Preparation &amp; Augmentation:</strong> 
-        I used a "temporal augmentation" trick, ensuring multiple 
-        satellite images captured at different dates fed the same label 
-        (with refined confidence). This step helped train the model to 
-        remain robust against changing vegetation cycles and atmospheric effects.</li>
+        <h2>Method Overview</h2>
+        <p>
+          My project drew from the <em>U-Net</em> family of CNN architectures, famous 
+          for its success in medical imaging and remote sensing. However, I employed 
+          specific modifications to meet production constraints and further improve 
+          consistency over time:
+        </p>
+        <ul>
+          <li><strong>Data Preparation &amp; Augmentation:</strong> 
+            I used a "temporal augmentation" trick, ensuring multiple 
+            satellite images captured at different dates fed the same label 
+            (with refined confidence). This step helped train the model to 
+            remain robust against changing vegetation cycles and atmospheric effects.</li>
 
-      <!-- Add temporal augmentation example -->
-      <div style="margin: 20px 0;">
-        <img src="assets/images/montage.png" alt="Temporal augmentation example showing satellite images across different dates" style="max-width: 100%; height: auto;" />
-        <div style="text-align: center; margin-top: 10px;">
-          <em>Example of temporal augmentation: The same area captured across different dates (10/08 to 12/02) showing varying atmospheric conditions. 
-          Top row shows raw satellite imagery, bottom row shows the annotation confidence used during training for tree/shrub classification. 
-          Training on multiple temporal views helps the model become robust to atmospheric interference.</em>
+          <!-- Add temporal augmentation example -->
+          <figure class="article-figure">
+            <img src="assets/images/montage.png" alt="Temporal augmentation example showing satellite images across different dates">
+            <figcaption>Example of temporal augmentation: The same area captured across different dates (10/08 to 12/02) showing varying atmospheric conditions. 
+            Top row shows raw satellite imagery, bottom row shows the annotation confidence used during training for tree/shrub classification. 
+            Training on multiple temporal views helps the model become robust to atmospheric interference.</figcaption>
+          </figure>
+
+          <li><strong>Specialized Inputs:</strong> 
+            Beyond the standard RGB and near-infrared bands, I included 
+            derived indices (like NDVI, NDMI) and SRTM30-based elevation 
+            data to add extra context. This proved helpful for challenging 
+            distinctions such as Crops vs. Grass, or Trees vs. Shrubs.</li>
+          <li><strong>Lightweight Architecture:</strong> 
+            I built a minimal U-Net variant with only three downsampling 
+            levels, plus carefully chosen enhancements like attention gates 
+            or atrous spatial pyramid pooling. This balanced inference 
+            speed (for large-scale production) and accuracy.</li>
+          <li><strong>Global Reach &amp; Satellite Agnosticism:</strong>
+            By systematically normalizing data from <em>Sentinel-2</em>, 
+            <em>Landsat-8</em>, and older Landsat missions, the model 
+            remains flexible enough to be used for historical analyses 
+            and near real-time applications.
+          </li>
+        </ul>
+
+        <h2>Interactive Slider Explanation</h2>
+        <p>
+          Below, you can see how the model transforms a raw Sentinel-2 
+          input (left side) into a land cover classification (right side). 
+          Drag the slider to compare the images.
+        </p>
+        
+        <script
+          defer
+          src="https://unpkg.com/img-comparison-slider@7/dist/index.js"
+        ></script>
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/img-comparison-slider@7/dist/styles.css"
+        />
+        <style>
+          .slider-example-opacity-and-size {
+            --default-handle-width: 50px;
+          }
+        
+          .slider-example-opacity-and-size:focus {
+            --default-handle-opacity: 0;
+          }
+        </style>
+
+        <button id="toggleZoomSlider" style="display:block; margin:20px auto;">
+          Switch to Non-Zoom View
+        </button>
+
+        <!-- Zoom slider (shown by default) -->
+        <div id="zoomSlider">
+          <img-comparison-slider class="slider-example-opacity-and-size rendered" tabindex="0">
+            <img slot="first" src="assets/images/img-cmp-kenya-zoom-sat.png" width="100%" />
+            <img slot="second" src="assets/images/img-cmp-kenya-zoom-model.png" width="100%" /> 
+          </img-comparison-slider>
+          <div style="text-align:center">
+            Example of crops at the foot of Mount Kenya (with zoom)
+          </div>
         </div>
-      </div>
 
-      <li><strong>Specialized Inputs:</strong> 
-        Beyond the standard RGB and near-infrared bands, I included 
-        derived indices (like NDVI, NDMI) and SRTM30-based elevation 
-        data to add extra context. This proved helpful for challenging 
-        distinctions such as Crops vs. Grass, or Trees vs. Shrubs.</li>
-      <li><strong>Lightweight Architecture:</strong> 
-        I built a minimal U-Net variant with only three downsampling 
-        levels, plus carefully chosen enhancements like attention gates 
-        or atrous spatial pyramid pooling. This balanced inference 
-        speed (for large-scale production) and accuracy.</li>
-      <li><strong>Global Reach &amp; Satellite Agnosticism:</strong>
-        By systematically normalizing data from <em>Sentinel-2</em>, 
-        <em>Landsat-8</em>, and older Landsat missions, the model 
-        remains flexible enough to be used for historical analyses 
-        and near real-time applications.
-      </li>
-    </ul>
+        <!-- Non-zoom slider (hidden by default) -->
+        <div id="nonZoomSlider" style="display:none;">
+          <img-comparison-slider class="slider-example-opacity-and-size rendered" tabindex="0">
+            <img slot="first" src="assets/images/img-cmp-kenya-sat.png" width="100%" />
+            <img slot="second" src="assets/images/img-cmp-kenya-model.png" width="100%" />
+          </img-comparison-slider>
+          <div style="text-align:center">
+            Example of crops at the foot of Mount Kenya (non-zoom)
+          </div>
+        </div>
 
-    <h2>Interactive Slider Explanation</h2>
-    <p>
-      Above, you can see how the model transforms a raw Sentinel-2 
-      input (left side) into a land cover classification (right side). 
-      Drag the slider to compare the images.
-    </p>
-    
-    <script
-      defer
-      src="https://unpkg.com/img-comparison-slider@7/dist/index.js"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/img-comparison-slider@7/dist/styles.css"
-    />
-    <style>
-      .slider-example-opacity-and-size {
-        --default-handle-width: 50px;
-      }
-    
-      .slider-example-opacity-and-size:focus {
-        --default-handle-opacity: 0;
-      }
-    </style>
+        <!-- Toggle script -->
+        <script>
+          document.getElementById("toggleZoomSlider").addEventListener("click", function() {
+            var zoomContainer = document.getElementById("zoomSlider");
+            var nonZoomContainer = document.getElementById("nonZoomSlider");
+            if (zoomContainer.style.display !== "none") {
+              zoomContainer.style.display = "none";
+              nonZoomContainer.style.display = "block";
+              this.textContent = "Switch to Zoom View";
+            } else {
+              zoomContainer.style.display = "block";
+              nonZoomContainer.style.display = "none";
+              this.textContent = "Switch to Non-Zoom View";
+            }
+          });
+        </script>
 
-    <button id="toggleZoomSlider" style="display:block; margin:20px auto;">
-      Switch to Non-Zoom View
-    </button>
+        <!-- Legend -->
+        <figure class="article-figure">
+          <img src="assets/images/legend.png" alt="Land cover classification legend">
+          <figcaption>Legend: Land cover classification categories</figcaption>
+        </figure>
 
-    <!-- Zoom slider (shown by default) -->
-    <div id="zoomSlider">
-      <img-comparison-slider class="slider-example-opacity-and-size rendered" tabindex="0">
-        <img slot="first" src="assets/images/img-cmp-kenya-zoom-sat.png" width="100%" />
-        <img slot="second" src="assets/images/img-cmp-kenya-zoom-model.png" width="100%" /> 
-      </img-comparison-slider>
-      <div style="text-align:center">
-        Example of crops at the foot of Mount Kenya (with zoom)
-      </div>
+        <h2>Results &amp; Benchmarks</h2>
+        <p>
+          My approach was tested across multiple biomes—from temperate forests 
+          to tropical regions—totaling 14 major ecoregions. Our final model achieved 
+          strong performance metrics with 46.9% accuracy, 31.8% IoU (Intersection over Union), 
+          and 75.1% MCC (Matthews Correlation Coefficient). Most importantly, these results 
+          remained consistent across different biomes—a crucial feature for Kayrros, 
+          whose assets span diverse geographical regions worldwide. While our metrics 
+          remained slightly below Google Dynamic World's performance, we successfully 
+          built a lightweight and temporally consistent alternative.
+        </p>
+
+        <h2>Impact &amp; Conclusion</h2>
+        <p>
+          This internship project at Kayrros resulted in a production-ready 
+          deep learning pipeline for reliable land cover mapping. By leveraging 
+          smart data augmentation, additional satellite indices, and a lightweight 
+          architecture, the solution demonstrated strong temporal consistency 
+          across diverse geographies.
+        </p>
+
+        <!-- Add deforestation detection example -->
+        <figure class="article-figure">
+          <img src="assets/images/lulc_changes.png" alt="Example of deforestation detection using the model">
+          <figcaption>Left: Land cover classification showing forest (dark green), grasslands (light green), and other vegetation types. 
+          Right: Temporal analysis revealing forest loss (red areas) with dates of change, demonstrating the model's ability 
+          to detect and date deforestation events.</figcaption>
+        </figure>
+
+        <p>
+          The model proved particularly effective for deriving dynamic indicators 
+          such as deforestation alerts, agricultural expansion, and other 
+          environmental monitoring applications. While not quite matching 
+          Dynamic World's accuracy, our approach offered improved temporal 
+          consistency and multi-satellite compatibility.
+        </p>
+
+        <p>
+          <em>
+            Acknowledgement: This project was conducted as part of my 
+            2022 internship at Kayrros, under the supervision of 
+            <strong>Aurélien De Truchis</strong>.
+          </em>
+        </p>
+      </article>
     </div>
-
-    <!-- Non-zoom slider (hidden by default) -->
-    <div id="nonZoomSlider" style="display:none;">
-      <img-comparison-slider class="slider-example-opacity-and-size rendered" tabindex="0">
-        <img slot="first" src="assets/images/img-cmp-kenya-sat.png" width="100%" />
-        <img slot="second" src="assets/images/img-cmp-kenya-model.png" width="100%" />
-      </img-comparison-slider>
-      <div style="text-align:center">
-        Example of crops at the foot of Mount Kenya (non-zoom)
-      </div>
-    </div>
-
-    <!-- Toggle script -->
-    <script>
-      document.getElementById("toggleZoomSlider").addEventListener("click", function() {
-        var zoomContainer = document.getElementById("zoomSlider");
-        var nonZoomContainer = document.getElementById("nonZoomSlider");
-        if (zoomContainer.style.display !== "none") {
-          zoomContainer.style.display = "none";
-          nonZoomContainer.style.display = "block";
-          this.textContent = "Switch to Zoom View";
-        } else {
-          zoomContainer.style.display = "block";
-          nonZoomContainer.style.display = "none";
-          this.textContent = "Switch to Non-Zoom View";
-        }
-      });
-    </script>
-
-    <!-- Legend -->
-    <div style="text-align: center; margin-top: 20px;">
-      <img src="assets/images/legend.png" alt="Land cover classification legend" style="max-width: 100%; height: auto;" />
-      <div style="text-align: center; margin-top: 10px;">
-        <em>Legend: Land cover classification categories</em>
-      </div>
-    </div>
-
-    <h2>Results &amp; Benchmarks</h2>
-    <p>
-      My approach was tested across multiple biomes—from temperate forests 
-      to tropical regions—totaling 14 major ecoregions. Our final model achieved 
-      strong performance metrics with 46.9% accuracy, 31.8% IoU (Intersection over Union), 
-      and 75.1% MCC (Matthews Correlation Coefficient). Most importantly, these results 
-      remained consistent across different biomes—a crucial feature for Kayrros, 
-      whose assets span diverse geographical regions worldwide. While our metrics 
-      remained slightly below Google Dynamic World's performance, we successfully 
-      built a lightweight and temporally consistent alternative.
-    </p>
-
-    <h2>Impact &amp; Conclusion</h2>
-    <p>
-      This internship project at Kayrros resulted in a production-ready 
-      deep learning pipeline for reliable land cover mapping. By leveraging 
-      smart data augmentation, additional satellite indices, and a lightweight 
-      architecture, the solution demonstrated strong temporal consistency 
-      across diverse geographies.
-    </p>
-
-    <!-- Add deforestation detection example -->
-    <div style="margin: 20px 0;">
-      <img src="assets/images/lulc_changes.png" alt="Example of deforestation detection using the model" style="max-width: 100%; height: auto;" />
-      <div style="text-align: center; margin-top: 10px;">
-        <em>Left: Land cover classification showing forest (dark green), grasslands (light green), and other vegetation types. 
-        Right: Temporal analysis revealing forest loss (red areas) with dates of change, demonstrating the model's ability 
-        to detect and date deforestation events.</em>
-      </div>
-    </div>
-
-    <p>
-      The model proved particularly effective for deriving dynamic indicators 
-      such as deforestation alerts, agricultural expansion, and other 
-      environmental monitoring applications. While not quite matching 
-      Dynamic World's accuracy, our approach offered improved temporal 
-      consistency and multi-satellite compatibility.
-    </p>
-
-    <p>
-      <em>
-        Acknowledgement: This project was conducted as part of my 
-        2022 internship at Kayrros, under the supervision of 
-        <strong>Aurélien De Truchis</strong>.
-      </em>
-    </p>
   </article>
 
   <!-- Footer -->

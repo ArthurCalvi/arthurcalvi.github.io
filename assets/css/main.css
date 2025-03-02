@@ -555,3 +555,128 @@ article h1 {
   margin: 0 auto 1rem;
   line-height: 1.6;
 }
+
+/* ---------------------------------------------------
+   Research Article Styles
+----------------------------------------------------- */
+.research-article h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #0066cc;
+}
+
+.research-article h3 {
+  font-size: 1.4rem;
+  margin: 2rem 0 1rem;
+  color: #333;
+}
+
+.research-article p {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+.research-article ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.article-figure {
+  margin: 2rem 0;
+  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 1rem;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.article-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+  margin: 0 auto;
+}
+
+.article-figure figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  padding: 0 1rem;
+}
+
+/* Enhanced equation styling */
+.equation {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+/* MathJax specific styling */
+mjx-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 0.5rem 0;
+}
+
+/* Enable text selection for math content */
+mjx-container svg text {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Style inline math for better readability */
+mjx-container[display="true"] {
+  margin: 1em 0;
+}
+
+mjx-container:not([display="true"]) {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 105%;
+}
+
+.research-article ul li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  list-style-type: none;
+}
+
+.research-article ul li::before {
+  content: "•";
+  color: #0066cc;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* Responsive adjustments for research article */
+@media (max-width: 768px) {
+  .article-figure {
+    margin: 1.5rem 0;
+    padding: 0.5rem;
+  }
+  
+  .research-article h2 {
+    font-size: 1.5rem;
+  }
+  
+  .research-article h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Ensure equations are responsive on small screens */
+@media (max-width: 600px) {
+  .equation {
+    font-size: 0.9em;
+  }
+}

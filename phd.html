@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arthur - PhD Research</title>
   <link rel="stylesheet" href="assets/css/main.css" />
+  <!-- MathJax for rendering LaTeX equations -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+        processHtmlClass: 'tex2jax_process',
+        ignoreHtmlClass: 'tex2jax_ignore'
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
 </head>
 <body>
   <!-- Navigation (minimal top nav) -->
@@ -28,17 +48,98 @@
     </div>
 
     <div class="article-content">
-      <div class="coming-soon">
-        <h2>Content Coming Soon</h2>
-        <p>A detailed overview of my PhD research in forest disturbance detection using satellite imagery and deep learning is currently being written. This page will include:</p>
+      <article class="research-article">
+        <h2>Listening to Trees from Space: Classifying French Forests with Harmonic Analysis</h2>
+
+        <p>Forests play a critical role in our planet's health, absorbing carbon dioxide, sheltering wildlife, and supporting biodiversity. Yet, to manage forests effectively—especially in the face of climate change—we first need to understand them deeply. One key challenge? Accurately distinguishing deciduous trees, which shed leaves seasonally, from evergreen trees, which keep their foliage year-round. From the ground, this is straightforward; but how do we scale up to monitor entire countries from space?</p>
+
+        <p>In my research, I've developed an innovative method that leverages Sentinel-2 satellite imagery and harmonic analysis—a technique borrowed from sound processing—to classify French forests on a national scale.</p>
+
+        <h3>Trees Have a Rhythm: Introducing Harmonic Analysis</h3>
+
+        <p>Just as music can be broken down into simple notes and rhythms, the seasonal growth patterns of trees can also be decomposed into basic sinusoidal cycles. Sentinel-2 satellites capture images of the Earth's surface every few days, providing data over time that can be analyzed to detect these seasonal cycles. Harmonic analysis allows us to transform this data into a mathematical "song" of the forest.</p>
+
+        <p>Specifically, each pixel's vegetation signal (captured as NDVI, NBR, EVI, and CRSWIR indices) can be modeled as:</p>
+
+        <div class="equation">
+          $$
+          f_h(t) = \sum_{i=1}^{h} [A_{i} \cos(2\pi i t) + B_{i} \sin(2\pi i t)] + C
+          $$
+        </div>
+
+        <p>Here:</p>
+
         <ul>
-          <li>Research objectives and methodology</li>
-          <li>Key findings and publications</li>
-          <li>Technical implementations and innovations</li>
-          <li>Environmental impact and applications</li>
+          <li>$t$ is normalized time across a year,</li>
+          <li>$A_{i}$ and $B_{i}$ define the seasonal rhythm (amplitude and phase),</li>
+          <li>$C$ is the average vegetation level throughout the year.</li>
         </ul>
-        <p>Please check back soon for the complete content.</p>
-      </div>
+
+        <p>By analyzing these harmonic components, we can extract two essential characteristics:</p>
+
+        <ul>
+          <li><strong>Amplitude ($M_{i}$)</strong>: How strongly vegetation varies within a year, typically larger for deciduous trees.</li>
+          <li><strong>Phase ($\phi_{i}$)</strong>: When the vegetation peaks, which helps differentiate species based on their growth timing.</li>
+        </ul>
+
+        <p>Think of the first harmonic as the primary melody—a clear annual leaf-on, leaf-off cycle in deciduous trees—and the second harmonic as subtle variations, refining our understanding of more nuanced seasonal behaviors.</p>
+
+        <figure class="article-figure">
+          <img src="assets/images/harmonics_decomposition.png" alt="Harmonic decomposition of NDVI time series for a deciduous tree">
+          <figcaption>Figure 1: Harmonic decomposition of NDVI time series for a deciduous tree. The top panel illustrates how two harmonic components (blue and orange) and an offset (grey) combine to reconstruct the observed vegetation pattern (bottom panel).</figcaption>
+        </figure>
+
+        <h3>Turning Satellite Data into Forest Maps</h3>
+
+        <p>My approach involved processing Sentinel-2 images into consistent monthly mosaics across France, covering year 2023. Using harmonic analysis, each pixel was transformed into a set of features reflecting its unique seasonal pattern. These features then fed into a machine learning algorithm (Random Forest) trained on extensive ground and aerial survey data.</p>
+
+        <p>Key steps included:</p>
+
+        <ul>
+          <li><strong>Optimizing harmonic components</strong>: Two harmonics balanced capturing accurate seasonality without overfitting noisy signals.</li>
+          <li><strong>Robust feature selection</strong>: Identified the most informative indices (NBR, NDVI, EVI, CRSWIR) and harmonic features (primarily first harmonic) to ensure efficient and accurate classification.</li>
+          <li><strong>Efficient computation</strong>: Parallelized processing on high-performance computing infrastructure, allowing nationwide analysis within an hour.</li>
+        </ul>
+
+        <h3>What the Forest Map Tells Us</h3>
+
+        <p>The resulting map vividly distinguishes France's deciduous and evergreen forests with remarkable clarity (Figure 2). The classification achieves a robust overall accuracy (weighted F1-score) of 96%, confirming the efficacy of harmonic analysis.</p>
+
+        <figure class="article-figure">
+          <img src="assets/images/classification map.png" alt="Forest Classification Map">
+          <figcaption>Figure 2: Forest classification map of France, showing deciduous (orange) and evergreen (blue) forests. Insets highlight detailed views of Les Landes and Corsica.</figcaption>
+        </figure>
+
+        <p>Some key insights emerged:</p>
+
+        <ul>
+          <li>Deciduous forests dominate in northern and central France, clearly reflecting seasonal leaf cycles.</li>
+          <li>Evergreen forests, like the expansive pine plantations of Les Landes, show consistent year-round foliage patterns.</li>
+          <li>Mediterranean and mountainous areas posed greater classification challenges due to complex seasonal behaviors and varied terrain.</li>
+        </ul>
+
+        <p>Comparing my map to existing products, such as the Copernicus Dominant Leaf Type and BD Forêt v2 datasets, reveals improved accuracy and more detailed regional nuances. For example, mixed forests and mountainous regions are more precisely represented due to harmonic analysis' sensitivity to subtle seasonal differences.</p>
+
+        <h3>The Bigger Picture: Why This Matters</h3>
+
+        <p>Understanding forest phenology from space isn't just academically interesting; it's critical for practical forestry management, climate modeling, and biodiversity conservation. My method provides a reliable, scalable approach that could be replicated globally, enabling consistent forest monitoring.</p>
+
+        <p>Potential future applications include:</p>
+
+        <ul>
+          <li>Detecting early signs of climate-induced stress or shifts in tree phenology.</li>
+          <li>Monitoring recovery and resilience after forest fires or droughts.</li>
+          <li>Identifying invasive species or shifts in dominant tree types due to climate change.</li>
+        </ul>
+
+        <h3>Looking Ahead</h3>
+
+        <p>While the current model performs well, further improvements could include integrating complementary data, such as LiDAR or radar, to better capture structural forest changes or subtle phenological shifts. Additionally, continuous near-real-time updates could soon become feasible, providing forest managers and conservationists timely insights.</p>
+
+        <h3>Conclusion</h3>
+
+        <p>By "listening" to the seasonal rhythms of trees using harmonic analysis, we gain unprecedented insights into forest dynamics from space. This innovative method not only advances ecological science but also offers practical tools to sustainably manage and protect our planet's vital forests.</p>
+      </article>
     </div>
   </article>
 
