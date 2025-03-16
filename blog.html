@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arthur - Blog</title>
   <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    .blog-articles {
+      margin-top: 2rem;
+    }
+    .article-preview {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #eaeaea;
+    }
+    .article-preview:last-child {
+      border-bottom: none;
+    }
+    .article-preview h2 {
+      margin-bottom: 0.5rem;
+    }
+    .article-meta {
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .read-more {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 500;
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .read-more:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation (minimal top nav) -->
@@ -23,16 +54,29 @@
     <h1>Blog</h1>
     
     <div class="article-content">
-      <div class="coming-soon">
-        <h2>Content Coming Soon</h2>
-        <p>My blog is currently under development. Future articles will cover:</p>
-        <ul>
-          <li>Deep Learning & Remote Sensing Insights</li>
-          <li>AI Development Best Practices</li>
-          <li>Environmental Monitoring Technologies</li>
-          <li>Startup Journey & Experiences</li>
-        </ul>
-        <p>Please check back soon for the first articles.</p>
+      <div class="blog-articles">
+        <!-- Article 1 -->
+        <div class="article-preview">
+          <h2>Why I decided to quit my PhD?</h2>
+          <div class="article-meta">
+            <span class="date">March 16, 2025</span>
+            <span class="category">Career, Academia</span>
+          </div>
+          <p>My journey from enthusiastic PhD student to making the difficult decision to leave academia was filled with unexpected challenges. What began as an exciting opportunity between two prestigious labs—INRIA and LSCE—gradually transformed into a struggle with data availability, lack of guidance, and misaligned expectations. After two years of navigating between theoretical demands and practical engineering challenges, I realized that my path lay elsewhere. This reflection explores the realities of academic research, the importance of clear supervision, and the courage required to change course when something isn't working...</p>
+          <a href="articles/quit-phd.html" class="read-more">Read More →</a>
+        </div>
+        
+        <!-- Coming Soon Notice -->
+        <div class="coming-soon">
+          <h3>More Articles Coming Soon</h3>
+          <p>Future articles will cover:</p>
+          <ul>
+            <li>Deep Learning & Remote Sensing Insights</li>
+            <li>AI Development Best Practices</li>
+            <li>Environmental Monitoring Technologies</li>
+            <li>Startup Journey & Experiences</li>
+          </ul>
+        </div>
       </div>
     </div>
   </article>
