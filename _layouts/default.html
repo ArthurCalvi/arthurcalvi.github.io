@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% if page.title %}{{ page.title }} | {% endif %}Arthur Calvi</title>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  {% if page.math %}
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        packages: ['base', 'ams', 'noerrors', 'noundefined']
+      },
+      svg: { fontCache: 'global' },
+      options: {
+        skipHtmlTags: ['script','noscript','style','textarea','pre','code'],
+        processHtmlClass: 'tex2jax_process',
+        ignoreHtmlClass: 'tex2jax_ignore'
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
+  {% endif %}
+</head>
+<body>
+
+  {% include nav.html %}
+
+  {{ content }}
+
+  <footer class="site-footer">
+    <p>&copy; {{ 'now' | date: '%Y' }} Arthur Calvi. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

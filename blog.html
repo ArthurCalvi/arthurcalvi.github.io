@@ -1,53 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arthur - Blog</title>
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <style>
-    .blog-articles {
-      margin-top: 2rem;
-    }
-    .article-preview {
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid #eaeaea;
-    }
-    .article-preview:last-child {
-      border-bottom: none;
-    }
-    .article-preview h2 {
-      margin-bottom: 0.5rem;
-    }
-    .article-meta {
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    .read-more {
-      display: inline-block;
-      margin-top: 1rem;
-      font-weight: 500;
-      color: #0066cc;
-      text-decoration: none;
-    }
-    .read-more:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <!-- Navigation (minimal top nav) -->
-  <nav class="site-nav">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="kayrros.html">Kayrros</a></li>
-      <li><a href="phd.html">PhD</a></li>
-      <li><a href="dxo.html">DxO Labs</a></li>
-      <li><a href="blog.html" aria-current="page">Blog</a></li>
-    </ul>
-  </nav>
+---
+layout: default
+title: Blog
+---
 
   <!-- Main Content -->
   <article class="content-section">
@@ -55,16 +9,30 @@
     
     <div class="article-content">
       <div class="blog-articles">
-        <!-- Article 1 -->
+        <!-- Existing HTML article -->
         <div class="article-preview">
           <h2>Why I decided to quit my PhD?</h2>
           <div class="article-meta">
             <span class="date">March 16, 2025</span>
             <span class="category">Career, Academia</span>
           </div>
-          <p>My journey from enthusiastic PhD student to making the difficult decision to leave academia was filled with unexpected challenges. What began as an exciting opportunity between two prestigious labs—INRIA and LSCE—gradually transformed into a struggle with data availability, lack of guidance, and misaligned expectations. After two years of navigating between theoretical demands and practical engineering challenges, I realized that my path lay elsewhere. This reflection explores the realities of academic research, the importance of clear supervision, and the courage required to change course when something isn't working...</p>
-          <a href="articles/quit-phd.html" class="read-more">Read More →</a>
+          <p>My journey from enthusiastic PhD student to making the difficult decision to leave academia was filled with unexpected challenges. What began as an exciting opportunity between two prestigious labs—INRIA and LSCE—gradually transformed into a struggle with data availability, lack of guidance, and misaligned expectations...</p>
+          <a href="{{ '/articles/quit-phd.html' | relative_url }}" class="read-more">Read More →</a>
         </div>
+
+        <!-- Markdown-powered articles -->
+        {% assign posts = site.articles | sort: 'date' | reverse %}
+        {% for post in posts %}
+        <div class="article-preview">
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <div class="article-meta">
+            {% if post.date %}<span class="date">{{ post.date | date: '%B %-d, %Y' }}</span>{% endif %}
+            {% if post.category %}<span class="category">{{ post.category }}</span>{% endif %}
+          </div>
+          <p>{{ post.excerpt | strip_html | truncate: 240 }}</p>
+          <a href="{{ post.url | relative_url }}" class="read-more">Read More →</a>
+        </div>
+        {% endfor %}
         
         <!-- Coming Soon Notice -->
         <div class="coming-soon">
@@ -80,10 +48,3 @@
       </div>
     </div>
   </article>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <p>&copy; 2024 Arthur Calvi. All rights reserved.</p>
-  </footer>
-</body>
-</html> 

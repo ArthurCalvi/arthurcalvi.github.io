@@ -1,0 +1,33 @@
+title: Arthur Calvi
+url: https://arthurcalvi.github.io
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+collections:
+  articles:
+    output: true
+    permalink: /articles/:name/
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: articles
+    values:
+      layout: article
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: page
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

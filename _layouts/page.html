@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<article class="content-section">
+  {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+
+  {% if page.audio or page.audio_file %}
+    {% include audio.html %}
+  {% endif %}
+
+  <div class="article-content">
+    {{ content }}
+  </div>
+</article>
+
