@@ -176,7 +176,7 @@ body::before {
   flex-direction: column;
   justify-content: flex-end;
   padding: 1rem;
-  background: linear-gradient(to top, rgba(255,255,255,.85), rgba(255,255,255,.2));
+  background: linear-gradient(to top, rgba(255,255,255,.9), rgba(255,255,255,.1));
 }
 
 .bento-card h2 {
@@ -201,6 +201,29 @@ body::before {
   padding: .2rem .5rem;
   border-radius: 6px;
   margin-bottom: .5rem;
+}
+
+/* Subtle focus line below hero intro */
+.focus-line {
+  margin-top: .75rem;
+  color: #444;
+}
+
+/* Article image scaling and figure rules */
+.article-content img {
+  display: block;
+  margin: 1.25rem auto;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Size variants usable via Kramdown attributes, e.g.: ![](src){:.is-small} */
+.article-content img.is-small { max-width: 520px; }
+.article-content img.is-wide  { max-width: 1200px; width: 100%; }
+.article-content img.is-full  { width: 100vw; max-width: none; margin-left: 50%; transform: translateX(-50%); }
+
+.article-figure {
+  max-width: 100%;
 }
 
 .hero {
