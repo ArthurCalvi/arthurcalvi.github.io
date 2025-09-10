@@ -31,7 +31,7 @@ Two essential characteristics emerge:
 - **Amplitude ($M_i$):** magnitude of seasonal variation (typically larger for deciduous trees).
 - **Phase ($\phi_i$):** timing of vegetation peaks (helps differentiate species by growth timing).
 
-![Harmonic decomposition](assets/images/harmonics_decomposition.png)
+![Harmonic decomposition](assets/images/harmonics_decomposition.png){:.is-small}
 
 ## Turning Satellite Data into Forest Maps
 

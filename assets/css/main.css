@@ -214,12 +214,13 @@ body::before {
   display: block;
   margin: 1.25rem auto;
   height: auto;
-  max-width: 100%;
+  /* Default cap for readability on desktop; remains fluid below */
+  max-width: min(100%, 720px);
 }
 
 /* Size variants usable via Kramdown attributes, e.g.: ![](src){:.is-small} */
 .article-content img.is-small { max-width: 520px; }
-.article-content img.is-wide  { max-width: 1200px; width: 100%; }
+.article-content img.is-wide  { max-width: min(100%, 1100px); width: 100%; }
 .article-content img.is-full  { width: 100vw; max-width: none; margin-left: 50%; transform: translateX(-50%); }
 
 .article-figure {
