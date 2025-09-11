@@ -55,7 +55,7 @@ body {
   z-index: 100;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  margin: 0 0 2rem 0;
+  margin: 0;
 }
 
 .site-nav ul {
@@ -330,10 +330,22 @@ body {
 .section-landing.section-phd { background: linear-gradient(180deg, #edf6ef 0%, rgba(248,246,243,0) 100%); }
 .section-landing.section-kayrros { background: linear-gradient(180deg, #eef5ff 0%, rgba(248,246,243,0) 100%); }
 .section-landing.section-dxo { background: linear-gradient(180deg, #f1edff 0%, rgba(248,246,243,0) 100%); }
+.section-landing.section-blog { background: linear-gradient(180deg, #fff3e8 0%, rgba(248,246,243,0) 100%); }
+.section-landing.section-projects { background: linear-gradient(180deg, #eefaf8 0%, rgba(248,246,243,0) 100%); }
+.section-landing.section-home { background: linear-gradient(180deg, #f5f3ef 0%, rgba(248,246,243,0) 100%); }
 
 .section-landing.section-phd h1 { color: #0f6d3f; }
 .section-landing.section-kayrros h1 { color: var(--accent); }
 .section-landing.section-dxo h1 { color: #6e5af7; }
+.section-landing.section-blog h1 { color: #c65c2a; }
+.section-landing.section-projects h1 { color: #0f6d8f; }
+
+/* Article title accent by section */
+body.section-phd article h1 { color: #0f6d3f; }
+body.section-kayrros article h1 { color: var(--accent); }
+body.section-dxo article h1 { color: #6e5af7; }
+body.section-blog article h1 { color: #c65c2a; }
+body.section-projects article h1 { color: #0f6d8f; }
 
 .content-section p + p {
     margin-top: 1rem;

@@ -1,50 +1,31 @@
 ---
-layout: default
+layout: page
 title: Blog
+section_page: true
+section: blog
+description: Essays, research notes, and updates – sorted newest first.
 ---
 
-  <!-- Main Content -->
-  <article class="content-section">
-    <h1>Blog</h1>
-    
-    <div class="article-content">
-      <div class="blog-articles">
-        <!-- Existing HTML article -->
-        <div class="article-preview">
-          <h2>Why I decided to quit my PhD?</h2>
-          <div class="article-meta">
-            <span class="date">March 16, 2025</span>
-            <span class="category">Career, Academia</span>
-          </div>
-          <p>My journey from enthusiastic PhD student to making the difficult decision to leave academia was filled with unexpected challenges. What began as an exciting opportunity between two prestigious labs—INRIA and LSCE—gradually transformed into a struggle with data availability, lack of guidance, and misaligned expectations...</p>
-          <a href="{{ '/articles/quit-phd.html' | relative_url }}" class="read-more">Read More →</a>
-        </div>
-
-        <!-- Markdown-powered articles -->
-        {% assign posts = site.articles | sort: 'date' | reverse %}
-        {% for post in posts %}
-        <div class="article-preview">
-          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-          <div class="article-meta">
-            {% if post.date %}<span class="date">{{ post.date | date: '%B %-d, %Y' }}</span>{% endif %}
-            {% if post.category %}<span class="category">{{ post.category }}</span>{% endif %}
-          </div>
-          <p>{{ post.excerpt | strip_html | truncate: 240 }}</p>
-          <a href="{{ post.url | relative_url }}" class="read-more">Read More →</a>
-        </div>
-        {% endfor %}
-        
-        <!-- Coming Soon Notice -->
-        <div class="coming-soon">
-          <h3>More Articles Coming Soon</h3>
-          <p>Future articles will cover:</p>
-          <ul>
-            <li>Deep Learning & Remote Sensing Insights</li>
-            <li>AI Development Best Practices</li>
-            <li>Environmental Monitoring Technologies</li>
-            <li>Startup Journey & Experiences</li>
-          </ul>
-        </div>
-      </div>
+<section class="section-container">
+  <div class="article-list">
+    <!-- Legacy HTML article (if kept) -->
+    <div class="article-item">
+      <div class="title"><a href="{{ '/articles/quit-phd.html' | relative_url }}">Why I decided to quit my PhD?</a></div>
+      <div class="meta">March 16, 2025 · Career, Academia</div>
+      <div class="excerpt">My journey from enthusiastic PhD student to making the difficult decision to leave academia was filled with unexpected challenges...</div>
     </div>
-  </article>
+
+    <!-- Markdown-powered articles -->
+    {% assign posts = site.articles | sort: 'date' | reverse %}
+    {% for post in posts %}
+      <div class="article-item">
+        <div class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+        <div class="meta">
+          {% if post.date %}{{ post.date | date: '%B %-d, %Y' }}{% endif %}
+          {% if post.category %} · {{ post.category }}{% endif %}
+        </div>
+        <div class="excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</section>

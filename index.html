@@ -3,21 +3,25 @@ layout: default
 title: Home
 ---
 
-  <!-- Hero -->
-  <header class="content-section hero flat" style="display:flex; gap:1.5rem; align-items:center;">
-    <div class="profile-image">
-      <img src="assets/images/profile.jpg" alt="Portrait of Arthur Calvi" />
-    </div>
-    <div class="hero-text">
-      <h1 style="margin:0 0 .25rem 0;">Arthur Calvi</h1>
-      <p class="role" style="margin:0 0 .25rem 0;">Head of GenAI Transformation Group @ DxO Labs</p>
-      <p class="location" style="margin:0 0 .75rem 0;">Paris, France</p>
-      <p style="margin:0 0 .5rem 0;">I build AI products and research tooling with a focus on clarity, simplicity, and systems that scale.</p>
-      <p style="margin:0 0 1rem 0;">Currently at DxO Labs leading GenAI initiatives (LLM apps, dubbing, localization). Background in remote sensing (Kayrros; PhD research: forest phenology and disturbances). ENS Paris‑Saclay and MINES Paris.</p>
-      <div class="social-links">
-        <a href="mailto:arthur.calvi@icloud.com">arthur.calvi@icloud.com</a> ·
-        <a href="http://www.linkedin.com/in/arthur-calvi" target="_blank" rel="noopener">LinkedIn</a> ·
-        <a href="https://github.com/ArthurCalvi" target="_blank" rel="noopener">GitHub</a>
+  <!-- Landing (neutral gradient) -->
+  <header class="section-landing section-home">
+    <div class="section-container">
+      <div class="hero" style="display:flex; gap:1.5rem; align-items:center;">
+        <div class="profile-image">
+          <img src="assets/images/profile.jpg" alt="Portrait of Arthur Calvi" />
+        </div>
+        <div class="hero-text">
+          <h1 style="margin:0 0 .25rem 0;">Arthur Calvi</h1>
+          <p class="role" style="margin:0 0 .25rem 0;">Head of GenAI Transformation Group @ DxO Labs</p>
+          <p class="location" style="margin:0 0 .75rem 0;">Paris, France</p>
+          <p style="margin:0 0 .5rem 0;">I build AI products and research tooling with a focus on clarity, simplicity, and systems that scale.</p>
+          <p style="margin:0 0 1rem 0;">Currently at DxO Labs leading GenAI initiatives (LLM apps, dubbing, localization). Background in remote sensing (Kayrros; PhD research: forest phenology and disturbances). ENS Paris‑Saclay and MINES Paris.</p>
+          <div class="social-links">
+            <a href="mailto:arthur.calvi@icloud.com">arthur.calvi@icloud.com</a> ·
+            <a href="http://www.linkedin.com/in/arthur-calvi" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a href="https://github.com/ArthurCalvi" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -25,32 +29,36 @@ title: Home
   
 
   <!-- Latest Articles -->
-  <section id="latest" class="content-section flat">
-    <h2>Latest Articles</h2>
-    <div class="article-list">
-      {% assign posts = site.articles | sort: 'date' | reverse %}
-      {% for post in posts limit:4 %}
-        <div class="article-item">
-          <div class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
-          <div class="meta">
-            {% if post.date %}{{ post.date | date: '%B %-d, %Y' }}{% endif %}
-            {% if post.category %} · {{ post.category }}{% endif %}
+  <section id="latest" class="section-container">
+    <div class="plate" style="padding:1.25rem 1rem; border:1px solid var(--border); border-radius:12px; background: var(--surface);">
+      <h2 style="margin-top:0;">Latest Articles</h2>
+      <div class="article-list">
+        {% assign posts = site.articles | sort: 'date' | reverse %}
+        {% for post in posts limit:4 %}
+          <div class="article-item">
+            <div class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+            <div class="meta">
+              {% if post.date %}{{ post.date | date: '%B %-d, %Y' }}{% endif %}
+              {% if post.category %} · {{ post.category }}{% endif %}
+            </div>
+            <div class="excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</div>
           </div>
-          <div class="excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
+      <p style="margin-top: 1rem;"><a href="{{ '/blog.html' | relative_url }}">View all articles →</a></p>
     </div>
-    <p style="margin-top: 1rem;"><a href="{{ '/blog.html' | relative_url }}">View all articles →</a></p>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="content-section flat">
-    <h2>Contact</h2>
-    <p>Interested in research collaboration or AI consulting? Let's connect.</p>
-    <ul class="contact-info">
-      <li>📧 <a href="mailto:arthur.calvi@icloud.com">arthur.calvi@icloud.com</a></li>
-      <li>📱 <a href="tel:+33635472268">+33 6 35 47 22 68</a></li>
-      <li>🔗 <a href="http://www.linkedin.com/in/arthur-calvi" target="_blank">LinkedIn Profile</a></li>
-      <li>💻 <a href="https://github.com/ArthurCalvi" target="_blank">GitHub</a></li>
-    </ul>
+  <section id="contact" class="section-container">
+    <div class="plate" style="padding:1.25rem 1rem; border:1px solid var(--border); border-radius:12px; background: var(--surface);">
+      <h2 style="margin-top:0;">Contact</h2>
+      <p>Interested in research collaboration or AI consulting? Let's connect.</p>
+      <ul class="contact-info">
+        <li>📧 <a href="mailto:arthur.calvi@icloud.com">arthur.calvi@icloud.com</a></li>
+        <li>📱 <a href="tel:+33635472268">+33 6 35 47 22 68</a></li>
+        <li>🔗 <a href="http://www.linkedin.com/in/arthur-calvi" target="_blank">LinkedIn Profile</a></li>
+        <li>💻 <a href="https://github.com/ArthurCalvi" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
   </section>
