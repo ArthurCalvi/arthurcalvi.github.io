@@ -1,16 +1,22 @@
 ---
 layout: default
 ---
-<article class="content-section research-article">
-  <h1>{{ page.title }}</h1>
-  <div class="article-meta">
-    {% if page.date %}<span class="date">{{ page.date | date: "%B %-d, %Y" }}</span>{% endif %}
-    {% if page.category %}<span class="category">{{ page.category }}</span>{% endif %}
+<header class="section-landing section-{{ page.section | default: page.collection | default: 'blog' }}">
+  <div class="section-container">
+    <h1>{{ page.title }}</h1>
+    <div class="article-meta">
+      {% if page.date %}<span class="date">{{ page.date | date: "%B %-d, %Y" }}</span>{% endif %}
+      {% if page.category %}<span class="category">{{ page.category }}</span>{% endif %}
+    </div>
+    {% include audio.html %}
   </div>
+  
+</header>
 
-  {% include audio.html %}
-
-  <div class="article-content">
-    {{ content }}
-  </div>
-</article>
+<section class="section-container">
+  <article class="research-article">
+    <div class="article-content">
+      {{ content }}
+    </div>
+  </article>
+</section>
