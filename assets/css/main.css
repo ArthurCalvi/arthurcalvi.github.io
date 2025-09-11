@@ -53,16 +53,19 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.65);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  backdrop-filter: saturate(1.2) blur(12px);
+  -webkit-backdrop-filter: saturate(1.2) blur(12px);
   margin: 0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 
 .site-nav ul {
   display: flex;
   list-style: none;
   gap: 1rem;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   max-width: 1080px;
   margin: 0 auto;
@@ -340,12 +343,45 @@ body {
 .section-landing.section-blog h1 { color: #c65c2a; }
 .section-landing.section-projects h1 { color: #0f6d8f; }
 
+/* Plate and pill utilities */
+.plate {
+  padding: 1.25rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.pill {
+  display: inline-block;
+  padding: .4rem .75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+}
+.pill + .pill { margin-left: .5rem; }
+.pill:hover { border-color: rgba(0,0,0,0.2); }
+.pill-accent { color: var(--accent); }
+.pill-green { color: #0f6d3f; }
+.pill-purple { color: #6e5af7; }
+.pill-orange { color: #c65c2a; }
+.pill-teal { color: #0f6d8f; }
+
 /* Article title accent by section */
 body.section-phd article h1 { color: #0f6d3f; }
 body.section-kayrros article h1 { color: var(--accent); }
 body.section-dxo article h1 { color: #6e5af7; }
 body.section-blog article h1 { color: #c65c2a; }
 body.section-projects article h1 { color: #0f6d8f; }
+
+/* Headings inside articles follow section accent */
+body.section-phd .article-content h2, body.section-phd .article-content h3 { color: #0f6d3f; }
+body.section-kayrros .article-content h2, body.section-kayrros .article-content h3 { color: var(--accent); }
+body.section-dxo .article-content h2, body.section-dxo .article-content h3 { color: #6e5af7; }
+body.section-blog .article-content h2, body.section-blog .article-content h3 { color: #c65c2a; }
+body.section-projects .article-content h2, body.section-projects .article-content h3 { color: #0f6d8f; }
 
 .content-section p + p {
     margin-top: 1rem;
