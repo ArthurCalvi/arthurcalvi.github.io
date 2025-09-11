@@ -1,6 +1,6 @@
 ---
 layout: article
-title: PhD Research
+title: Detecting Tree Phenology from Space
 permalink: /phd.html
 date: 2025-01-01
 section: phd
