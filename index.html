@@ -7,6 +7,7 @@ section: home
   <!-- Landing (neutral gradient) -->
   <header class="section-landing section-home">
     <div class="section-container">
+      <div class="measure">
       <div class="hero" style="display:flex; gap:1.5rem; align-items:center;">
         <div class="profile-image">
           <img src="assets/images/profile.jpg" alt="Portrait of Arthur Calvi" />
@@ -24,12 +25,13 @@ section: home
           </div>
         </div>
       </div>
+      </div>
     </div>
   </header>
 
   <!-- Personal Note -->
   <section id="hello" class="section-container" aria-label="Hello">
-    <div class="welcome">
+    <div class="welcome measure">
       <h2 style="margin-top:0;">Hello and welcome</h2>
       <p>I’m Arthur — born in Marseille (Allez l’OM!), now based in Paris. After classes préparatoires, I joined École Normale Supérieure. I started in civil engineering, then switched to mathematics and graduated from the MVA Master (Mathématiques, Vision, Apprentissage).</p>
       <p>I began in deep learning for remote sensing: an internship at Kayrros, then a PhD with INRIA/LSCE. I wrote two papers, but research life didn’t fit. Trying ChatGPT for the first time was a turning point — a compressed interface to the world you can talk to. I started building tools for my work and realized I wanted to build full‑time.</p>
@@ -42,8 +44,9 @@ section: home
 
   <!-- Latest Articles -->
   <section id="latest" class="section-container">
-    <h2 style="margin-top:0;">Latest Articles</h2>
-    <div class="article-list">
+    <div class="measure">
+      <h2 style="margin-top:0;">Latest Articles</h2>
+      <div class="article-list">
         {% assign posts = site.articles | sort: 'date' | reverse %}
         {% for post in posts limit:4 %}
           <div class="article-item">
@@ -55,8 +58,9 @@ section: home
             <div class="excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</div>
           </div>
         {% endfor %}
+      </div>
+      <p style="margin-top: 1rem;"><a href="{{ '/blog.html' | relative_url }}">View all articles →</a></p>
     </div>
-    <p style="margin-top: 1rem;"><a href="{{ '/blog.html' | relative_url }}">View all articles →</a></p>
   </section>
 
   
