@@ -61,7 +61,5 @@
 - See `status.md` for the current status, roadmap, and TODOs.
 
 ### Build Notes (2025‑09‑12)
-{% raw %}
-- If Liquid appears on the published site (e.g., `{% assign ... %}` visible), ensure the page has a valid YAML front‑matter fence (`---` at top) so GitHub Pages processes it with Jekyll.
-- When documenting Liquid examples (e.g., `{% include ... %}`) in Markdown docs, wrap them in `{% raw %}...{% endraw %}` to avoid GitHub Pages trying to include non‑existent files during the build.
-{% endraw %}
+- If Liquid appears on the published site (for example, an "assign" tag shows literally), ensure the page has a valid YAML front‑matter fence (`---` at top) so GitHub Pages processes it with Jekyll.
+- When documenting Liquid examples (like the `include` tag) in Markdown docs, avoid literal Liquid delimiters. Prefer descriptive text or fenced code blocks with the delimiters replaced by plain words.
