@@ -27,9 +27,22 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---------------------------------------------------
+   Design Tokens (Warm, Minimal)
+----------------------------------------------------- */
+:root {
+  --bg: #f8f6f3;            /* warm off-white */
+  --surface: #fffdf8;       /* slightly warmer surface */
+  --surface-2: #fff9f0;     /* subtle plate */
+  --text: #111111;
+  --muted: #666666;
+  --border: #ece7df;        /* hairline */
+  --accent: #0a84ff;        /* Apple blue */
+}
+
 body {
-  background: #ffffff;
-  color: #111;
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
 }
 
@@ -40,8 +53,8 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
   margin: 0 0 2rem 0;
 }
 
@@ -56,13 +69,13 @@ body {
   padding: .75rem 1rem;
 }
 
-.site-nav a { color: #111; font-weight: 500; padding: 0.25rem 0.25rem; transition: color 0.2s ease; }
+.site-nav a { color: var(--text); font-weight: 500; padding: 0.25rem 0.25rem; transition: color 0.2s ease; }
 
 /* Current page indicator */
-.site-nav a[aria-current="page"] { color: #0a84ff; font-weight: 700; border-bottom: 2px solid #0a84ff; }
+.site-nav a[aria-current="page"] { color: var(--accent); font-weight: 700; border-bottom: 2px solid var(--accent); }
 
 /* Remove hover effect entirely */
-.site-nav a:hover { color: #0a84ff; }
+.site-nav a:hover { color: var(--accent); }
 
 /* ---------------------------------------------------
    Hero / Header
@@ -161,8 +174,8 @@ body {
 }
 
 /* Size variants usable via Kramdown attributes, e.g.: ![](src){:.is-small} */
-.article-content img.is-small { max-width: 520px; }
-.article-content img.is-wide  { max-width: min(100%, 1100px); width: 100%; }
+.article-content img.is-small { width: min(100%, 520px); }
+.article-content img.is-wide  { width: min(100%, 1100px); }
 .article-content img.is-full  { width: 100vw; max-width: none; margin-left: 50%; transform: translateX(-50%); }
 
 .article-figure {
@@ -255,27 +268,33 @@ body {
   margin-left: 0;
 }
 
-.social-links a:hover {
-  color: #0066cc;
-}
+.social-links a:hover { color: var(--accent); }
 
 /* ---------------------------------------------------
    Content Sections
 ----------------------------------------------------- */
 .content-section {
-  background: #fff;
+  background: var(--surface);
   padding: 2rem 1rem;
   max-width: 760px;
   margin: 0 auto 2rem auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
 }
 
-.content-section h2 { font-size: 1.6rem; margin-bottom: 1.25rem; color: #111; }
+.content-section h2 { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.8rem); margin-bottom: 1.25rem; color: var(--text); }
 
-.content-section h3 { font-size: 1.25rem; margin: 1.25rem 0 .75rem; color: #222; }
+.content-section h3 { font-size: clamp(1.1rem, 1rem + 0.4vw, 1.35rem); margin: 1.25rem 0 .75rem; color: #222; }
+
+/* Links inside content */
+.content-section a { color: var(--accent); }
+.content-section a:hover { text-decoration: underline; }
 
 .content-section p + p {
     margin-top: 1rem;
 }
+
+hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
 
 /* List Styling */
 .content-section ul {
@@ -295,7 +314,7 @@ body {
     content: "•";
     position: absolute;
     left: 0;
-    color: #666;
+    color: var(--muted);
 }
 
 .content-section ul li strong {
@@ -321,7 +340,7 @@ body {
     content: "•";
     position: absolute;
     left: 0;
-    color: #666;
+    color: var(--muted);
 }
 
 /* ---------------------------------------------------
@@ -334,11 +353,7 @@ body {
   max-width: 960px;
 }
 
-.site-footer p {
-  font-size: 0.9rem;
-  color: #fff;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
+.site-footer p { font-size: 0.9rem; color: var(--muted); }
 
 /* ---------------------------------------------------
    Responsive Adjustments
@@ -385,26 +400,22 @@ article.content-section {
 }
 
 article h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: #333;
+  font-size: clamp(2rem, 1.6rem + 2vw, 3rem);
+  margin-bottom: 1.25rem;
+  color: var(--text);
 }
 
-.article-meta {
-  margin-bottom: 2rem;
-  color: #666;
-}
+.article-meta { margin-bottom: 1.5rem; color: var(--muted); }
 
 .article-meta span {
   margin-right: 1.5rem;
   font-size: 1.1rem;
 }
 
-.article-content h2 {
-  font-size: 1.8rem;
-  margin: 2rem 0 1rem;
-  color: #444;
-}
+.research-article .article-content { max-width: 70ch; margin: 0 auto; }
+.article-content > p:first-of-type { font-size: 1.125rem; line-height: 1.85; color: #222; }
+.article-content h2 { font-size: clamp(1.4rem, 1.2rem + 1vw, 1.9rem); margin: 2rem 0 1rem; color: #222; }
+.article-content blockquote { margin: 1.5rem auto; padding: 0.75rem 1rem; border-left: 3px solid var(--border); color: #333; background: var(--surface-2); border-radius: 8px; }
 
 .article-content p {
   margin-bottom: 1.5rem;
@@ -602,7 +613,7 @@ article h1 {
 .research-article h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: #0066cc;
+  color: var(--accent);
 }
 
 .research-article h3 {
@@ -637,7 +648,7 @@ article h1 {
 .article-figure figcaption {
   margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--muted);
   line-height: 1.5;
 }
 
@@ -714,3 +725,19 @@ mjx-container:not([display="true"]) {
     font-size: 0.9em;
   }
 }
+
+/* ---------------------------------------------------
+   Image Utilities (transparent PNG/SVG helpers)
+----------------------------------------------------- */
+.article-content img.on-plate {
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.98));
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+.article-content img.float-shadow {
+  box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+  border-radius: 12px;
+}
+.article-content img.rounded-lg { border-radius: 16px; }
