@@ -20,7 +20,7 @@ This file tracks what’s done and what’s next for the site redesign + Jekyll 
 - Fine‑tune spacing and measures (hero vs. welcome vs. latest) now that home is centered.
 
 ## Next (To Do)
-- Comparison slider include: add a reusable `{% include comparison-slider.html %}`
+- Comparison slider include: add a reusable `{% raw %}{% include comparison-slider.html %}{% endraw %}`
   - Front matter control (per article):
     ```yaml
     comparison:

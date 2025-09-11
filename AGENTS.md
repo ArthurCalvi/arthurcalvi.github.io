@@ -58,4 +58,8 @@
 - Jekyll directories: `_layouts/`, `_includes/`, `_drafts/`, `_articles/`. Planned: `_projects/` and `_pages/` for top-level Markdown pages.
 - Navigation is centralized in `_includes/nav.html` and will be data-driven later.
 - Prefer lowercase-kebab-case and avoid spaces/accents in asset filenames for reliability.
-- See `ACTION_PLAN.md` for the migration roadmap and upcoming SEO/UI work.
+- See `status.md` for the current status, roadmap, and TODOs.
+
+### Build Notes (2025‑09‑12)
+- If Liquid appears on the published site (e.g., `{% assign ... %}` visible), ensure the page has a valid YAML front‑matter fence (`---` at top) so GitHub Pages processes it with Jekyll.
+- When documenting Liquid examples (e.g., `{% include ... %}`) in Markdown docs, wrap them in `{% raw %}...{% endraw %}` to avoid GitHub Pages trying to include non‑existent files during the build.
