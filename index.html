@@ -4,7 +4,7 @@ title: Home
 ---
 
   <!-- Hero -->
-  <header class="content-section hero" style="display:flex; gap:1.5rem; align-items:center;">
+  <header class="content-section hero flat" style="display:flex; gap:1.5rem; align-items:center;">
     <div class="profile-image">
       <img src="assets/images/profile.jpg" alt="Portrait of Arthur Calvi" />
     </div>
@@ -25,7 +25,7 @@ title: Home
   
 
   <!-- Latest Articles -->
-  <section id="latest" class="content-section">
+  <section id="latest" class="content-section flat">
     <h2>Latest Articles</h2>
     <div class="article-list">
       {% assign posts = site.articles | sort: 'date' | reverse %}
@@ -44,7 +44,7 @@ title: Home
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="content-section">
+  <section id="contact" class="content-section flat">
     <h2>Contact</h2>
     <p>Interested in research collaboration or AI consulting? Let's connect.</p>
     <ul class="contact-info">

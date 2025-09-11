@@ -282,6 +282,12 @@ body {
   border-radius: 12px;
 }
 
+.content-section.flat {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
 .content-section h2 { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.8rem); margin-bottom: 1.25rem; color: var(--text); }
 
 .content-section h3 { font-size: clamp(1.1rem, 1rem + 0.4vw, 1.35rem); margin: 1.25rem 0 .75rem; color: #222; }
@@ -313,6 +319,21 @@ body {
 .article-item .title a:hover { color: var(--accent); text-decoration: underline; }
 .article-item .meta { color: var(--muted); font-size: 0.9rem; margin-top: 0.25rem; }
 .article-item .excerpt { margin-top: 0.35rem; color: #333; }
+
+/* Section Landing (no card) */
+.section-landing { padding: 3rem 0 1.5rem; margin-bottom: 0.5rem; }
+.section-container { max-width: 960px; margin: 0 auto; padding: 0 1rem; }
+.section-landing h1 { margin: 0 0 .5rem 0; font-size: clamp(2rem, 1.6rem + 2vw, 3rem); }
+.section-landing .section-deck { max-width: 70ch; line-height: 1.7; color: #333; }
+
+/* Per-section gradients and accents */
+.section-landing.section-phd { background: linear-gradient(180deg, #edf6ef 0%, rgba(248,246,243,0) 100%); }
+.section-landing.section-kayrros { background: linear-gradient(180deg, #eef5ff 0%, rgba(248,246,243,0) 100%); }
+.section-landing.section-dxo { background: linear-gradient(180deg, #f1edff 0%, rgba(248,246,243,0) 100%); }
+
+.section-landing.section-phd h1 { color: #0f6d3f; }
+.section-landing.section-kayrros h1 { color: var(--accent); }
+.section-landing.section-dxo h1 { color: #6e5af7; }
 
 .content-section p + p {
     margin-top: 1rem;
@@ -436,7 +457,7 @@ article h1 {
   font-size: 1.1rem;
 }
 
-.research-article .article-content { max-width: 75ch; margin: 0 auto; }
+.research-article .article-content { max-width: 100%; margin: 0; }
 .article-content > p:first-of-type { font-size: 1.125rem; line-height: 1.85; color: #222; }
 .article-content h2 { font-size: clamp(1.4rem, 1.2rem + 1vw, 1.9rem); margin: 2rem 0 1rem; color: #222; }
 .article-content blockquote { margin: 1.5rem auto; padding: 0.75rem 1rem; border-left: 3px solid var(--border); color: #333; background: var(--surface-2); border-radius: 8px; }

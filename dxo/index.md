@@ -2,11 +2,10 @@
 layout: page
 title: DxO Labs
 permalink: /dxo/
+section_page: true
+section: dxo
+description: LLM apps and GenAI transformation at DxO Labs — training, RAG systems, dubbing and localization tooling, and production integration.
 ---
-
-<div class="section-intro">
-  <p>LLM apps and GenAI transformation at DxO Labs — training, RAG systems, dubbing and localization tooling, and production integration.</p>
-</div>
 
 <div class="article-list">
 {% assign items = site.articles | where: 'section', 'dxo' | sort: 'date' | reverse %}

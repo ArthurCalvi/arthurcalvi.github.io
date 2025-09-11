@@ -2,11 +2,10 @@
 layout: page
 title: PhD
 permalink: /phd/
+section_page: true
+section: phd
+description: Research on forest disturbances and phenology using satellite imagery and machine learning. Notes from my PhD journey, results, and ideas connecting time‑series, signal processing, and ecology.
 ---
-
-<div class="section-intro">
-  <p>Research on forest disturbances and phenology using satellite imagery and machine learning. Notes from my PhD journey, results, and ideas that connect time‑series, signal processing, and ecology.</p>
-</div>
 
 <div class="article-list">
 {% assign items = site.articles | where: 'section', 'phd' | sort: 'date' | reverse %}

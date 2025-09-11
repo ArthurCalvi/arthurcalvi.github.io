@@ -1,15 +1,31 @@
 ---
 layout: default
 ---
-<article class="content-section">
-  {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+{% if page.section_page %}
+  <header class="section-landing section-{{ page.section }}">
+    <div class="section-container">
+      {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+      {% if page.description %}<p class="section-deck">{{ page.description }}</p>{% endif %}
+      {% if page.audio or page.audio_file %}
+        {% include audio.html %}
+      {% endif %}
+    </div>
+  </header>
+  <section class="section-container">
+    <div class="article-content">
+      {{ content }}
+    </div>
+  </section>
+{% else %}
+  <article class="content-section">
+    {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
 
-  {% if page.audio or page.audio_file %}
-    {% include audio.html %}
-  {% endif %}
+    {% if page.audio or page.audio_file %}
+      {% include audio.html %}
+    {% endif %}
 
-  <div class="article-content">
-    {{ content }}
-  </div>
-</article>
-
+    <div class="article-content">
+      {{ content }}
+    </div>
+  </article>
+{% endif %}

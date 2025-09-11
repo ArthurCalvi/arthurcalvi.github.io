@@ -2,11 +2,10 @@
 layout: page
 title: Kayrros
 permalink: /kayrros/
+section_page: true
+section: kayrros
+description: Work and notes from my time at Kayrros — satellite analytics, change detection, and product‑driven remote sensing.
 ---
-
-<div class="section-intro">
-  <p>Work and notes from my time at Kayrros — satellite analytics, change detection, and product‑driven remote sensing.</p>
-</div>
 
 <div class="article-list">
 {% assign items = site.articles | where: 'section', 'kayrros' | sort: 'date' | reverse %}
