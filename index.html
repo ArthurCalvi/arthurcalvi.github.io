@@ -12,7 +12,8 @@ title: Home
       <h1 style="margin:0 0 .25rem 0;">Arthur Calvi</h1>
       <p class="role" style="margin:0 0 .25rem 0;">Head of GenAI Transformation Group @ DxO Labs</p>
       <p class="location" style="margin:0 0 .75rem 0;">Paris, France</p>
-      <p style="margin:0 0 1rem 0;">Building AI products and research tooling. Interests in remote sensing, time‑series, language, and simple systems that scale.</p>
+      <p style="margin:0 0 .5rem 0;">I build AI products and research tooling with a focus on clarity, simplicity, and systems that scale.</p>
+      <p style="margin:0 0 1rem 0;">Currently at DxO Labs leading GenAI initiatives (LLM apps, dubbing, localization). Background in remote sensing (Kayrros; PhD research: forest phenology and disturbances). ENS Paris‑Saclay and MINES Paris.</p>
       <div class="social-links">
         <a href="mailto:arthur.calvi@icloud.com">arthur.calvi@icloud.com</a> ·
         <a href="http://www.linkedin.com/in/arthur-calvi" target="_blank" rel="noopener">LinkedIn</a> ·
@@ -21,39 +22,25 @@ title: Home
     </div>
   </header>
 
-  <!-- Highlights -->
-  <section id="highlights" class="content-section">
-    <h2>Highlights</h2>
-    <ul>
-      <li><strong><a href="{{ '/dxo/' | relative_url }}">DxO Labs</a></strong> — GenAI transformation, LLM apps, production systems.</li>
-      <li><strong><a href="{{ '/phd/' | relative_url }}">PhD</a></strong> — Forest disturbances & phenology with satellite AI.</li>
-      <li><strong><a href="{{ '/kayrros/' | relative_url }}">Kayrros</a></strong> — Remote sensing analytics and product work.</li>
-      <li><strong><a href="{{ '/projects/' | relative_url }}">Projects</a></strong> — Dubbing Studio • Surf Progress • Synapse.</li>
-    </ul>
-  </section>
+  
 
   <!-- Latest Articles -->
   <section id="latest" class="content-section">
     <h2>Latest Articles</h2>
-    <div class="blog-articles">
+    <div class="article-list">
       {% assign posts = site.articles | sort: 'date' | reverse %}
-      {% for post in posts limit:3 %}
-      <div class="article-preview">
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <div class="article-meta">
-          {% if post.date %}<span class="date">{{ post.date | date: '%B %-d, %Y' }}</span>{% endif %}
-          {% if post.category %}<span class="category">{{ post.category }}</span>{% endif %}
+      {% for post in posts limit:4 %}
+        <div class="article-item">
+          <div class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+          <div class="meta">
+            {% if post.date %}{{ post.date | date: '%B %-d, %Y' }}{% endif %}
+            {% if post.category %} · {{ post.category }}{% endif %}
+          </div>
+          <div class="excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</div>
         </div>
-        <p>{{ post.excerpt | strip_html | truncate: 200 }}</p>
-      </div>
       {% endfor %}
     </div>
-  </section>
-
-  <!-- About / Background (brief) -->
-  <section id="about" class="content-section">
-    <h2>About</h2>
-    <p>I lead GenAI initiatives at DxO Labs and pursue research in remote sensing. Previously at Kayrros. Educated at ENS Paris‑Saclay and MINES Paris. I care about clarity, simplicity, and tools that help people do their best work.</p>
+    <p style="margin-top: 1rem;"><a href="{{ '/blog.html' | relative_url }}">View all articles →</a></p>
   </section>
 
   <!-- Contact -->
