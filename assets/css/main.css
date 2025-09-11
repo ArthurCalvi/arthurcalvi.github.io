@@ -706,13 +706,13 @@ article h1 {
 .research-article h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: var(--accent);
+  color: inherit;
 }
 
 .research-article h3 {
   font-size: 1.4rem;
   margin: 2rem 0 1rem;
-  color: #333;
+  color: inherit;
 }
 
 .research-article p {
@@ -818,6 +818,13 @@ mjx-container:not([display="true"]) {
     font-size: 0.9em;
   }
 }
+
+/* Section heading color overrides (placed late to win cascade) */
+body.section-phd .article-content h2, body.section-phd .article-content h3 { color: #0f6d3f; }
+body.section-kayrros .article-content h2, body.section-kayrros .article-content h3 { color: var(--accent); }
+body.section-dxo .article-content h2, body.section-dxo .article-content h3 { color: #6e5af7; }
+body.section-blog .article-content h2, body.section-blog .article-content h3 { color: #c65c2a; }
+body.section-projects .article-content h2, body.section-projects .article-content h3 { color: #0f6d8f; }
 
 /* ---------------------------------------------------
    Image Utilities (transparent PNG/SVG helpers)

@@ -12,10 +12,10 @@ title: Home
         </div>
         <div class="hero-text">
           <h1 style="margin:0 0 .25rem 0;">Arthur Calvi</h1>
-          <p class="role" style="margin:0 0 .25rem 0;">Head of GenAI Transformation Group @ DxO Labs</p>
+          <p class="role" style="margin:0 0 .25rem 0;">AI builder — Marseille → Paris · Leading GenAI at DxO Labs</p>
           <p class="location" style="margin:0 0 .75rem 0;">Paris, France</p>
-          <p style="margin:0 0 .5rem 0;">I build AI products and research tooling with a focus on clarity, simplicity, and systems that scale.</p>
-          <p style="margin:0 0 1rem 0;">Currently at DxO Labs leading GenAI initiatives (LLM apps, dubbing, localization). Background in remote sensing (Kayrros; PhD research: forest phenology and disturbances). ENS Paris‑Saclay and MINES Paris.</p>
+          <p style="margin:0 0 .5rem 0;">I design and ship AI products and research tooling with a bias for clarity, simplicity, and systems that scale.</p>
+          <p style="margin:0 0 1rem 0;">Previously remote sensing (Kayrros; PhD on forest phenology). Now focused on applied GenAI across DxO — from internal tools to features in DxO software.</p>
           <div class="social-links">
             <a href="mailto:arthur.calvi@icloud.com">arthur.calvi@icloud.com</a> ·
             <a href="http://www.linkedin.com/in/arthur-calvi" target="_blank" rel="noopener">LinkedIn</a> ·
@@ -30,10 +30,10 @@ title: Home
   <section class="section-container" aria-label="Hello">
     <div style="max-width: 75ch;">
       <h2 style="margin-top:0;">Hello and welcome</h2>
-      <p>I’m Arthur, born and raised in Marseille (Allez l’OM!). After preparatory classes I moved to Paris to study at École Normale Supérieure. I began in civil engineering, then switched to mathematics and completed the MVA master (Mathématiques, Vision, Apprentissage).</p>
-      <p>I started my career in deep learning applied to remote sensing — first at Kayrros as an intern, then a PhD at INRIA/LSCE. I didn’t enjoy the day‑to‑day of research (I did write two papers), and around that time I tried ChatGPT for the first time. It felt like a revolution: a compressed interface to the world that you can query in natural language.</p>
-      <p>I began building tools for my research and realized I wanted to build full‑time. I met Jérôme Ménière, CEO of DxO Labs, and joined as a GenAI consultant, prototyping tools to streamline internal processes. Today I lead the GenAI Transformation group — a small team deploying AI across the company and into DxO’s products.</p>
-      <p>Outside work, I split time between the Alps and Corsica and love the outdoors — surf, skiing, and mountain biking. I also used to be a Halo geek. This site is a simple place to share some of my work and essays.</p>
+      <p>I’m Arthur — born in Marseille (Allez l’OM!), now based in Paris. After classes préparatoires, I joined École Normale Supérieure. I started in civil engineering, then switched to mathematics and graduated from the MVA Master (Mathématiques, Vision, Apprentissage).</p>
+      <p>I began in deep learning for remote sensing: an internship at Kayrros, then a PhD with INRIA/LSCE. I wrote two papers, but research life didn’t fit. Trying ChatGPT for the first time was a turning point — a compressed interface to the world you can talk to. I started building tools for my work and realized I wanted to build full‑time.</p>
+      <p>I met Jérôme Ménière (CEO, DxO Labs), joined as a GenAI consultant, and grew into leading the GenAI Transformation group — a small team shipping AI across the company and into DxO software.</p>
+      <p>Outside work I split time between the Alps and Corsica; I love surf, skiing, and mountain biking. I also used to be a Halo geek. Here you’ll find some of my work and occasional essays.</p>
     </div>
   </section>
 
@@ -41,9 +41,8 @@ title: Home
 
   <!-- Latest Articles -->
   <section id="latest" class="section-container">
-    <div class="plate" style="padding:1.25rem 1rem; border:1px solid var(--border); border-radius:12px; background: var(--surface);">
-      <h2 style="margin-top:0;">Latest Articles</h2>
-      <div class="article-list">
+    <h2 style="margin-top:0;">Latest Articles</h2>
+    <div class="article-list">
         {% assign posts = site.articles | sort: 'date' | reverse %}
         {% for post in posts limit:4 %}
           <div class="article-item">
@@ -55,21 +54,18 @@ title: Home
             <div class="excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</div>
           </div>
         {% endfor %}
-      </div>
-      <p style="margin-top: 1rem;"><a href="{{ '/blog.html' | relative_url }}">View all articles →</a></p>
     </div>
+    <p style="margin-top: 1rem;"><a href="{{ '/blog.html' | relative_url }}">View all articles →</a></p>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="section-container">
-    <div class="plate" style="padding:1.25rem 1rem; border:1px solid var(--border); border-radius:12px; background: var(--surface);">
-      <h2 style="margin-top:0;">Contact</h2>
-      <p>Interested in research collaboration or AI consulting? Let's connect.</p>
-      <ul class="contact-info">
-        <li>📧 <a href="mailto:arthur.calvi@icloud.com">arthur.calvi@icloud.com</a></li>
-        <li>📱 <a href="tel:+33635472268">+33 6 35 47 22 68</a></li>
-        <li>🔗 <a href="http://www.linkedin.com/in/arthur-calvi" target="_blank">LinkedIn Profile</a></li>
-        <li>💻 <a href="https://github.com/ArthurCalvi" target="_blank">GitHub</a></li>
-      </ul>
-    </div>
+    <h2 style="margin-top:0;">Contact</h2>
+    <p>Interested in research collaboration or AI consulting? Let’s connect.</p>
+    <ul class="contact-info">
+      <li>📧 <a href="mailto:arthur.calvi@icloud.com">arthur.calvi@icloud.com</a></li>
+      <li>📱 <a href="tel:+33635472268">+33 6 35 47 22 68</a></li>
+      <li>🔗 <a href="http://www.linkedin.com/in/arthur-calvi" target="_blank">LinkedIn Profile</a></li>
+      <li>💻 <a href="https://github.com/ArthurCalvi" target="_blank">GitHub</a></li>
+    </ul>
   </section>
