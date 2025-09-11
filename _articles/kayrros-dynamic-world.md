@@ -26,32 +26,17 @@ Our focus was to build a minimal model that stays stable over time while remaini
 - Satellite‑agnostic inputs: Sentinel‑2 and Landsat families plus derived indices (e.g., NDVI, NDMI) and SRTM30 elevation for context.
 - Lightweight U‑Net variant: three downsampling stages with targeted enhancements (attention/APSP as needed) for speed/accuracy balance.
 
-{% include figure.html \
-  src="assets/images/montage.png" \
-  alt="Temporal augmentation across dates with varying atmospherics and corresponding training confidences" \
-  caption="Temporal augmentation: multiple observations of the same area (top) paired with training confidences (bottom) help the model learn invariance to atmospherics and phenology." \
-  variant="on-plate float-shadow" %}
+{% include figure.html src='assets/images/montage.png' alt='Temporal augmentation across dates with varying atmospherics and corresponding training confidences' caption='Temporal augmentation: multiple observations of the same area (top) paired with training confidences (bottom) help the model learn invariance to atmospherics and phenology.' variant='on-plate float-shadow' %}
 
 ## Seeing the model work
 
 Below are examples comparing raw Sentinel‑2 imagery and the model’s land‑cover output around Mount Kenya.
 
-{% include figure.html \
-  src="assets/images/img-cmp-kenya-zoom-sat.png" \
-  alt="Zoomed Sentinel‑2 crop near Mount Kenya" \
-  caption="Zoom view — left: Sentinel‑2 crop (raw). See also the paired classified view below." \
-  variant="on-plate rounded-lg" %}
+{% include figure.html src='assets/images/img-cmp-kenya-zoom-sat.png' alt='Zoomed Sentinel‑2 crop near Mount Kenya' caption='Zoom view — left: Sentinel‑2 crop (raw). See also the paired classified view below.' variant='on-plate rounded-lg' %}
 
-{% include figure.html \
-  src="assets/images/img-cmp-kenya-zoom-model.png" \
-  alt="Zoomed model classification near Mount Kenya" \
-  caption="Zoom view — right: model classification (Crops, Trees/Shrubs, etc.)." \
-  variant="on-plate rounded-lg" %}
+{% include figure.html src='assets/images/img-cmp-kenya-zoom-model.png' alt='Zoomed model classification near Mount Kenya' caption='Zoom view — right: model classification (Crops, Trees/Shrubs, etc.).' variant='on-plate rounded-lg' %}
 
-{% include figure.html \
-  src="assets/images/legend.png" \
-  alt="Land‑cover legend for the classification outputs" \
-  caption="Legend — nine Dynamic World classes as used in this project." %}
+{% include figure.html src='assets/images/legend.png' alt='Land‑cover legend for the classification outputs' caption='Legend — nine Dynamic World classes as used in this project.' %}
 
 ## Results across biomes
 
@@ -69,11 +54,7 @@ While slightly below Google Dynamic World on benchmark scores, the model deliver
 
 The model is particularly effective for dynamic indicators: deforestation alerts, agricultural expansion, and other environmental monitoring signals.
 
-{% include figure.html \
-  src="assets/images/lulc_changes.png" \
-  alt="Example of forest loss detection with dating of change" \
-  caption="Example: temporal analysis reveals forest loss (red) and dates of change, derived from stable land‑cover predictions." \
-  variant="on-plate float-shadow" %}
+{% include figure.html src='assets/images/lulc_changes.png' alt='Example of forest loss detection with dating of change' caption='Example: temporal analysis reveals forest loss (red) and dates of change, derived from stable land‑cover predictions.' variant='on-plate float-shadow' %}
 
 ## Takeaways
 
@@ -82,4 +63,3 @@ The model is particularly effective for dynamic indicators: deforestation alerts
 - A lightweight, consistent baseline can unlock reliable monitoring at scale—even if headline benchmark numbers trail large, general models.
 
 _Acknowledgment: developed during my 2022 internship at Kayrros under the supervision of **Aurélien De Truchis**._
-
