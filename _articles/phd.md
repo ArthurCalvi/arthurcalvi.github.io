@@ -1,12 +1,12 @@
 ---
 layout: article
 title: Detecting Tree Phenology from Space
-permalink: /phd.html
+description: A research note on using Sentinel-2 time series and harmonic analysis to distinguish seasonal forest behavior at national scale.
 date: 2025-01-01
 section: phd
 category: Research
-cover_image: assets/images/harmonics_decomposition.png
-audio: assets/audio/Écoute-Harmonique-des-Forêts-Françaises-par-Satellite-2.mp3
+cover_image: /assets/images/harmonics_decomposition.png
+audio: /assets/audio/Écoute-Harmonique-des-Forêts-Françaises-par-Satellite-2.mp3
 audio_caption: Podcast version of this article (NotebookLM)
 audio_autoplay: false
 math: true
@@ -40,7 +40,7 @@ By analyzing these harmonic components, we can extract two essential characteris
 Think of the first harmonic as the primary melody—a clear annual leaf‑on, leaf‑off cycle in deciduous trees—and the second harmonic as subtle variations, refining our understanding of more nuanced seasonal behaviors.
 
 <figure class="article-figure">
-  <img src="assets/images/harmonics_decomposition.png" alt="Harmonic decomposition of NDVI time series for a deciduous tree" />
+  <img src="/assets/images/harmonics_decomposition.png" alt="Harmonic decomposition of NDVI time series for a deciduous tree" />
   <figcaption>Figure 1: Harmonic decomposition of NDVI time series for a deciduous tree. Two harmonic components and an offset combine to reconstruct the observed vegetation pattern.</figcaption>
   
 </figure>
@@ -56,7 +56,7 @@ Key steps included:
 - **Efficient computation:** Parallelized processing on high‑performance computing infrastructure, allowing nationwide analysis within an hour.
 
 <figure class="article-figure">
-  <img src="assets/images/classification-map.png" alt="Forest classification map of France showing deciduous and evergreen classes" />
+  <img src="/assets/images/classification-map.png" alt="Forest classification map of France showing deciduous and evergreen classes" />
   <figcaption>Figure 2: Forest classification map of France, showing deciduous (orange) and evergreen (blue) forests. Insets highlight detailed views of Les Landes and Corsica.</figcaption>
 </figure>
 

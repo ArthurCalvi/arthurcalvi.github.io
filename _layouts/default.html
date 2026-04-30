@@ -3,37 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% if page.title %}{{ page.title }} | {% endif %}Arthur Calvi</title>
+  {% capture page_title %}{% if page.url == '/' %}Arthur Calvi{% elsif page.title %}{{ page.title }} | Arthur Calvi{% else %}Arthur Calvi{% endif %}{% endcapture %}
+  <title>{{ page_title | strip }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}" />
+  <meta name="theme-color" content="#f7f4ee" />
+  <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  <meta property="og:title" content="{{ page_title | strip }}" />
+  <meta property="og:description" content="{{ page.description | default: site.description }}" />
+  <meta property="og:type" content="{% if page.layout == 'article' %}article{% else %}website{% endif %}" />
+  <meta property="og:url" content="{{ page.url | absolute_url }}" />
+  <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml" />
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
   {% if page.math %}
   <script>
     MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true,
-        packages: ['base', 'ams', 'noerrors', 'noundefined']
-      },
-      svg: { fontCache: 'global' },
-      options: {
-        skipHtmlTags: ['script','noscript','style','textarea','pre','code'],
-        processHtmlClass: 'tex2jax_process',
-        ignoreHtmlClass: 'tex2jax_ignore'
-      }
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+      svg: { fontCache: 'global' }
     };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
   {% endif %}
 </head>
-<body class="page-{{ page.layout }}{% if page.section %} section-{{ page.section }}{% endif %}{% if page.collection %} collection-{{ page.collection }}{% endif %}">
-
+<body class="section-{{ page.section | default: 'home' }}">
   {% include nav.html %}
-
-  {{ content }}
-
+  <main>
+    {{ content }}
+  </main>
   <footer class="site-footer">
-    <p>&copy; {{ 'now' | date: '%Y' }} Arthur Calvi. All rights reserved.</p>
+    <span>Arthur Calvi</span>
+    <span>Paris</span>
+    <a href="mailto:arthur.calvi@icloud.com">Email</a>
+    <a href="https://github.com/ArthurCalvi" target="_blank" rel="noopener">GitHub</a>
+    <a href="http://www.linkedin.com/in/arthur-calvi" target="_blank" rel="noopener">LinkedIn</a>
   </footer>
-
 </body>
 </html>

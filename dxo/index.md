@@ -1,22 +1,15 @@
 ---
 layout: page
 title: DxO Labs
+section: work
+eyebrow: Current work
+description: AI acceleration inside a real product company.
 permalink: /dxo/
-section_page: true
-section: dxo
-description: LLM apps and GenAI transformation at DxO Labs — training, RAG systems, dubbing and localization tooling, and production integration.
 ---
 
-<div class="article-list">
-{% assign items = site.articles | where: 'section', 'dxo' | sort: 'date' | reverse %}
-{% for post in items limit: 6 %}
-  <div class="article-item">
-    <div class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
-    <div class="meta">
-      {% if post.date %}{{ post.date | date: '%B %-d, %Y' }}{% endif %}
-      {% if post.category %} · {{ post.category }}{% endif %}
-    </div>
-    <div class="excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</div>
-  </div>
-{% endfor %}
-</div>
+At DxO Labs, I lead AI acceleration: practical AI systems for product teams,
+support, creative software, internal workflows, and agentic development.
+
+I keep public writing at the right abstraction level: leadership lessons,
+system design patterns, and product reflections without confidential roadmap or
+implementation details.

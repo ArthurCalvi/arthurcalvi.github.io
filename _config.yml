@@ -1,4 +1,5 @@
 title: Arthur Calvi
+description: Public notebook on AI systems, product work, and building teams.
 url: https://arthurcalvi.github.io
 baseurl: ""
 
@@ -10,9 +11,9 @@ collections:
   articles:
     output: true
     permalink: /articles/:name/
-  projects:
+  reflections:
     output: true
-    permalink: /projects/:name/
+    permalink: /feed/:name/
 
 defaults:
   - scope:
@@ -22,12 +23,36 @@ defaults:
       layout: article
   - scope:
       path: ""
-      type: projects
+      type: reflections
     values:
-      layout: page
+      layout: article
+      section: feed
 
 exclude:
+  - .bundle
+  - .github
+  - .gitignore
+  - .serena
+  - .DS_Store
+  - AGENTS.md
+  - CLAUDE.md
   - Gemfile
   - Gemfile.lock
+  - README.md
   - node_modules
+  - package.json
+  - package-lock.json
+  - next.config.js
+  - next-env.d.ts
+  - tsconfig.json
+  - vercel.json
+  - app
+  - components
+  - content
+  - hooks
+  - lib
+  - styles
+  - public
+  - _site
+  - out
   - vendor

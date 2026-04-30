@@ -1,31 +1,28 @@
 ---
 layout: page
-title: Blog
-section_page: true
+title: Archive
 section: blog
-description: Essays, research notes, and updates – sorted newest first.
+eyebrow: Previous work
+description: Older writing, research, and project notes worth keeping visible.
 ---
 
-<section class="section-container">
-  <div class="article-list">
-    <!-- Legacy HTML article (if kept) -->
-    <div class="article-item">
-      <div class="title"><a href="{{ '/articles/quit-phd.html' | relative_url }}">Why I decided to quit my PhD?</a></div>
-      <div class="meta">March 16, 2025 · Career, Academia</div>
-      <div class="excerpt">My journey from enthusiastic PhD student to making the difficult decision to leave academia was filled with unexpected challenges...</div>
-    </div>
+{% assign posts = site.articles | sort: 'date' | reverse %}
+<div class="section-title-row archive-title-row">
+  <h2>Selected work and writing</h2>
+  <span>Research, essays, older projects</span>
+</div>
 
-    <!-- Markdown-powered articles -->
-    {% assign posts = site.articles | sort: 'date' | reverse %}
-    {% for post in posts %}
-      <div class="article-item">
-        <div class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
-        <div class="meta">
-          {% if post.date %}{{ post.date | date: '%B %-d, %Y' }}{% endif %}
-          {% if post.category %} · {{ post.category }}{% endif %}
-        </div>
-        <div class="excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</div>
-      </div>
-    {% endfor %}
-  </div>
-</section>
+<div class="item-list">
+  {% for post in posts %}
+  <article class="list-item">
+    <a class="item-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <div class="meta">{{ post.date | date: '%B %-d, %Y' }}{% if post.category %} · {{ post.category }}{% endif %}</div>
+    <p>{{ post.description | default: post.excerpt | strip_html | truncate: 220 }}</p>
+  </article>
+  {% endfor %}
+  <article class="list-item">
+    <a class="item-title" href="{{ '/articles/quit-phd.html' | relative_url }}">Why I Decided to Quit My PhD</a>
+    <div class="meta">March 16, 2025 · Career, Academia</div>
+    <p>A personal essay on leaving academia, choosing a more product-driven path, and what the PhD taught me.</p>
+  </article>
+</div>

@@ -1,18 +1,18 @@
 # Repository Guidelines
 
 ## Project Structure & Organization
-- Root pages: `index.html`, `kayrros.html`, `phd.html`, `dxo.html`, `blog.html`.
-- Articles (legacy): `articles/` (e.g., `articles/quit-phd.html`).
-- Articles (Markdown, Jekyll): source in `_articles/` → built to `/articles/:name/`.
+- Root pages: `index.html`, `feed.html`, `blog.html`, plus legacy redirect/section pages such as `work.html`, `kayrros.html`, `phd.html`, and `dxo.html`.
+- Public notebook: `_reflections/` renders to `/feed/:name/`.
+- Long-form articles: `_articles/` renders to `/articles/:name/`.
+- Legacy article: `articles/quit-phd.html`.
 - Assets: `assets/css/main.css`, `assets/images/`, `assets/audio/`.
-- Navigation: top nav exists on each page; update links consistently across pages and set `aria-current="page"` on the active link.
+- Navigation is centralized in `_includes/nav.html`; update links there and set `aria-current="page"` on the active section.
 
 ## Build, Test, and Local Development
-- Serve locally from the repo root:
-  - `python3 -m http.server 4000` → open `http://localhost:4000`.
-- Jekyll build (to preview Markdown locally):
-  - Install Ruby + Bundler; `gem install jekyll bundler` (once).
-  - `bundle init && bundle add jekyll` (or use system Jekyll), then `bundle exec jekyll serve` and open the served URL.
+- Full Jekyll preview: `bundle install && bundle exec jekyll serve`.
+- On this Mac, prefer Homebrew Ruby: `PATH="/opt/homebrew/opt/ruby/bin:$PATH" bundle exec jekyll serve`.
+- Static HTML preview only: `python3 -m http.server 4000`.
+- GitHub Pages deploys through `.github/workflows/pages.yml` with Ruby 3.2.
 - Quick link/asset scan (optional): `rg -n "(href|src)=\""`.
 - Verify: load each page, click all nav links, images load, and styles from `assets/css/main.css` apply.
 
@@ -37,16 +37,36 @@
 - Static site only—do not add secrets or tracking scripts.
 - Use relative links; optimize images (target ≤200KB when possible).
 - Ensure consistent nav across pages after additions/renames.
+- Public notebook posts must be public-safe: no DxO NDA-sensitive details, private issue IDs, internal meeting details, repo paths, logs, or names that do not belong in public.
+- Feed posts can be drafted by Arthur's AI assistant from daily work, but they must read as Arthur's reviewed outside voice.
+- Preferred feed themes: systems, philosophy, and technical or engineering practice. Abstract private context into public lessons instead of narrating internal work directly.
 
-## Authoring with Markdown (Articles & Pages)
+## Authoring with Markdown
+- Reflections: create `_reflections/yyyy-mm-dd-title.md` with front matter:
+  ```yaml
+  ---
+  layout: article
+  title: My Title
+  description: One precise sentence under the title.
+  date: 2026-04-30
+  section: feed
+  category: AI systems
+  ai_assisted: true
+  public_safety: reviewed draft
+  ---
+  ```
 - Articles: create `_articles/my-title.md` with front matter:
   ```yaml
   ---
   title: My Title
-  date: 2025-03-20
-  category: Research
-  audio: assets/audio/my-narration.mp3   # optional
+  description: One precise sentence under the title.
+  date: 2026-04-30
+  section: research
+  category: Research       # optional
+  cover_image: /assets/images/cover.png
+  audio: /assets/audio/my-narration.mp3  # optional
   audio_autoplay: false                  # optional
+  math: false                            # optional
   ---
   ```
   Write Markdown below; images live in `assets/images/`.
@@ -55,8 +75,8 @@
 
 ## Jekyll Workflow Notes
 - Static preview via `python3 -m http.server` will not render Liquid; use `bundle exec jekyll serve` to preview Markdown and templates.
-- Jekyll directories: `_layouts/`, `_includes/`, `_drafts/`, `_articles/`. Planned: `_projects/` and `_pages/` for top-level Markdown pages.
-- Navigation is centralized in `_includes/nav.html` and will be data-driven later.
+- Jekyll directories: `_layouts/`, `_includes/`, `_drafts/`, `_articles/`, `_reflections/`.
+- Navigation is centralized in `_includes/nav.html`.
 - Prefer lowercase-kebab-case and avoid spaces/accents in asset filenames for reliability.
 - See `status.md` for the current status, roadmap, and TODOs.
 

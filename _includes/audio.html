@@ -1,7 +1,7 @@
 {% if include.src or page.audio %}
-<div class="article-audio" style="margin: 1rem 0;">
+<div class="article-audio">
   {% if include.caption or page.audio_caption %}
-    <p>{{ include.caption | default: page.audio_caption }}</p>
+  <p>{{ include.caption | default: page.audio_caption }}</p>
   {% endif %}
   <audio controls
     {% if include.autoplay or page.audio_autoplay %}autoplay{% endif %}
@@ -9,20 +9,5 @@
     src="{{ include.src | default: page.audio | relative_url }}">
     Your browser does not support the audio element.
   </audio>
-  {% if include.transcript or page.audio_transcript %}
-    <details style="margin-top: .5rem;">
-      <summary>Transcript</summary>
-      <div>
-        {{ include.transcript | default: page.audio_transcript }}
-      </div>
-    </details>
-  {% endif %}
-  {% if include.download %}
-    <p><a href="{{ include.src | default: page.audio | relative_url }}" download>Download audio</a></p>
-  {% endif %}
-  {% if include.mute_toggle %}
-    <button type="button" class="button secondary" onclick="(function(btn){var a=btn.previousElementSibling; if(a && a.tagName==='AUDIO'){ a.muted=!a.muted; btn.textContent=a.muted?'Unmute':'Mute'; }})(this)">Mute</button>
-  {% endif %}
 </div>
 {% endif %}
-

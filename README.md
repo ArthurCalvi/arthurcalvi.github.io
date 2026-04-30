@@ -1,54 +1,85 @@
-# Portfolio Website (Jekyll)
+# Arthur Calvi
 
-This is my personal website hosted on GitHub Pages. Content is written in Markdown and rendered by Jekyll into a static site.
+Personal website and public notebook, hosted on GitHub Pages and rendered by Jekyll.
 
 ## Structure
 
 ```
-├── index.html                 # Landing page (to be redesigned with bento hero)
-├── blog.html                  # Blog index (auto-lists articles)
-├── kayrros/index.md           # Listing page (Kayrros section)
-├── phd/index.md               # Listing page (PhD section)
-├── dxo/index.md               # Listing page (DxO section)
-├── projects/index.md          # Listing page (Projects collection)
-├── _articles/                 # Markdown articles (with front matter)
-├── _projects/                 # Markdown projects (optional)
+├── index.html                 # Home
+├── feed.html                  # Public notebook feed
+├── blog.html                  # Archive: selected work and long-form writing
+├── _reflections/              # Short public-safe feed posts
+├── _articles/                 # Long-form Markdown articles
 ├── _layouts/, _includes/      # Templates and shared snippets
 └── assets/                    # CSS, images, audio
 ```
 
 ## Local Preview
 
-- Static server (HTML only): `python3 -m http.server 4000` (does not render Jekyll)
-- Full preview (Markdown + templates):
-  - `gem install jekyll bundler` (once)
-  - `bundle init && bundle add jekyll`
-  - `bundle exec jekyll serve`
+- Full Jekyll preview: `bundle install && bundle exec jekyll serve`
+- Static HTML preview only: `python3 -m http.server 4000`
 
-## Add a New Page or Article
+The static preview does not render Liquid or Markdown collections; use Jekyll for real checks.
 
-- Article (appears on Blog and a Section list):
-  - Create `_articles/my-title.md` with front matter:
-    ```yaml
-    ---
-    layout: article
-    title: My Title
-    date: 2025-03-20
-    section: phd        # one of: phd, kayrros, dxo
-    category: Research  # optional
-    cover_image: assets/images/cover.png   # optional
-    audio: assets/audio/my-audio.mp3       # optional
-    ---
-    ```
-  - Write Markdown below. Images live under `assets/images/`.
+On this Mac, prefer Homebrew Ruby instead of macOS system Ruby:
 
-- Project (listed under /projects/):
-  - Create `_projects/my-project.md` with `layout: page`, `title`, `date`, optional `tags` and `cover_image`.
+```bash
+PATH="/opt/homebrew/opt/ruby/bin:$PATH" bundle install
+PATH="/opt/homebrew/opt/ruby/bin:$PATH" bundle exec jekyll serve
+```
+
+## Add a Reflection
+
+Create `_reflections/YYYY-MM-DD-slug.md`:
+
+```yaml
+---
+layout: article
+title: My Title
+description: One precise sentence under the title.
+date: 2026-04-30
+section: feed
+category: AI systems
+ai_assisted: true
+public_safety: reviewed draft
+---
+```
+
+Reflections should be public-safe: no confidential roadmap, customer details, internal names, private meeting residue, or NDA-sensitive implementation detail.
+
+Reflection voice: the feed can be drafted by Arthur's AI assistant from daily work, but it is Arthur-reviewed before publishing. Prefer systems, philosophy, and technical or engineering lessons; abstract away private context instead of narrating internal work directly.
+
+## Add a Long-Form Article
+
+Create `_articles/my-title.md`:
+
+```yaml
+---
+layout: article
+title: My Title
+description: One precise sentence under the title.
+date: 2026-04-30
+section: research
+category: Research
+cover_image: /assets/images/cover.png
+audio: /assets/audio/narration.mp3
+audio_autoplay: false
+math: false
+---
+```
+
+Images live under `assets/images/`; audio files live under `assets/audio/`.
+
+## Deployment
+
+The GitHub Actions workflow in `.github/workflows/pages.yml` builds Jekyll with Ruby 3.2 and deploys `_site` to GitHub Pages.
 
 ## Notes
 
-- Keep `kayrros.html`, `phd.html`, and `/articles/quit-phd.html` URLs working; these are rendered via Markdown with preserved permalinks.
-- Use descriptive alt text; avoid spaces/accents in new asset filenames when possible.
+- Keep legacy URLs working: `kayrros.html`, `phd.html`, `dxo.html`, `/articles/quit-phd.html`.
+- Avoid spaces or accents in new asset filenames.
+- Use descriptive alt text.
+- Keep the site static unless a real interaction justifies more complexity.
 
 ## License
 

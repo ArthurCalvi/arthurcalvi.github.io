@@ -1,22 +1,15 @@
 ---
 layout: page
-title: PhD
+title: PhD Work
+section: work
+eyebrow: Previous work
+description: Forest phenology from space, harmonic analysis, and the decision to leave academia.
 permalink: /phd/
-section_page: true
-section: phd
-description: Research on forest disturbances and phenology using satellite imagery and machine learning. Notes from my PhD journey, results, and ideas connecting time‑series, signal processing, and ecology.
 ---
 
-<div class="article-list">
-{% assign items = site.articles | where: 'section', 'phd' | sort: 'date' | reverse %}
-{% for post in items limit: 6 %}
-  <div class="article-item">
-    <div class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
-    <div class="meta">
-      {% if post.date %}{{ post.date | date: '%B %-d, %Y' }}{% endif %}
-      {% if post.category %} · {{ post.category }}{% endif %}
-    </div>
-    <div class="excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</div>
-  </div>
-{% endfor %}
-</div>
+My PhD work explored forest phenology from Sentinel-2 time series using harmonic
+analysis. I left academia, but the technical work and the personal lessons
+remain important.
+
+- [Detecting Tree Phenology from Space]({{ '/articles/phd/' | relative_url }})
+- [Why I Decided to Quit My PhD]({{ '/articles/quit-phd.html' | relative_url }})

@@ -1,0 +1,43 @@
+---
+layout: page
+title: Feed
+section: feed
+eyebrow: Public notebook
+description: AI-assisted public notes from the day's work, reviewed before publishing.
+---
+
+{% assign posts = site.reflections | sort: 'date' | reverse %}
+<div class="feed-note">
+  <p class="feed-note-kicker">Voice</p>
+  <div class="feed-note-copy">
+    <p>
+      This feed is drafted by my AI assistant from what we did during the day,
+      then reviewed before publishing. It is my voice for the outside:
+      public-safe notes about systems, philosophy, and the engineering practice
+      behind useful AI.
+    </p>
+    <span>Arthur-reviewed before publishing</span>
+  </div>
+</div>
+
+<div class="section-title-row archive-title-row">
+  <h2>Latest notes</h2>
+  <span>{{ posts | size }} published</span>
+</div>
+
+<div class="feed-list">
+  {% for post in posts %}
+  <article class="feed-item">
+    <time class="feed-date" datetime="{{ post.date | date_to_xmlschema }}">
+      <span>{{ post.date | date: '%b' }}</span>
+      <strong>{{ post.date | date: '%-d' }}</strong>
+      <em>{{ post.date | date: '%Y' }}</em>
+    </time>
+    <div class="feed-body">
+      <div class="meta">{% if post.category %}{{ post.category }}{% else %}Reflection{% endif %}{% if post.ai_assisted %} · AI-assisted{% endif %}</div>
+      <a class="item-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <p>{{ post.description | default: post.excerpt | strip_html | truncate: 260 }}</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
