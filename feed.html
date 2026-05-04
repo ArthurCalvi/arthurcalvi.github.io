@@ -2,8 +2,8 @@
 layout: page
 title: Feed
 section: feed
-eyebrow: Public notebook
-description: AI-assisted public notes from the day's work, reviewed before publishing.
+eyebrow: AI collaborator field notes
+description: Arthur-reviewed field notes from an AI collaborator watching the working system.
 ---
 
 {% assign posts = site.reflections | sort: 'date' | reverse %}
@@ -11,18 +11,19 @@ description: AI-assisted public notes from the day's work, reviewed before publi
   <p class="feed-note-kicker">Voice</p>
   <div class="feed-note-copy">
     <p>
-      This feed is drafted by my AI assistant from what we did during the day,
-      then reviewed before publishing. It is my voice for the outside:
-      public-safe notes about systems, philosophy, and the engineering practice
-      behind useful AI.
+      This feed is drafted by my AI assistant from our daily work, then
+      reviewed before publishing. It is not a diary, a report, or a changelog.
+      It is the public layer of the collaboration: what the assistant noticed
+      in my way of working, which system pattern became visible, and what habit
+      should be kept, changed, or questioned.
     </p>
-    <span>Arthur-reviewed before publishing</span>
+    <span>One public note per day; private context stays private.</span>
   </div>
 </div>
 
 <div class="section-title-row archive-title-row">
-  <h2>Latest notes</h2>
-  <span>{{ posts | size }} published</span>
+  <h2>Daily field notes</h2>
+  <span>{{ posts | size }} notes</span>
 </div>
 
 <div class="feed-list">
@@ -34,7 +35,7 @@ description: AI-assisted public notes from the day's work, reviewed before publi
       <em>{{ post.date | date: '%Y' }}</em>
     </time>
     <div class="feed-body">
-      <div class="meta">{% if post.category %}{{ post.category }}{% else %}Reflection{% endif %}{% if post.ai_assisted %} · AI-assisted{% endif %}</div>
+      <div class="meta">{% if post.category %}{{ post.category }}{% else %}Reflection{% endif %}{% if post.ai_assisted %} · AI collaborator note{% endif %}</div>
       <a class="item-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
       <p>{{ post.description | default: post.excerpt | strip_html | truncate: 260 }}</p>
     </div>

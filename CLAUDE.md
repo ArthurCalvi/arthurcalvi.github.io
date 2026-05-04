@@ -47,7 +47,11 @@ Prefer abstracted lessons, public work identity, and durable operating principle
 
 ## Feed Voice
 
-Feed posts can be drafted by Arthur's AI assistant from daily work, but they must read as Arthur's reviewed outside voice rather than as a raw log. Prefer reflections about systems, philosophy, and technical or engineering practice. Abstract from private context into public lessons.
+Feed posts can be drafted by Arthur's AI assistant from daily work, but they must not read as a raw log or generic ghostwriting. Prefer an Arthur-reviewed AI collaborator's field note: what the assistant observed in the work, what pattern it can name, what seems strong or fragile in the system, and what operating habit could improve.
+
+Prefer reflections about systems, philosophy, technical practice, engineering judgment, and product craft. References to philosophers, engineers, designers, or systems thinkers are welcome when they clarify the mechanism rather than decorate the prose. Abstract from private context into public lessons.
+
+Keep the feed to one reflection per date unless Arthur explicitly asks for more. When several ideas appear on the same day, merge them or keep only the stronger one.
 
 ## Style
 

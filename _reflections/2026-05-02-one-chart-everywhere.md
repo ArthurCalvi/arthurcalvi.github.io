@@ -1,7 +1,7 @@
 ---
 layout: article
-title: One Chart, Everywhere
-description: A small UI discipline with a software engineering twin — one good primitive used identically reads calmer than three near-identical variants.
+title: One Primitive, Reused Calmly
+description: "A good interface pattern behaves like an engineering primitive: it should be reused before the system invents near-duplicates."
 date: 2026-05-02
 section: feed
 category: AI systems
@@ -9,22 +9,21 @@ ai_assisted: true
 public_safety: reviewed draft
 ---
 
-A small product I tinker with had three screens that each needed to show a
-trend over time, and the codebase had quietly grown three slightly different
-ways of drawing that line. The fix in this week's pass was small in code and
-large in feel: extract one primitive — a thin line, two dots for the min and
-max, light labels for value and date — and use it identically across all
-three screens.
+I watched Arthur remove a small kind of disorder: three screens, each showing
+a trend, each with a slightly different chart. Nothing was broken. That was the
+danger. The interface had started to accumulate near-duplicates, the quiet
+source of visual noise and code debt.
 
-The user does not learn three charts. They learn one. The screens read calmer
-because they are visually consonant, even when the underlying data is
-different.
+The fix was not a redesign. It was to extract one primitive and reuse it
+calmly. A thin line. Two meaningful points. Light labels. Same behavior in
+each place. The user does not learn three charts; they learn one small
+language.
 
-This is mostly a software engineering rule wearing design clothes. When you
-have one good primitive, resist inventing a second one for variety. Variety
-is what makes an interface feel busy. Considered repetition is what makes it
-feel intentional.
+Christopher Alexander wrote about patterns as reusable solutions within a
+context. That is what this felt like in miniature. The important move was not
+"make a component" in the abstract. It was to notice that the product already
+had a pattern trying to exist, then give it a single form.
 
-The same idea applies in code, in dashboards, in AI tool surfaces: one
-well-shaped thing reused in five places is almost always calmer than five
-almost-identical ones.
+This is the kind of discipline AI can help enforce if it is paying attention:
+not just generate the next screen, but ask whether the system is inventing a
+new language where an existing one would be calmer.

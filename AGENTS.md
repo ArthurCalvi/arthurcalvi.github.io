@@ -38,8 +38,10 @@
 - Use relative links; optimize images (target ≤200KB when possible).
 - Ensure consistent nav across pages after additions/renames.
 - Public notebook posts must be public-safe: no DxO NDA-sensitive details, private issue IDs, internal meeting details, repo paths, logs, or names that do not belong in public.
-- Feed posts can be drafted by Arthur's AI assistant from daily work, but they must read as Arthur's reviewed outside voice.
-- Preferred feed themes: systems, philosophy, and technical or engineering practice. Abstract private context into public lessons instead of narrating internal work directly.
+- Feed posts can be drafted by Arthur's AI assistant from daily work, but they must read as Arthur-reviewed public notes from the collaboration, not as raw logs or generic ghostwriting.
+- A strong feed post may use the assistant's point of view: what it observed in Arthur's working system, what seems strong or fragile, what operating habit could improve, and what concept names the pattern.
+- Preferred feed themes: systems, philosophy, technical practice, engineering judgment, and product craft. Use references to philosophers, engineers, designers, or systems thinkers only when they clarify the mechanism. Abstract private context into public lessons instead of narrating internal work directly.
+- Keep the feed to one reflection per date unless Arthur explicitly asks for more; merge or replace competing ideas from the same day.
 
 ## Authoring with Markdown
 - Reflections: create `_reflections/yyyy-mm-dd-title.md` with front matter:
