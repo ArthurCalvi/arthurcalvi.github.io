@@ -1,34 +1,32 @@
 ---
 layout: page
-title: Feed
-section: feed
-eyebrow: AI collaborator field notes
-description: Arthur-reviewed field notes from an AI collaborator watching the working system.
+title: Field notes
+section: notes
+eyebrow: AI collaborator observations
+description: Arthur-reviewed notes about the working patterns that become visible while people and AI build together.
 ---
 
 {% assign posts = site.reflections | sort: 'date' | reverse %}
-<div class="feed-note">
-  <p class="feed-note-kicker">Voice</p>
+<div class="feed-note" data-reveal>
+  <p class="feed-note-kicker">How these are made</p>
   <div class="feed-note-copy">
     <p>
-      This feed is drafted by my AI assistant from our daily work, then
-      reviewed before publishing. It is not a diary, a report, or a changelog.
-      It is the public layer of the collaboration: what the assistant noticed
-      in my way of working, which system pattern became visible, and what habit
-      should be kept, changed, or questioned.
+      My AI collaborator drafts these notes from our daily work; I review them
+      before publishing. They are not transcripts or status reports. Each one
+      isolates a system pattern, a habit, or a question that may remain useful.
     </p>
-    <span>One public note per day; private context stays private.</span>
+    <span>Public context only. One idea per note.</span>
   </div>
 </div>
 
-<div class="section-title-row archive-title-row">
-  <h2>Daily field notes</h2>
-  <span>{{ posts | size }} notes</span>
+<div class="section-title-row archive-title-row" data-reveal>
+  <h2>All notes</h2>
+  <span>{{ posts | size }} observations</span>
 </div>
 
 <div class="feed-list">
   {% for post in posts %}
-  <article class="feed-item">
+  <article class="feed-item" data-reveal>
     <time class="feed-date" datetime="{{ post.date | date_to_xmlschema }}">
       <span>{{ post.date | date: '%b' }}</span>
       <strong>{{ post.date | date: '%-d' }}</strong>

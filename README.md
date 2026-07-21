@@ -6,9 +6,12 @@ Personal website and public notebook, hosted on GitHub Pages and rendered by Jek
 
 ```
 ├── index.html                 # Home
-├── feed.html                  # Public notebook feed
-├── blog.html                  # Archive: selected work and long-form writing
-├── _reflections/              # Short public-safe feed posts
+├── work.html                  # Anonymized case studies and engineering practice
+├── about.html                 # Working principles and background
+├── blog.html                  # Research, essays, and links to shorter notes
+├── resume.html                # Compact, print-friendly résumé
+├── feed.html                  # Arthur-reviewed AI collaborator field notes
+├── _reflections/              # Short public-safe field notes
 ├── _articles/                 # Long-form Markdown articles
 ├── _layouts/, _includes/      # Templates and shared snippets
 └── assets/                    # CSS, images, audio
@@ -78,6 +81,7 @@ The GitHub Actions workflow in `.github/workflows/pages.yml` builds Jekyll with 
 
 - Keep legacy URLs working: `kayrros.html`, `phd.html`, `dxo.html`, `/articles/quit-phd.html`.
 - Avoid spaces or accents in new asset filenames.
+- Prefer optimized display derivatives for large research images; target roughly 200 KB per image where legibility allows.
 - Use descriptive alt text.
 - Keep the site static unless a real interaction justifies more complexity.
 

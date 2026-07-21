@@ -2,64 +2,214 @@
 layout: default
 title: Home
 section: home
+description: Arthur Calvi leads the AI Acceleration Team at DxO Labs, exploring how people and AI can act through the same well-designed systems.
 ---
 
-<section class="hero">
-  <div class="hero-copy">
-    <p class="eyebrow">AI systems, product work, applied research</p>
-    <h1>Arthur Calvi</h1>
-    <div class="role-stack" aria-label="Current work">
-      <div class="role-item">
-        <p class="role-title">Head of AI Acceleration at <a href="https://www.dxo.com/" target="_blank" rel="noopener">DxO Labs</a></p>
-        <p class="role-description">I help product, support, and engineering teams turn AI from demos into reliable operating systems.</p>
-      </div>
-      <div class="role-item">
-        <p class="role-title">Founder of DailySurf <span>(link coming soon)</span></p>
-        <p class="role-description">I am building a journal-first surf progression product around memory, practice, and feedback.</p>
-      </div>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy" data-reveal>
+    <p class="eyebrow">Head of AI Acceleration Team · DxO Labs</p>
+    <h1 id="hero-title">Arthur<br />Calvi</h1>
+    <p class="hero-statement">
+      I lead a small team exploring what changes when AI sits at the heart of
+      an organisation—not only in products, but in the way work is described,
+      executed, reviewed, and improved.
+    </p>
+    <p class="hero-description">
+      We design systems that both people and AI can act on. AI can execute and
+      advise; people remain responsible for the architecture, constraints, and
+      judgment.
+    </p>
+    <div class="hero-actions" aria-label="Explore the site">
+      <a class="text-link" href="{{ '/work.html' | relative_url }}">Selected work <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="{{ '/about.html' | relative_url }}">About this approach <span aria-hidden="true">→</span></a>
     </div>
-    <p class="notebook-line">This site is my public notebook and archive: systems, philosophy, and engineering notes from the work.</p>
-    <div class="hero-actions">
-      <a href="{{ '/feed.html' | relative_url }}">Read the feed</a>
-      <a href="{{ '/blog.html' | relative_url }}">See the archive</a>
-    </div>
+    <p class="previous-line">
+      Previously: mathematics and machine learning at ENS Paris-Saclay,
+      followed by remote-sensing work at Kayrros, CNRS, and Inria.
+    </p>
   </div>
-  <aside class="hero-aside" aria-label="Current focus">
-    <img class="portrait" src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Portrait of Arthur Calvi" />
-    <p class="photo-caption">Current focus: turning AI from demos into operating systems for teams.</p>
-  </aside>
+
+  <figure class="hero-portrait" data-reveal>
+    <div class="portrait-frame">
+      <img src="{{ '/assets/images/profile-portrait.jpg' | relative_url }}" alt="Arthur Calvi outdoors" />
+      <span class="portrait-marker portrait-marker-top" aria-hidden="true">01</span>
+      <span class="portrait-marker portrait-marker-bottom" aria-hidden="true">Paris · 2026</span>
+    </div>
+    <figcaption>
+      <span>Current question</span>
+      How should an organisation change when AI becomes an active participant in its work?
+    </figcaption>
+  </figure>
 </section>
 
-<section class="list-section list-section-compact notebook-section">
-  <div class="section-title-row">
-    <h2>Latest reflections</h2>
-    <a href="{{ '/feed.html' | relative_url }}">All feed posts</a>
+<section class="section-shell discovery-section" aria-labelledby="discoveries-title">
+  <div class="section-intro" data-reveal>
+    <p class="section-index">01 · Working thesis</p>
+    <div>
+      <h2 id="discoveries-title">What we are discovering</h2>
+      <p class="section-lede">
+        Useful AI is rarely one model or one prompt. It emerges from the way
+        context, tools, interfaces, evaluation, and human judgment fit together.
+      </p>
+    </div>
   </div>
-  {% assign reflections = site.reflections | sort: 'date' | reverse %}
-  <div class="item-list">
-    {% for post in reflections limit:3 %}
-    <article class="list-item">
-      <a class="item-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <div class="meta">{{ post.date | date: '%B %-d, %Y' }}{% if post.ai_assisted %} · AI-assisted{% endif %}</div>
-      <p>{{ post.description | default: post.excerpt | strip_html | truncate: 180 }}</p>
-    </article>
-    {% endfor %}
+
+  <ol class="insight-grid" aria-label="Three working principles">
+    <li data-reveal>
+      <span class="insight-number">01</span>
+      <h3>Start with the whole system</h3>
+      <p>Rethink the process, the information it carries, and the decisions it produces—not only the task given to a model.</p>
+    </li>
+    <li data-reveal>
+      <span class="insight-number">02</span>
+      <h3>Give AI bounded ways to act</h3>
+      <p>Clear tools, typed interactions, and visible evidence make an agent more useful than an open-ended interface.</p>
+    </li>
+    <li data-reveal>
+      <span class="insight-number">03</span>
+      <h3>Keep judgment visible</h3>
+      <p>AI can execute and advise. People still set intent, design constraints, read risk, and decide what is ready.</p>
+    </li>
+  </ol>
+
+  <div class="system-path" data-reveal aria-label="A shared human and AI operating loop">
+    <div>
+      <span>Human</span>
+      <strong>Intent &amp; judgment</strong>
+    </div>
+    <i aria-hidden="true">→</i>
+    <div>
+      <span>Shared system</span>
+      <strong>Context &amp; constraints</strong>
+    </div>
+    <i aria-hidden="true">→</i>
+    <div>
+      <span>AI</span>
+      <strong>Advice &amp; execution</strong>
+    </div>
+    <i aria-hidden="true">→</i>
+    <div>
+      <span>Evidence</span>
+      <strong>Review &amp; learning</strong>
+    </div>
   </div>
 </section>
 
-<section class="list-section list-section-compact">
-  <div class="section-title-row">
-    <h2>Archive</h2>
-    <a href="{{ '/blog.html' | relative_url }}">All archive</a>
+<section class="section-shell selected-work" aria-labelledby="work-title">
+  <div class="section-intro" data-reveal>
+    <p class="section-index">02 · Selected work</p>
+    <div>
+      <h2 id="work-title">Systems in practice</h2>
+      <p class="section-lede">Three different products, connected by the same question: how do we make intelligence dependable in real work?</p>
+    </div>
   </div>
-  <div class="item-list">
-    {% assign articles = site.articles | sort: 'date' | reverse %}
-    {% for post in articles limit:3 %}
-    <article class="list-item">
-      <a class="item-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <div class="meta">{{ post.date | date: '%B %-d, %Y' }}{% if post.category %} · {{ post.category }}{% endif %}</div>
-      <p>{{ post.description | default: post.excerpt | strip_html | truncate: 180 }}</p>
+
+  <div class="work-list">
+    <article class="work-row" data-reveal>
+      <div class="work-number">01</div>
+      <div class="work-copy">
+        <p class="work-meta">DxO Labs · Internal product · Anonymized</p>
+        <h3><a href="{{ '/work.html#creative-agent' | relative_url }}">A specialist creative agent</a></h3>
+        <p>We are turning visual AI into a closed product loop: intent becomes a plan, bounded actions change the software, and visual evidence informs the next decision.</p>
+      </div>
+      <div class="work-role">
+        <span>My role</span>
+        <p>Team lead, system architecture, productization, evaluation, and release coordination.</p>
+      </div>
     </article>
-    {% endfor %}
+
+    <article class="work-row work-row-visual" data-reveal>
+      <div class="work-number">02</div>
+      <div class="work-copy">
+        <p class="work-meta">Independent product · Live</p>
+        <h3><a href="{{ '/work.html#dailysurf' | relative_url }}">DailySurf</a></h3>
+        <p>A mobile companion for surfers to remember sessions, understand conditions, and make progression visible over time.</p>
+        <a class="text-link" href="https://dailysurf.fr" target="_blank" rel="noopener">Visit DailySurf <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="work-thumbnail">
+        <img src="{{ '/assets/images/dailysurf-session.jpg' | relative_url }}" alt="DailySurf active session screen on a beach" loading="lazy" />
+        <figcaption>Session in progress</figcaption>
+      </figure>
+    </article>
+
+    <article class="work-row" data-reveal>
+      <div class="work-number">03</div>
+      <div class="work-copy">
+        <p class="work-meta">DxO Labs · Internal operations · Anonymized</p>
+        <h3><a href="{{ '/work.html#support-copilot' | relative_url }}">An internal support copilot</a></h3>
+        <p>We grounded AI assistance in ticket context and company knowledge, then designed the adoption and observation loop around the people using it.</p>
+      </div>
+      <div class="work-role">
+        <span>My role</span>
+        <p>System design, impact framework, adoption workflow, and operational handover.</p>
+      </div>
+    </article>
+  </div>
+
+  <a class="section-link" href="{{ '/work.html' | relative_url }}">Read the complete work notes <span aria-hidden="true">→</span></a>
+</section>
+
+<section class="section-shell preflight-section" aria-labelledby="preflight-title">
+  <div class="section-intro" data-reveal>
+    <p class="section-index">03 · Engineering practice</p>
+    <div>
+      <h2 id="preflight-title">Quality is part of the system</h2>
+      <p class="section-lede">
+        <code>pr-preflight</code> turns our engineering expectations into an
+        executable gate before integrated evaluation and human review.
+      </p>
+    </div>
+  </div>
+
+  <div class="pipeline" data-reveal aria-label="PR preflight quality path">
+    <div><span>01</span><strong>Intent</strong><small>Scope and acceptance</small></div>
+    <div><span>02</span><strong>AI-assisted build</strong><small>Bounded implementation</small></div>
+    <div><span>03</span><strong>Preflight</strong><small>Checks and focused reviews</small></div>
+    <div><span>04</span><strong>Human decision</strong><small>Risk, exceptions, readiness</small></div>
+  </div>
+  <p class="preflight-note" data-reveal>
+    The goal is not to remove review. It is to make routine quality checks
+    repeatable, so human attention can stay on intent, architecture, and risk.
+  </p>
+</section>
+
+<section class="section-shell writing-preview" aria-labelledby="writing-title">
+  <div class="section-intro" data-reveal>
+    <p class="section-index">04 · Writing</p>
+    <div>
+      <h2 id="writing-title">Earlier questions, kept visible</h2>
+      <p class="section-lede">Remote sensing taught me to connect mathematical ideas to observable systems. These two pieces remain the starting point of the archive.</p>
+    </div>
+  </div>
+
+  <div class="writing-grid">
+    <article class="writing-feature" data-reveal>
+      <a class="writing-image" href="{{ '/articles/kayrros-dynamic-world/' | relative_url }}">
+        <img src="{{ '/assets/images/montage-web.jpg' | relative_url }}" alt="Satellite-image time series used for land-cover training" loading="lazy" />
+      </a>
+      <p class="work-meta">Kayrros · Remote sensing</p>
+      <h3><a href="{{ '/articles/kayrros-dynamic-world/' | relative_url }}">Dynamic World, revisited</a></h3>
+      <p>Lightweight land-cover modelling, temporal consistency, and what a production constraint changes in research.</p>
+    </article>
+
+    <article class="writing-feature" data-reveal>
+      <a class="writing-image" href="{{ '/articles/phd/' | relative_url }}">
+        <img src="{{ '/assets/images/classification-map-web.jpg' | relative_url }}" alt="Map classifying deciduous and evergreen forests across France" loading="lazy" />
+      </a>
+      <p class="work-meta">CNRS &amp; Inria · Forest classification</p>
+      <h3><a href="{{ '/articles/phd/' | relative_url }}">Detecting tree phenology from space</a></h3>
+      <p>Harmonic analysis of satellite time series to distinguish seasonal forest behaviour at national scale.</p>
+    </article>
+  </div>
+
+  <a class="section-link" href="{{ '/blog.html' | relative_url }}">All writing <span aria-hidden="true">→</span></a>
+</section>
+
+<section class="closing-section" data-reveal>
+  <p class="eyebrow">A conversation in progress</p>
+  <h2>I am documenting what we learn as the systems become real.</h2>
+  <div>
+    <a class="text-link" href="mailto:arthur.calvi@icloud.com">Email me <span aria-hidden="true">↗</span></a>
+    <a class="text-link" href="{{ '/feed.html' | relative_url }}">Read the field notes <span aria-hidden="true">→</span></a>
   </div>
 </section>

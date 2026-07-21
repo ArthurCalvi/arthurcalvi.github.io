@@ -1,8 +1,12 @@
 <nav class="site-nav" aria-label="Main navigation">
-  <a class="brand" href="{{ '/' | relative_url }}">Arthur Calvi</a>
+  <a class="brand" href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>
+    <span>Arthur Calvi</span>
+    <small>AI · systems · products</small>
+  </a>
   <div class="nav-links">
-    <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a>
-    <a href="{{ '/feed.html' | relative_url }}" {% if page.section == 'feed' or page.url == '/feed.html' %}aria-current="page"{% endif %}>Feed</a>
-    <a href="{{ '/blog.html' | relative_url }}" {% if page.section == 'blog' or page.section == 'work' or page.url == '/blog.html' %}aria-current="page"{% endif %}>Archive</a>
+    <a href="{{ '/work.html' | relative_url }}" {% if page.section == 'work' %}aria-current="page"{% endif %}>Work</a>
+    <a href="{{ '/about.html' | relative_url }}" {% if page.section == 'about' %}aria-current="page"{% endif %}>About</a>
+    <a href="{{ '/blog.html' | relative_url }}" {% if page.section == 'writing' or page.section == 'blog' or page.collection == 'articles' %}aria-current="page"{% endif %}>Writing</a>
+    <a href="{{ '/resume.html' | relative_url }}" {% if page.section == 'resume' %}aria-current="page"{% endif %}>Résumé</a>
   </div>
 </nav>
