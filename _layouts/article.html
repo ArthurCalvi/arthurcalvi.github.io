@@ -3,16 +3,8 @@ layout: default
 ---
 <article class="article-shell">
   <header class="article-header">
-    <p class="eyebrow">{{ page.category | default: page.section | default: 'note' }}</p>
     <h1>{{ page.title }}</h1>
-    {% if page.description %}
-    <p class="article-dek">{{ page.description }}</p>
-    {% endif %}
-    <div class="article-meta">
-      {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>{% endif %}
-      {% if page.ai_assisted %}<span>AI-assisted draft</span>{% endif %}
-      {% if page.public_safety %}<span>{{ page.public_safety }}</span>{% endif %}
-    </div>
+    {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>{% endif %}
     {% include audio.html %}
   </header>
   <div class="article-content">

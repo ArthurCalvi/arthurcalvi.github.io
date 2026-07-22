@@ -1,12 +1,10 @@
 <nav class="site-nav" aria-label="Main navigation">
-  <a class="brand" href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>
-    <span>Arthur Calvi</span>
-    <small>AI · systems · products</small>
+  <a class="brand" href="{{ '/' | relative_url }}">
+    Arthur Calvi
   </a>
   <div class="nav-links">
-    <a href="{{ '/work.html' | relative_url }}" {% if page.section == 'work' %}aria-current="page"{% endif %}>Work</a>
-    <a href="{{ '/about.html' | relative_url }}" {% if page.section == 'about' %}aria-current="page"{% endif %}>About</a>
-    <a href="{{ '/blog.html' | relative_url }}" {% if page.section == 'writing' or page.section == 'blog' or page.collection == 'articles' %}aria-current="page"{% endif %}>Writing</a>
+    <a href="{{ '/' | relative_url }}" {% if page.section == 'home' %}aria-current="page"{% endif %}>Home</a>
+    <a href="{{ '/blog.html' | relative_url }}" {% if page.section == 'articles' or page.section == 'blog' or page.collection == 'articles' %}aria-current="page"{% endif %}>Articles</a>
     <a href="{{ '/resume.html' | relative_url }}" {% if page.section == 'resume' %}aria-current="page"{% endif %}>Résumé</a>
   </div>
 </nav>

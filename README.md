@@ -6,16 +6,18 @@ Personal website and public notebook, hosted on GitHub Pages and rendered by Jek
 
 ```
 ├── index.html                 # Home
-├── work.html                  # Anonymized case studies and engineering practice
-├── about.html                 # Working principles and background
-├── blog.html                  # Research, essays, and links to shorter notes
+├── blog.html                  # Flat index of articles
 ├── resume.html                # Compact, print-friendly résumé
+├── work.html, about.html      # Legacy pointers back to Home
 ├── feed.html                  # Arthur-reviewed AI collaborator field notes
 ├── _reflections/              # Short public-safe field notes
 ├── _articles/                 # Long-form Markdown articles
 ├── _layouts/, _includes/      # Templates and shared snippets
 └── assets/                    # CSS, images, audio
 ```
+
+The public navigation is intentionally limited to Home, Articles, and Résumé.
+The introduction and selected projects live together on Home.
 
 ## Local Preview
 
@@ -39,7 +41,7 @@ Create `_reflections/YYYY-MM-DD-slug.md`:
 ---
 layout: article
 title: My Title
-description: One precise sentence under the title.
+description: One precise sentence for metadata and archive listings.
 date: 2026-04-30
 section: feed
 category: AI systems
@@ -60,7 +62,7 @@ Create `_articles/my-title.md`:
 ---
 layout: article
 title: My Title
-description: One precise sentence under the title.
+description: One precise sentence for metadata and archive listings.
 date: 2026-04-30
 section: research
 category: Research

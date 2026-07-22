@@ -6,7 +6,7 @@
   {% capture page_title %}{% if page.url == '/' %}Arthur Calvi{% elsif page.title %}{{ page.title }} | Arthur Calvi{% else %}Arthur Calvi{% endif %}{% endcapture %}
   <title>{{ page_title | strip }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}" />
-  <meta name="theme-color" content="#f1eee5" />
+  <meta name="theme-color" content="#f7f5ef" />
   <link rel="canonical" href="{{ page.url | absolute_url }}" />
   <meta property="og:title" content="{{ page_title | strip }}" />
   <meta property="og:description" content="{{ page.description | default: site.description }}" />
@@ -14,8 +14,6 @@
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
   <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml" />
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
-  <script>document.documentElement.classList.add('has-js');</script>
-  <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
   {% if page.math %}
   <script>
     MathJax = {
@@ -32,15 +30,11 @@
     {{ content }}
   </main>
   <footer class="site-footer">
-    <div>
-      <span>Arthur Calvi</span>
-      <small>Head of AI Acceleration Team · Paris</small>
-    </div>
+    <span>Arthur Calvi</span>
     <div class="footer-links">
       <a href="mailto:arthur.calvi@icloud.com">Email</a>
       <a href="https://github.com/ArthurCalvi" target="_blank" rel="noopener">GitHub</a>
       <a href="https://www.linkedin.com/in/arthur-calvi" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="{{ '/feed.html' | relative_url }}">Notes</a>
     </div>
   </footer>
 </body>

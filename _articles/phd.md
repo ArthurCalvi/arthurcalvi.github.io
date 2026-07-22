@@ -12,11 +12,11 @@ audio_autoplay: false
 math: true
 ---
 
-Forests play a critical role in our planet's health, absorbing carbon dioxide, sheltering wildlife, and supporting biodiversity. Yet, to manage forests effectively—especially in the face of climate change—we first need to understand them deeply. One key challenge? Accurately distinguishing deciduous trees, which shed leaves seasonally, from evergreen trees, which keep their foliage year-round. From the ground, this is straightforward; but how do we scale up to monitor entire countries from space?
+Deciduous and evergreen trees have different seasonal signals. On the ground they are easy to tell apart; at national scale, satellite time series provide a way to measure the difference.
 
-In my research, I explored a method that uses Sentinel‑2 satellite imagery and harmonic analysis—a technique borrowed from sound processing—to classify French forests on a national scale.
+In this unpublished research project, I tested whether Sentinel-2 imagery and harmonic analysis could be used to classify French forests at national scale.
 
-## Trees Have a Rhythm: Introducing Harmonic Analysis
+## Harmonic analysis
 
 Just as music can be broken down into simple notes and rhythms, the seasonal growth patterns of trees can also be decomposed into basic sinusoidal cycles. Sentinel‑2 satellites capture images of the Earth's surface every few days, providing data over time that can be analyzed to detect these seasonal cycles. Harmonic analysis allows us to transform this data into a mathematical "song" of the forest.
 
@@ -45,14 +45,14 @@ Think of the first harmonic as the primary melody—a clear annual leaf‑on, le
   
 </figure>
 
-## Turning Satellite Data into Forest Maps
+## From time series to a forest map
 
 My approach involved processing Sentinel‑2 images into consistent monthly mosaics across France, covering year 2023. Using harmonic analysis, each pixel was transformed into a set of features reflecting its unique seasonal pattern. These features then fed into a machine learning algorithm (Random Forest) trained on extensive ground and aerial survey data.
 
 Key steps included:
 
-- **Optimizing harmonic components:** Two harmonics balanced capturing accurate seasonality without overfitting noisy signals.
-- **Robust feature selection:** Identified the most informative indices (NBR, NDVI, EVI, CRSWIR) and harmonic features (primarily first harmonic) to ensure efficient and accurate classification.
+- **Harmonic components:** I tested one and two harmonic components. Two retained more of the seasonal structure without adding too much sensitivity to noise.
+- **Feature selection:** I compared NBR, NDVI, EVI, and CRSWIR with several harmonic features, then kept the features that contributed most in the training experiments.
 - **Efficient computation:** Parallelized processing on high‑performance computing infrastructure, allowing nationwide analysis within an hour.
 
 <figure class="article-figure">
@@ -60,7 +60,7 @@ Key steps included:
   <figcaption>Figure 2: Forest classification map of France, showing deciduous (orange) and evergreen (blue) forests. Insets highlight detailed views of Les Landes and Corsica.</figcaption>
 </figure>
 
-## What the Forest Map Tells Us
+## Reading the map
 
 The resulting map distinguishes France's deciduous and evergreen forests and makes their broad seasonal patterns visible at national scale. This remained an unpublished research result, so I keep the account here focused on the method and what the map revealed rather than presenting it as a peer-reviewed benchmark.
 
@@ -72,7 +72,7 @@ Some key insights emerged:
 
 Visual comparison with existing products, such as the Copernicus Dominant Leaf Type and BD Forêt v2 datasets, revealed useful regional differences to investigate. Mixed forests and mountainous regions were especially interesting because harmonic analysis is sensitive to subtle seasonal behaviour.
 
-## The Bigger Picture: Why This Matters
+## Possible uses
 
 Understanding forest phenology from space could support practical questions in forestry management, climate modelling, and biodiversity conservation. This experiment suggests that harmonic features are worth testing beyond France, but broader validation would be needed before treating the method as a general monitoring approach.
 
@@ -82,7 +82,7 @@ Potential future applications include:
 - Monitoring recovery and resilience after forest fires or droughts.
 - Identifying invasive species or shifts in dominant tree types due to climate change.
 
-## Looking Ahead
+## Further work
 
 The next step would be to validate the model across more years, regions, and reference datasets. Complementary data such as LiDAR or radar could then be tested for structural changes or subtle phenological shifts, before considering more frequent operational updates.
 

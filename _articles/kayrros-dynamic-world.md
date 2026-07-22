@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Dynamic World, Revisited — Lightweight, Temporally Consistent Land Cover at Kayrros
+title: Dynamic World, revisited
 description: A short archive note on lightweight land-cover modeling, temporal consistency, and remote-sensing systems work at Kayrros.
 date: 2022-09-01
 section: kayrros
@@ -8,13 +8,13 @@ category: Remote Sensing
 cover_image: /assets/images/montage-web.jpg
 ---
 
-In 2022, I joined Kayrros to explore whether we could reproduce—and, for some production needs, improve on—Google’s Dynamic World land‑cover pipeline. The goal was not to beat Dynamic World outright, but to build a lightweight, temporally consistent model that behaved well across geographies, sensors, and seasons.
+In 2022, I joined Kayrros to explore a compact alternative to Google’s Dynamic World land-cover pipeline for specific production constraints. The goal was not to outperform Dynamic World, but to test whether a smaller model could produce more consistent predictions across dates, sensors, and regions.
 
 _Internship at Kayrros, supervised by Aurélien De Truchis (2022)._
 
 ## Why Dynamic World (and why revisit it)?
 
-Dynamic World provides a near real‑time, 10‑m land‑cover product across nine classes (Water, Trees, Grass, Crops, Shrub & Scrub, Flooded Vegetation, Built‑up Area, Bare Ground, Snow & Ice). It is remarkably useful, but we observed two recurring challenges in some deployments:
+Dynamic World provides a near real-time, 10-m land-cover product across nine classes (Water, Trees, Grass, Crops, Shrub & Scrub, Flooded Vegetation, Built-up Area, Bare Ground, Snow & Ice). In some of our test cases, we observed two recurring problems:
 
 - Temporal consistency across dates and seasons (flicker, sensitivity to atmospherics)
 - Robustness across biomes when training/operating at scale with multiple sensors
@@ -47,20 +47,18 @@ We tested across 14 major ecoregions (temperate to tropical). Final metrics:
 - Mean IoU: 31.8%
 - MCC: 75.1%
 
-While slightly below Google Dynamic World on benchmark scores, the model delivered two practical advantages important in operations:
-
-1) Improved temporal consistency across dates and seasons; 2) Portability across sensors and regions with a compact runtime.
+The benchmark scores were slightly below Google Dynamic World. In our test cases, the smaller model also showed less variation between dates and was simpler to run across different sensors and regions. These were operational observations, not a claim that the model was better overall.
 
 ## From land cover to change signals
 
-The model is particularly effective for dynamic indicators: deforestation alerts, agricultural expansion, and other environmental monitoring signals.
+We also tested whether more stable predictions across dates could make it easier to derive change indicators, such as forest loss or agricultural expansion.
 
 {% include figure.html src='/assets/images/land-cover-change.jpg' alt='Example of forest loss detection with dating of change' caption='Example: temporal analysis reveals forest loss (red) and dates of change, derived from stable land‑cover predictions.' variant='on-plate float-shadow' %}
 
 ## Takeaways
 
-- Temporal augmentation and a restrained architecture go a long way for stability.
-- Sensor‑agnostic preprocessing and select indices add useful context without heavy engineering.
-- A lightweight, consistent baseline can unlock reliable monitoring at scale—even if headline benchmark numbers trail large, general models.
+- Temporal augmentation reduced some date-to-date variation in our experiments.
+- Shared preprocessing made it possible to test the same model with several satellite sensors.
+- The smaller model traded benchmark accuracy for simpler operation. Whether that trade-off is useful depends on the application.
 
 _Acknowledgment: developed during my 2022 internship at Kayrros under the supervision of **Aurélien De Truchis**._

@@ -2,214 +2,90 @@
 layout: default
 title: Home
 section: home
-description: Arthur Calvi leads the AI Acceleration Team at DxO Labs, exploring how people and AI can act through the same well-designed systems.
+description: Arthur Calvi leads the AI Acceleration Team at DxO Labs and works on AI products, tools, and engineering processes.
 ---
 
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero-copy" data-reveal>
-    <p class="eyebrow">Head of AI Acceleration Team · DxO Labs</p>
-    <h1 id="hero-title">Arthur<br />Calvi</h1>
-    <p class="hero-statement">
-      I lead a small team exploring what changes when AI sits at the heart of
-      an organisation—not only in products, but in the way work is described,
-      executed, reviewed, and improved.
+<section class="home-intro">
+  <div class="home-copy">
+    <h1>Arthur Calvi</h1>
+    <p>
+      I lead the AI Acceleration Team at DxO Labs. We are a small team working
+      across products, engineering, and internal tools.
     </p>
-    <p class="hero-description">
-      We design systems that both people and AI can act on. AI can execute and
-      advise; people remain responsible for the architecture, constraints, and
-      judgment.
+    <p>
+      We build AI features, help other teams use AI in their work, and sometimes
+      change a process so that both people and AI can use it. I tend to think of
+      AI as either an executor or an adviser. People still define the problem,
+      design the system, and decide whether the result is acceptable.
     </p>
-    <div class="hero-actions" aria-label="Explore the site">
-      <a class="text-link" href="{{ '/work.html' | relative_url }}">Selected work <span aria-hidden="true">↗</span></a>
-      <a class="text-link" href="{{ '/about.html' | relative_url }}">About this approach <span aria-hidden="true">→</span></a>
-    </div>
+    <p>
+      We are still learning where this division works and where it does not.
+      This website is where I write about some of that work, along with earlier
+      research in machine learning and remote sensing.
+    </p>
     <p class="previous-line">
       Previously: mathematics and machine learning at ENS Paris-Saclay,
       followed by remote-sensing work at Kayrros, CNRS, and Inria.
     </p>
   </div>
-
-  <figure class="hero-portrait" data-reveal>
-    <div class="portrait-frame">
-      <img src="{{ '/assets/images/profile-portrait.jpg' | relative_url }}" alt="Arthur Calvi outdoors" />
-      <span class="portrait-marker portrait-marker-top" aria-hidden="true">01</span>
-      <span class="portrait-marker portrait-marker-bottom" aria-hidden="true">Paris · 2026</span>
-    </div>
-    <figcaption>
-      <span>Current question</span>
-      How should an organisation change when AI becomes an active participant in its work?
-    </figcaption>
+  <figure class="home-portrait">
+    <img src="{{ '/assets/images/profile-portrait.jpg' | relative_url }}" alt="Arthur Calvi" />
   </figure>
 </section>
 
-<section class="section-shell discovery-section" aria-labelledby="discoveries-title">
-  <div class="section-intro" data-reveal>
-    <p class="section-index">01 · Working thesis</p>
-    <div>
-      <h2 id="discoveries-title">What we are discovering</h2>
-      <p class="section-lede">
-        Useful AI is rarely one model or one prompt. It emerges from the way
-        context, tools, interfaces, evaluation, and human judgment fit together.
+<section class="home-section" id="projects">
+  <h2>Projects</h2>
+  <p class="section-note">Some DxO projects are described without their names because they are not public.</p>
+  <div class="project-list">
+    <article>
+      <h3>A visual agent for creative software</h3>
+      <p>
+        At DxO, we are building an agent that can work inside creative
+        software. It turns a request into a plan, uses a limited set of actions
+        in the product, and looks at the result before deciding what to do next.
       </p>
-    </div>
-  </div>
-
-  <ol class="insight-grid" aria-label="Three working principles">
-    <li data-reveal>
-      <span class="insight-number">01</span>
-      <h3>Start with the whole system</h3>
-      <p>Rethink the process, the information it carries, and the decisions it produces—not only the task given to a model.</p>
-    </li>
-    <li data-reveal>
-      <span class="insight-number">02</span>
-      <h3>Give AI bounded ways to act</h3>
-      <p>Clear tools, typed interactions, and visible evidence make an agent more useful than an open-ended interface.</p>
-    </li>
-    <li data-reveal>
-      <span class="insight-number">03</span>
-      <h3>Keep judgment visible</h3>
-      <p>AI can execute and advise. People still set intent, design constraints, read risk, and decide what is ready.</p>
-    </li>
-  </ol>
-
-  <div class="system-path" data-reveal aria-label="A shared human and AI operating loop">
-    <div>
-      <span>Human</span>
-      <strong>Intent &amp; judgment</strong>
-    </div>
-    <i aria-hidden="true">→</i>
-    <div>
-      <span>Shared system</span>
-      <strong>Context &amp; constraints</strong>
-    </div>
-    <i aria-hidden="true">→</i>
-    <div>
-      <span>AI</span>
-      <strong>Advice &amp; execution</strong>
-    </div>
-    <i aria-hidden="true">→</i>
-    <div>
-      <span>Evidence</span>
-      <strong>Review &amp; learning</strong>
-    </div>
-  </div>
-</section>
-
-<section class="section-shell selected-work" aria-labelledby="work-title">
-  <div class="section-intro" data-reveal>
-    <p class="section-index">02 · Selected work</p>
-    <div>
-      <h2 id="work-title">Systems in practice</h2>
-      <p class="section-lede">Three different products, connected by the same question: how do we make intelligence dependable in real work?</p>
-    </div>
-  </div>
-
-  <div class="work-list">
-    <article class="work-row" data-reveal>
-      <div class="work-number">01</div>
-      <div class="work-copy">
-        <p class="work-meta">DxO Labs · Internal product · Anonymized</p>
-        <h3><a href="{{ '/work.html#creative-agent' | relative_url }}">A specialist creative agent</a></h3>
-        <p>We are turning visual AI into a closed product loop: intent becomes a plan, bounded actions change the software, and visual evidence informs the next decision.</p>
-      </div>
-      <div class="work-role">
-        <span>My role</span>
-        <p>Team lead, system architecture, productization, evaluation, and release coordination.</p>
-      </div>
     </article>
-
-    <article class="work-row work-row-visual" data-reveal>
-      <div class="work-number">02</div>
-      <div class="work-copy">
-        <p class="work-meta">Independent product · Live</p>
-        <h3><a href="{{ '/work.html#dailysurf' | relative_url }}">DailySurf</a></h3>
-        <p>A mobile companion for surfers to remember sessions, understand conditions, and make progression visible over time.</p>
-        <a class="text-link" href="https://dailysurf.fr" target="_blank" rel="noopener">Visit DailySurf <span aria-hidden="true">↗</span></a>
-      </div>
-      <figure class="work-thumbnail">
-        <img src="{{ '/assets/images/dailysurf-session.jpg' | relative_url }}" alt="DailySurf active session screen on a beach" loading="lazy" />
-        <figcaption>Session in progress</figcaption>
-      </figure>
-    </article>
-
-    <article class="work-row" data-reveal>
-      <div class="work-number">03</div>
-      <div class="work-copy">
-        <p class="work-meta">DxO Labs · Internal operations · Anonymized</p>
-        <h3><a href="{{ '/work.html#support-copilot' | relative_url }}">An internal support copilot</a></h3>
-        <p>We grounded AI assistance in ticket context and company knowledge, then designed the adoption and observation loop around the people using it.</p>
-      </div>
-      <div class="work-role">
-        <span>My role</span>
-        <p>System design, impact framework, adoption workflow, and operational handover.</p>
-      </div>
-    </article>
-  </div>
-
-  <a class="section-link" href="{{ '/work.html' | relative_url }}">Read the complete work notes <span aria-hidden="true">→</span></a>
-</section>
-
-<section class="section-shell preflight-section" aria-labelledby="preflight-title">
-  <div class="section-intro" data-reveal>
-    <p class="section-index">03 · Engineering practice</p>
-    <div>
-      <h2 id="preflight-title">Quality is part of the system</h2>
-      <p class="section-lede">
-        <code>pr-preflight</code> turns our engineering expectations into an
-        executable gate before integrated evaluation and human review.
+    <article>
+      <h3>An internal support assistant</h3>
+      <p>
+        We built an assistant that uses ticket context and company knowledge to
+        help support staff investigate and draft answers. The support person
+        remains responsible for the reply.
       </p>
-    </div>
+    </article>
+    <article>
+      <h3><code>pr-preflight</code></h3>
+      <p>
+        A repository tool that runs deterministic checks and focused AI reviews
+        on a pull request. It catches routine problems before human review,
+        where attention can stay on architecture, risk, and exceptions.
+      </p>
+    </article>
+    <article>
+      <h3><a href="https://dailysurf.fr" target="_blank" rel="noopener">DailySurf</a></h3>
+      <p>
+        Outside DxO, I build DailySurf, a mobile app for surfers to record
+        sessions, remember the conditions, and follow their progress over time.
+      </p>
+    </article>
   </div>
-
-  <div class="pipeline" data-reveal aria-label="PR preflight quality path">
-    <div><span>01</span><strong>Intent</strong><small>Scope and acceptance</small></div>
-    <div><span>02</span><strong>AI-assisted build</strong><small>Bounded implementation</small></div>
-    <div><span>03</span><strong>Preflight</strong><small>Checks and focused reviews</small></div>
-    <div><span>04</span><strong>Human decision</strong><small>Risk, exceptions, readiness</small></div>
-  </div>
-  <p class="preflight-note" data-reveal>
-    The goal is not to remove review. It is to make routine quality checks
-    repeatable, so human attention can stay on intent, architecture, and risk.
-  </p>
 </section>
 
-<section class="section-shell writing-preview" aria-labelledby="writing-title">
-  <div class="section-intro" data-reveal>
-    <p class="section-index">04 · Writing</p>
-    <div>
-      <h2 id="writing-title">Earlier questions, kept visible</h2>
-      <p class="section-lede">Remote sensing taught me to connect mathematical ideas to observable systems. These two pieces remain the starting point of the archive.</p>
-    </div>
-  </div>
-
-  <div class="writing-grid">
-    <article class="writing-feature" data-reveal>
-      <a class="writing-image" href="{{ '/articles/kayrros-dynamic-world/' | relative_url }}">
-        <img src="{{ '/assets/images/montage-web.jpg' | relative_url }}" alt="Satellite-image time series used for land-cover training" loading="lazy" />
-      </a>
-      <p class="work-meta">Kayrros · Remote sensing</p>
+<section class="home-section" aria-labelledby="recent-articles-title">
+  <h2 id="recent-articles-title">Articles</h2>
+  <div class="simple-article-list">
+    <article>
       <h3><a href="{{ '/articles/kayrros-dynamic-world/' | relative_url }}">Dynamic World, revisited</a></h3>
-      <p>Lightweight land-cover modelling, temporal consistency, and what a production constraint changes in research.</p>
+      <p>A land-cover model built during my internship at Kayrros, focused on temporal consistency and keeping the model small enough to use in production.</p>
     </article>
-
-    <article class="writing-feature" data-reveal>
-      <a class="writing-image" href="{{ '/articles/phd/' | relative_url }}">
-        <img src="{{ '/assets/images/classification-map-web.jpg' | relative_url }}" alt="Map classifying deciduous and evergreen forests across France" loading="lazy" />
-      </a>
-      <p class="work-meta">CNRS &amp; Inria · Forest classification</p>
+    <article>
       <h3><a href="{{ '/articles/phd/' | relative_url }}">Detecting tree phenology from space</a></h3>
-      <p>Harmonic analysis of satellite time series to distinguish seasonal forest behaviour at national scale.</p>
+      <p>An unpublished research note on using harmonic analysis to map seasonal forest behaviour from Sentinel-2 time series.</p>
+    </article>
+    <article>
+      <h3><a href="{{ '/articles/quit-phd.html' | relative_url }}">Why I decided to quit my PhD</a></h3>
+      <p>A personal account of leaving academia and choosing to work on products.</p>
     </article>
   </div>
-
-  <a class="section-link" href="{{ '/blog.html' | relative_url }}">All writing <span aria-hidden="true">→</span></a>
-</section>
-
-<section class="closing-section" data-reveal>
-  <p class="eyebrow">A conversation in progress</p>
-  <h2>I am documenting what we learn as the systems become real.</h2>
-  <div>
-    <a class="text-link" href="mailto:arthur.calvi@icloud.com">Email me <span aria-hidden="true">↗</span></a>
-    <a class="text-link" href="{{ '/feed.html' | relative_url }}">Read the field notes <span aria-hidden="true">→</span></a>
-  </div>
+  <p><a href="{{ '/blog.html' | relative_url }}">All articles →</a></p>
 </section>
