@@ -168,6 +168,13 @@ p {
   overflow: hidden;
 }
 
+.home-hero-parallax {
+  position: absolute;
+  inset: -56px 0 0;
+  transform: translate3d(0, var(--hero-parallax-y, 0), 0);
+  will-change: transform;
+}
+
 .home-hero-media::after {
   position: absolute;
   inset: 0;
@@ -779,6 +786,12 @@ p {
     height: min(58svh, 30rem);
   }
 
+  .home-hero-parallax {
+    inset: 0;
+    transform: none;
+    will-change: auto;
+  }
+
   .home-hero-media::after {
     display: none;
   }
@@ -878,6 +891,11 @@ p {
   .home-hero-media img,
   .home-hero-copy {
     animation: none;
+  }
+
+  .home-hero-parallax {
+    transform: none;
+    will-change: auto;
   }
 
   .nav-links a::after,

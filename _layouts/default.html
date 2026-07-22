@@ -38,5 +38,8 @@
       <a href="https://www.linkedin.com/in/arthur-calvi" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </footer>
+  {% if page.section == 'home' %}
+  <script src="{{ '/assets/js/hero-parallax.js' | relative_url }}" defer></script>
+  {% endif %}
 </body>
 </html>

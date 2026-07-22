@@ -8,13 +8,15 @@ cover_image: /assets/images/arthur-norway.jpg
 
 <section class="home-hero" aria-labelledby="home-title">
   <div class="home-hero-media">
-    <img
-      src="{{ '/assets/images/arthur-norway.jpg' | relative_url }}"
-      alt="Arthur Calvi preparing a drone in the Norwegian mountains"
-      width="1920"
-      height="1280"
-      fetchpriority="high"
-    />
+    <div class="home-hero-parallax">
+      <img
+        src="{{ '/assets/images/arthur-norway.jpg' | relative_url }}"
+        alt="Arthur Calvi preparing a drone in the Norwegian mountains"
+        width="1920"
+        height="1280"
+        fetchpriority="high"
+      />
+    </div>
   </div>
   <div class="home-hero-inner">
     <div class="home-hero-copy">
@@ -46,6 +48,13 @@ cover_image: /assets/images/arthur-norway.jpg
     <p class="previous-line">
       Previously: mathematics and machine learning at ENS Paris-Saclay,
       followed by remote-sensing work at Kayrros, CNRS, and Inria.
+    </p>
+    <p>
+      Outside DxO, I co-founded
+      <a href="https://dailysurf.fr" target="_blank" rel="noopener">DailySurf</a>,
+      where I work as CTO and lead product engineering. DailySurf is a mobile
+      app for surfers to record their sessions and follow their progress over
+      time.
     </p>
   </div>
 </section>
