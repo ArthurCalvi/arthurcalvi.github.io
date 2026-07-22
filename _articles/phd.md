@@ -1,91 +1,63 @@
 ---
 layout: article
-title: Detecting Tree Phenology from Space
-description: A research note on using Sentinel-2 time series and harmonic analysis to distinguish seasonal forest behavior at national scale.
+title: Detecting tree phenology from space
+description: Comparing hand-built seasonal features with satellite foundation embeddings for mapping deciduous and evergreen forests across France.
 date: 2025-01-01
 section: phd
 category: Research
-cover_image: /assets/images/harmonics-decomposition-web.jpg
+cover_image: /assets/images/phenology-satellite-embedding-map.webp
 audio: /assets/audio/Écoute-Harmonique-des-Forêts-Françaises-par-Satellite-2.mp3
 audio_caption: Podcast version of this article (NotebookLM)
 audio_autoplay: false
 math: true
 ---
 
-Deciduous and evergreen trees have different seasonal signals. On the ground they are easy to tell apart; at national scale, satellite time series provide a way to measure the difference.
+Deciduous and evergreen forests do not reflect light in the same way through the year. The usual approach is to reduce each satellite time series to a few seasonal numbers. I wanted to know whether a representation learned from a much larger satellite archive could replace this feature engineering, while keeping the rest of the experiment unchanged.
 
-In this unpublished research project, I tested whether Sentinel-2 imagery and harmonic analysis could be used to classify French forests at national scale.
+This is an unpublished research project. The results below come from a working manuscript, not a peer-reviewed paper.
 
-## Harmonic analysis
+{% include figure.html src='/assets/images/phenology-satellite-embedding-map.webp' alt='Three aligned views of southeast France: a true-colour satellite image, a multicolour AlphaEarth embedding, and an orange-and-blue deciduous-evergreen classification' caption='The same landscape seen as Sentinel-2 imagery, an AlphaEarth embedding, and a deciduous–evergreen classification. The preview is intentionally unmasked, so every pixel receives a class.' %}
 
-Just as music can be broken down into simple notes and rhythms, the seasonal growth patterns of trees can also be decomposed into basic sinusoidal cycles. Sentinel‑2 satellites capture images of the Earth's surface every few days, providing data over time that can be analyzed to detect these seasonal cycles. Harmonic analysis allows us to transform this data into a mathematical "song" of the forest.
+## Two ways to describe a year
 
-Specifically, each pixel's vegetation signal (captured as NDVI, NBR, EVI, and CRSWIR indices) can be modeled as:
+Sentinel-2 observes the same place every few days. After removing clouds, those observations form a curve: deciduous canopies green up in spring and lose their leaves in autumn, while evergreen canopies tend to vary less.
+
+For the handcrafted baseline, I computed four vegetation indices—NDVI, EVI, NBR, and CRSWIR—then fitted two annual harmonic cycles to each one:
 
 $$
-f_h(t) = \sum_{i=1}^{h} [A_{i} \cos(2\pi i t) + B_{i} \sin(2\pi i t)] + C
+z(t) = c + \sum_{k=1}^{2}\left[a_k \cos\left(\frac{2\pi kt}{T}\right) + b_k \sin\left(\frac{2\pi kt}{T}\right)\right] + \varepsilon(t)
 $$
 
-Here:
+This turns a noisy year of observations into a compact description: average greenness, the strength and timing of the main seasonal cycle, a second cycle for finer variations, and the error left unexplained. Starting from 32 candidates, feature selection kept 14. I call this representation **HARM-14**.
 
-- $t$ is normalized time across a year,
-- $A_{i}$ and $B_{i}$ define the seasonal rhythm (amplitude and phase),
-- $C$ is the average vegetation level throughout the year.
+The alternative started from AlphaEarth's 64-dimensional annual embeddings at 10 m resolution. These embeddings are computed upstream from a large satellite archive and combine spectral, temporal, and local spatial information. I selected 14 dimensions using the same procedure, producing **EMB-14**. The individual dimensions are harder to interpret, but the comparison is fair: 14 inputs on each side.
 
-By analyzing these harmonic components, we can extract two essential characteristics:
+{% include figure.html src='/assets/images/phenology-harmonic-model.webp' alt='An annual NDVI curve reconstructed from satellite observations using an offset and two harmonic components' caption='The handcrafted baseline compresses an annual vegetation curve into an offset and two seasonal cycles. Their amplitude, phase, and residual error become inputs to a lightweight classifier.' %}
 
-- **Amplitude ($M_{i}$):** How strongly vegetation varies within a year, typically larger for deciduous trees.
-- **Phase ($\phi_{i}$):** When the vegetation peaks, which helps differentiate species based on their growth timing.
+## A controlled comparison
 
-Think of the first harmonic as the primary melody—a clear annual leaf‑on, leaf‑off cycle in deciduous trees—and the second harmonic as subtle variations, refining our understanding of more nuanced seasonal behaviors.
+The reference data contained 14.1 million labelled forest pixels across metropolitan France. I grouped them into 639 non-overlapping tiles, each 2.5 km wide, distributed across 11 ecological regions. Most labels came from BD Forêt polygons; a smaller set came from field observations and expert interpretation.
 
-<figure class="article-figure">
-  <img src="/assets/images/harmonics-decomposition-web.jpg" alt="Harmonic decomposition of NDVI time series for a deciduous tree" />
-  <figcaption>Figure 1: Harmonic decomposition of NDVI time series for a deciduous tree. Two harmonic components and an offset combine to reconstruct the observed vegetation pattern.</figcaption>
-  
-</figure>
+The split was spatial rather than random. All pixels from one tile stayed in the same fold, so neighbouring pixels could not leak into both training and validation. I then trained three ordinary classifiers—logistic regression, a linear SVM, and a random forest—with the same folds, class weights, and hyperparameters for both representations.
 
-## From time series to a forest map
+That control matters. This was not a larger model competing with a smaller one. The classifier stayed fixed; only its view of the satellite data changed.
 
-My approach involved processing Sentinel‑2 images into consistent monthly mosaics across France, covering year 2023. Using harmonic analysis, each pixel was transformed into a set of features reflecting its unique seasonal pattern. These features then fed into a machine learning algorithm (Random Forest) trained on extensive ground and aerial survey data.
+Across the three classifiers, macro-F1 increased from **0.860 with harmonics to 0.897 with embeddings**, a gain of 3.7 points. With the random forest, it rose from 0.874 to 0.905. Adding the harmonic features back on top of the embeddings only moved the random forest to 0.908, which suggests that the learned representation already retained most of the useful seasonal information.
 
-Key steps included:
+## Better scores, and calmer maps
 
-- **Harmonic components:** I tested one and two harmonic components. Two retained more of the seasonal structure without adding too much sensitivity to noise.
-- **Feature selection:** I compared NBR, NDVI, EVI, and CRSWIR with several harmonic features, then kept the features that contributed most in the training experiments.
-- **Efficient computation:** Parallelized processing on high‑performance computing infrastructure, allowing nationwide analysis within an hour.
+The numerical gain was useful, but the maps were more revealing. Raw embedding predictions formed larger, more continuous forest stands. Compared with the harmonic model, edge density fell by 55% and patch density by 65%, without any spatial smoothing after classification.
 
-<figure class="article-figure">
-  <img src="/assets/images/classification-map-web.jpg" alt="Forest classification map of France showing deciduous and evergreen classes" />
-  <figcaption>Figure 2: Forest classification map of France, showing deciduous (orange) and evergreen (blue) forests. Insets highlight detailed views of Les Landes and Corsica.</figcaption>
-</figure>
+The probabilities were also better calibrated. Expected calibration error fell from 0.059 to 0.033. In practice, this means the confidence attached to a prediction was closer to its observed reliability—important if a map will later be reviewed, thresholded, or combined with other evidence.
 
-## Reading the map
+{% include figure.html src='/assets/images/phenology-map-comparison.webp' alt='Three forest sites shown as satellite imagery, embedding-based classifications, and harmonic-based classifications; embedding maps form larger continuous stands while harmonic maps contain more isolated pixel changes' caption='Both models produce raw 10 m predictions with no spatial post-processing. Across these three sites, the embedding maps preserve larger stands and contain fewer isolated pixel changes.' %}
 
-The resulting map distinguishes France's deciduous and evergreen forests and makes their broad seasonal patterns visible at national scale. This remained an unpublished research result, so I keep the account here focused on the method and what the map revealed rather than presenting it as a peer-reviewed benchmark.
+The largest improvements appeared in heterogeneous western and mountain regions: the Pyrenees gained 10.8 macro-F1 points and Corsica 8.8. Mediterranean France improved by only 0.7 points. Better representations helped most where the landscape was varied, but not where the class definition itself became ambiguous.
 
-Some key insights emerged:
+## The harder problem was the reference data
 
-- Deciduous forests dominate in northern and central France, clearly reflecting seasonal leaf cycles.
-- Evergreen forests, like the expansive pine plantations of Les Landes, show consistent year‑round foliage patterns.
-- Mediterranean and mountainous areas posed greater classification challenges due to complex seasonal behaviors and varied terrain.
+Embeddings reduced the need to design seasonal features by hand, but they did not remove uncertainty from the labels. About 89% of the reference pixels came from BD Forêt polygons collected in different years; the rest came from geographically uneven field and expert sources. Mixed stands, older polygons, and ten-metre pixels that contain both canopy and understory all create disagreements that a classifier cannot resolve on its own.
 
-Visual comparison with existing products, such as the Copernicus Dominant Leaf Type and BD Forêt v2 datasets, revealed useful regional differences to investigate. Mixed forests and mountainous regions were especially interesting because harmonic analysis is sensitive to subtle seasonal behaviour.
+The Mediterranean result made this especially clear. Broadleaf evergreens, pines, dry summers, and green understory can produce overlapping signals. At that point, a more complex model may help less than newer observations and a sharper definition of what counts as deciduous or evergreen.
 
-## Possible uses
-
-Understanding forest phenology from space could support practical questions in forestry management, climate modelling, and biodiversity conservation. This experiment suggests that harmonic features are worth testing beyond France, but broader validation would be needed before treating the method as a general monitoring approach.
-
-Potential future applications include:
-
-- Detecting early signs of climate‑induced stress or shifts in tree phenology.
-- Monitoring recovery and resilience after forest fires or droughts.
-- Identifying invasive species or shifts in dominant tree types due to climate change.
-
-## Further work
-
-The next step would be to validate the model across more years, regions, and reference datasets. Complementary data such as LiDAR or radar could then be tested for structural changes or subtle phenological shifts, before considering more frequent operational updates.
-
-## Conclusion
-
-By "listening" to the seasonal rhythms of trees using harmonic analysis, we gain another way to study forest dynamics from space. The work showed me how a compact mathematical representation can turn long satellite time series into a map people can inspect and question.
+This experiment changed where I would spend the next unit of effort. The learned embeddings were already strong enough for lightweight local training. The next improvement would probably come from better supervision and regional validation, not from adding another layer to the classifier.

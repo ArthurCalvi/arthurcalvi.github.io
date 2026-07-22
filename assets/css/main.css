@@ -665,8 +665,7 @@ p {
 
 .article-figure {
   width: min(62rem, calc(100vw - (2 * var(--page-pad))));
-  margin: 3rem 0 3rem 50%;
-  transform: translateX(-50%);
+  margin: 3rem 0;
 }
 
 .article-figure img {
@@ -675,11 +674,206 @@ p {
 }
 
 .article-figure figcaption {
+  max-width: var(--text-width);
   margin-top: 0.65rem;
   color: var(--muted);
   font-family: var(--sans);
   font-size: 0.75rem;
   line-height: 1.5;
+}
+
+.image-comparison {
+  --comparison-position: 50%;
+}
+
+.image-comparison-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--ink);
+  isolation: isolate;
+}
+
+.article-figure .image-comparison-image {
+  width: 100%;
+  height: auto;
+}
+
+.image-comparison-after {
+  position: static;
+  overflow: hidden;
+}
+
+.image-comparison.is-enhanced .image-comparison-stage {
+  display: block;
+  aspect-ratio: 400 / 241;
+}
+
+.image-comparison.is-enhanced .image-comparison-before {
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-comparison.is-enhanced .image-comparison-after {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  clip-path: inset(0 calc(100% - var(--comparison-position)) 0 0);
+}
+
+.article-figure.image-comparison.is-enhanced .image-comparison-after img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-comparison-label {
+  position: absolute;
+  top: 0.8rem;
+  z-index: 5;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(17, 28, 22, 0.74);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.image-comparison-label-before {
+  left: 0.8rem;
+}
+
+.image-comparison-label-after {
+  right: 0.8rem;
+}
+
+.image-comparison-control,
+.image-comparison-divider {
+  display: none;
+}
+
+.image-comparison.is-enhanced .image-comparison-control {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  cursor: ew-resize;
+  opacity: 0;
+  touch-action: pan-y;
+}
+
+.image-comparison-control::-webkit-slider-runnable-track {
+  height: 100%;
+  background: transparent;
+}
+
+.image-comparison-control::-webkit-slider-thumb {
+  width: 2.8rem;
+  height: 100%;
+  appearance: none;
+  background: transparent;
+}
+
+.image-comparison-control::-moz-range-track {
+  height: 100%;
+  background: transparent;
+}
+
+.image-comparison-control::-moz-range-thumb {
+  width: 2.8rem;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
+.image-comparison.is-enhanced .image-comparison-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--comparison-position);
+  z-index: 3;
+  display: block;
+  width: 2px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(23, 35, 29, 0.18);
+  pointer-events: none;
+  transform: translateX(-1px);
+}
+
+.image-comparison-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.8rem;
+  height: 2.8rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: rgba(17, 28, 22, 0.82);
+  box-shadow: 0 0.25rem 1rem rgba(17, 28, 22, 0.2);
+  transform: translate(-50%, -50%);
+}
+
+.image-comparison-handle::before,
+.image-comparison-handle::after {
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-top: 0.3rem solid transparent;
+  border-bottom: 0.3rem solid transparent;
+  content: "";
+  transform: translateY(-50%);
+}
+
+.image-comparison-handle::before {
+  left: 0.65rem;
+  border-right: 0.42rem solid #fff;
+}
+
+.image-comparison-handle::after {
+  right: 0.65rem;
+  border-left: 0.42rem solid #fff;
+}
+
+.image-comparison-control:focus-visible + .image-comparison-divider .image-comparison-handle {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.article-figure .image-comparison-legend {
+  width: min(100%, 44rem);
+  margin-top: 0.9rem;
+}
+
+.image-comparison-control-name {
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.image-comparison-instruction {
+  display: none;
+}
+
+.image-comparison.is-enhanced .image-comparison-instruction {
+  display: inline;
+}
+
+.image-comparison.is-enhanced .image-comparison-fallback {
+  display: none;
 }
 
 .article-audio {

@@ -1,0 +1,58 @@
+{% assign comparison_id = include.id | default: 'image-comparison-control' %}
+<figure class="article-figure image-comparison" data-image-comparison>
+  <div class="image-comparison-stage">
+    <img
+      class="image-comparison-image image-comparison-before"
+      src="{{ include.before_src | relative_url }}"
+      alt="{{ include.before_alt | escape }}"
+      width="1600"
+      height="964"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="image-comparison-after">
+      <img
+        class="image-comparison-image"
+        src="{{ include.after_src | relative_url }}"
+        alt="{{ include.after_alt | escape }}"
+        width="1600"
+        height="964"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <span class="image-comparison-label image-comparison-label-before" aria-hidden="true">Satellite</span>
+    <span class="image-comparison-label image-comparison-label-after" aria-hidden="true">Segmentation</span>
+    <input
+      class="image-comparison-control"
+      id="{{ comparison_id }}"
+      type="range"
+      min="0"
+      max="100"
+      value="50"
+      step="1"
+      aria-label="Reveal the land-cover segmentation"
+      aria-describedby="{{ comparison_id }}-caption"
+    />
+    <span class="image-comparison-divider" aria-hidden="true">
+      <span class="image-comparison-handle"></span>
+    </span>
+  </div>
+  {% if include.legend_src %}
+  <img
+    class="image-comparison-legend"
+    src="{{ include.legend_src | relative_url }}"
+    alt="{{ include.legend_alt | escape }}"
+    width="1124"
+    height="138"
+    loading="lazy"
+    decoding="async"
+  />
+  {% endif %}
+  <figcaption id="{{ comparison_id }}-caption">
+    <label class="image-comparison-control-name" for="{{ comparison_id }}">Reveal segmentation.</label>
+    <span class="image-comparison-instruction"> Drag the divider, or use the arrow keys, to compare the two views. </span>
+    <span class="image-comparison-fallback">The split view compares the two aligned images. </span>
+    {{ include.caption }}
+  </figcaption>
+</figure>

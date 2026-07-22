@@ -1,64 +1,56 @@
 ---
 layout: article
 title: Dynamic World, revisited
-description: A short archive note on lightweight land-cover modeling, temporal consistency, and remote-sensing systems work at Kayrros.
+description: What I learned by training a land-cover model for stability across dates, seasons, and biomes.
 date: 2022-09-01
 section: kayrros
 category: Remote Sensing
-cover_image: /assets/images/montage-web.jpg
+cover_image: /assets/images/dynamic-world-stability.webp
+image_comparison: true
 ---
 
-In 2022, I joined Kayrros to explore a compact alternative to Google’s Dynamic World land-cover pipeline for specific production constraints. The goal was not to outperform Dynamic World, but to test whether a smaller model could produce more consistent predictions across dates, sensors, and regions.
+A land-cover map can look correct on one date and still be useless for measuring change. If a field moves from crops to grass because the next image was taken after harvest, or under a different haze, a downstream system may record an event that never happened.
 
-_Internship at Kayrros, supervised by Aurélien De Truchis (2022)._
+During my 2022 internship at Kayrros, I revisited the nine-class problem used by Dynamic World with a narrower question: which training and architecture choices make a sequence of land-cover maps stable enough to support change analysis? This was an internal research and production project, not a claim to outperform Dynamic World as a global product.
 
-## Why Dynamic World (and why revisit it)?
+{% include figure.html src='/assets/images/dynamic-world-stability.webp' alt='Five satellite views of the same agricultural landscape above two rows of land-cover maps; V7 remains broadly consistent while V1 changes substantially between dates' caption='The central trade-off. V1 retained more spatial detail but changed with season and atmosphere. V7 was coarser and more stable—a useful property when the next step is change detection.' %}
 
-Dynamic World provides a near real-time, 10-m land-cover product across nine classes (Water, Trees, Grass, Crops, Shrub & Scrub, Flooded Vegetation, Built-up Area, Bare Ground, Snow & Ice). In some of our test cases, we observed two recurring problems:
+_Internship at Kayrros, supervised by Aurélien De Truchis._
 
-- Temporal consistency across dates and seasons (flicker, sensitivity to atmospherics)
-- Robustness across biomes when training/operating at scale with multiple sensors
+## Teach the model what should remain stable
 
-Our focus was to build a minimal model that stays stable over time while remaining fast and simple to operate in production.
+Dynamic World's training data began with one label for one satellite observation. I turned each of those static examples into a small time series by retrieving other Sentinel-2 images from the 90 days before and after the annotation date.
 
-## Method at a glance
+The label stayed the same, but its confidence did not. For each date, I built a soft confidence map from Sentinel-2's scene classification layer and four spectral indices: NDVI, NDMI, NDWI, and NDBI. Cloudy pixels and class-index combinations that looked implausible received less weight. Dates closer to the original annotation were sampled more often.
 
-- Data curation + temporal augmentation: feed multiple dates that share a refined label so the model learns invariances to seasonal/atmospheric effects.
-- Satellite‑agnostic inputs: Sentinel‑2 and Landsat families plus derived indices (e.g., NDVI, NDMI) and SRTM30 elevation for context.
-- Lightweight U‑Net variant: three downsampling stages with targeted enhancements (attention/APSP as needed) for speed/accuracy balance.
+This did not tell the model that every nearby image was equally true. It asked the model to retain the land-cover signal while becoming less sensitive to clouds, colour, moisture, and seasonal vegetation changes.
 
-{% include figure.html src='/assets/images/montage-web.jpg' alt='Temporal augmentation across dates with varying atmospherics and corresponding training confidences' caption='Temporal augmentation: multiple observations of the same area (top) paired with training confidences (bottom) help the model learn invariance to atmospherics and phenology.' variant='on-plate float-shadow' %}
+{% include figure.html src='/assets/images/dynamic-world-temporal-augmentation.webp' alt='A tree-and-shrub label map above five dated satellite observations, each paired with a grayscale confidence mask that fades under clouds or inconsistent vegetation' caption='One annotation, five nearby observations. The confidence maps at the bottom downweight cloudy or spectrally inconsistent pixels instead of treating every date as equally reliable.' %}
 
-## Seeing the model work
+The model used six optical bands shared by Sentinel-2 and Landsat—red, green, blue, near-infrared, and two short-wave infrared bands—along with spectral indices and terrain derived from SRTM30. The reported experiments used Sentinel-2; adaptation to Landsat remained unfinished.
 
-Below are examples comparing raw Sentinel‑2 imagery and the model’s land‑cover output around Mount Kenya.
+## Change one part at a time
 
-{% include figure.html src='/assets/images/kenya-zoom-satellite.jpg' alt='Zoomed Sentinel‑2 crop near Mount Kenya' caption='Zoom view — left: Sentinel‑2 crop (raw). See also the paired classified view below.' variant='on-plate rounded-lg' %}
+The baseline was a shallow U-Net with three levels of downsampling. I tested nine versions under the same training setup. Some replaced the usual skip connections with dedicated paths for RGB texture, spectral indices, and elevation. Others added attention, MultiRes blocks, or Atrous Spatial Pyramid Pooling (ASPP) to give the model more spatial context.
 
-{% include figure.html src='/assets/images/kenya-zoom-classification.jpg' alt='Zoomed model classification near Mount Kenya' caption='Zoom view — right: model classification (Crops, Trees/Shrubs, etc.).' variant='on-plate rounded-lg' %}
+The maps also had to remain readable at pixel level. The aligned view below shows one area near Mount Kenya: the satellite composite and the V7 prediction occupy exactly the same frame, so field boundaries and errors can be inspected directly.
 
-{% include figure.html src='/assets/images/legend.png' alt='Land‑cover legend for the classification outputs' caption='Legend — nine Dynamic World classes as used in this project.' %}
+{% include image-comparison.html id='kenya-segmentation-control' before_src='/assets/images/kenya-satellite-comparison.webp' before_alt='Sentinel-2 satellite composite of fields, forest, and settlements near Mount Kenya' after_src='/assets/images/kenya-segmentation-comparison.webp' after_alt='Nine-class V7 land-cover segmentation of the same Mount Kenya scene' legend_src='/assets/images/legend.png' legend_alt='Land-cover legend for water, trees, grass, flooded vegetation, crops, shrub and scrub, built area, bare ground, and snow and ice' caption='Mount Kenya, 2021. This is a qualitative model example, not a benchmark comparison with Dynamic World.' %}
 
-## Results across biomes
+Evaluation used 1,300 areas of 5 by 5 km, labelled by consensus between three experts and spread across 14 biomes. I looked at overall accuracy, mean intersection over union, Matthews correlation, class and biome balance, and a separate stability test across dates.
 
-We tested across 14 major ecoregions (temperate to tropical). Final metrics:
+The versions did not improve along one clean axis. The ASPP model, V8, had the best aggregate accuracy, IoU, and MCC in the report, but it was less balanced across biomes and sometimes produced checkerboard-like artefacts. The MultiRes model, V7, gave the best stability and balance, while producing coarser maps.
 
-- Overall accuracy: 46.9%
-- Mean IoU: 31.8%
-- MCC: 75.1%
+That trade-off was the main result for me. If the output feeds a time series, the sharpest single-date map is not necessarily the most useful one. Detail, aggregate accuracy, balance, and temporal stability need to be measured separately.
 
-The benchmark scores were slightly below Google Dynamic World. In our test cases, the smaller model also showed less variation between dates and was simpler to run across different sensors and regions. These were operational observations, not a claim that the model was better overall.
+## From classifications to change signals
 
-## From land cover to change signals
+For the operational experiments, I filtered poor observations, aggregated class probabilities across dates, and compared the resulting maps through time. A qualitative test in Amazonia converted repeated land-cover predictions into a map of the first observed change date.
 
-We also tested whether more stable predictions across dates could make it easier to derive change indicators, such as forest loss or agricultural expansion.
+{% include figure.html src='/assets/images/dynamic-world-change-detection.webp' alt='Latest land-cover classification beside a satellite image where pink and red regions mark the first observed change date between June and September 2021' caption='A qualitative Amazonia test. Repeated classifications were converted into a dated change map; the report observed patches as small as three or four Sentinel-2 pixels.' %}
 
-{% include figure.html src='/assets/images/land-cover-change.jpg' alt='Example of forest loss detection with dating of change' caption='Example: temporal analysis reveals forest loss (red) and dates of change, derived from stable land‑cover predictions.' variant='on-plate float-shadow' %}
+Some observed patches covered only three or four Sentinel-2 pixels, roughly 300–400 m². I would not present that as a validated detection limit. The result remained sensitive to weather, and it had not yet been compared properly with a specialised alert system such as GLAD.
 
-## Takeaways
+The project did reach production use in two biomass-related studies, but several research questions remained open: Landsat transfer, weak labels around small objects and borders, and independent validation of the change detector.
 
-- Temporal augmentation reduced some date-to-date variation in our experiments.
-- Shared preprocessing made it possible to test the same model with several satellite sensors.
-- The smaller model traded benchmark accuracy for simpler operation. Whether that trade-off is useful depends on the application.
-
-_Acknowledgment: developed during my 2022 internship at Kayrros under the supervision of **Aurélien De Truchis**._
+The lasting lesson was simpler. When a model sits inside a monitoring system, evaluation must follow the system's purpose. For change detection, consistency across time is part of accuracy, not an optional extra.
