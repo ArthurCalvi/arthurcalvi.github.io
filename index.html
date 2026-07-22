@@ -2,90 +2,124 @@
 layout: default
 title: Home
 section: home
-description: Arthur Calvi leads the AI Acceleration Team at DxO Labs and works on AI products, tools, and engineering processes.
+description: Arthur Calvi leads the AI Acceleration Team at DxO Labs and works on AI products, engineering tools, and the systems around them.
+cover_image: /assets/images/arthur-norway.jpg
 ---
 
-<section class="home-intro">
-  <div class="home-copy">
-    <h1>Arthur Calvi</h1>
+<section class="home-hero" aria-labelledby="home-title">
+  <div class="home-hero-media">
+    <img
+      src="{{ '/assets/images/arthur-norway.jpg' | relative_url }}"
+      alt="Arthur Calvi preparing a drone in the Norwegian mountains"
+      width="1920"
+      height="1280"
+      fetchpriority="high"
+    />
+  </div>
+  <div class="home-hero-inner">
+    <div class="home-hero-copy">
+      <h1 id="home-title">Arthur Calvi</h1>
+      <p class="hero-line">I work on AI products, engineering tools, and the systems around them.</p>
+    </div>
+  </div>
+</section>
+
+<section class="editorial-section home-about" aria-labelledby="about-title">
+  <div class="section-heading">
+    <h2 id="about-title">About</h2>
+  </div>
+  <div class="section-content bio-copy">
+    <p class="bio-lead">I’m Arthur. I lead a small team of AI engineers at DxO Labs.</p>
     <p>
-      I lead the AI Acceleration Team at DxO Labs. We are a small team working
-      across products, engineering, and internal tools.
+      Our work spans several areas, but I would describe it simply: we rethink
+      products, processes, and parts of the organisation so that people and AI
+      can work through the same systems. We build internal tools, evaluation
+      loops, engineering processes, and new features for photographers.
     </p>
     <p>
-      We build AI features, help other teams use AI in their work, and sometimes
-      change a process so that both people and AI can use it. I tend to think of
-      AI as either an executor or an adviser. People still define the problem,
-      design the system, and decide whether the result is acceptable.
-    </p>
-    <p>
-      We are still learning where this division works and where it does not.
-      This website is where I write about some of that work, along with earlier
-      research in machine learning and remote sensing.
+      One strand of that work is a visual agent for creative software. I use
+      <em>vibe retouching</em> as shorthand for expressing a visual intent in
+      ordinary language while an agent translates it into a bounded,
+      inspectable sequence of actions. The aim is to shorten the path to a first
+      editable result without replacing craft or direct control.
     </p>
     <p class="previous-line">
       Previously: mathematics and machine learning at ENS Paris-Saclay,
       followed by remote-sensing work at Kayrros, CNRS, and Inria.
     </p>
   </div>
-  <figure class="home-portrait">
-    <img src="{{ '/assets/images/profile-portrait.jpg' | relative_url }}" alt="Arthur Calvi" />
-  </figure>
 </section>
 
-<section class="home-section" id="projects">
-  <h2>Projects</h2>
-  <p class="section-note">Some DxO projects are described without their names because they are not public.</p>
-  <div class="project-list">
-    <article>
-      <h3>A visual agent for creative software</h3>
+<section class="editorial-section" id="projects" aria-labelledby="projects-title">
+  <div class="section-heading">
+    <h2 id="projects-title">Current work</h2>
+  </div>
+  <div class="section-content editorial-list">
+    <article class="editorial-row">
+      <h3>Vibe retouching</h3>
       <p>
-        At DxO, we are building an agent that can work inside creative
-        software. It turns a request into a plan, uses a limited set of actions
-        in the product, and looks at the result before deciding what to do next.
+        Professional photo-editing software has a steep learning curve. We are
+        building a visual agent that translates an ordinary-language intent
+        into a controlled sequence of actions inside the software, while
+        keeping the result editable by the user.
       </p>
     </article>
-    <article>
-      <h3>An internal support assistant</h3>
+    <article class="editorial-row">
+      <h3>Internal AI systems</h3>
       <p>
-        We built an assistant that uses ticket context and company knowledge to
-        help support staff investigate and draft answers. The support person
-        remains responsible for the reply.
+        We built an internal support assistant that uses ticket context and
+        company knowledge to help support teams investigate and draft replies.
+        The assistant advises; the support person remains responsible for the
+        answer.
       </p>
     </article>
-    <article>
+    <article class="editorial-row">
       <h3><code>pr-preflight</code></h3>
       <p>
-        A repository tool that runs deterministic checks and focused AI reviews
-        on a pull request. It catches routine problems before human review,
-        where attention can stay on architecture, risk, and exceptions.
+        I built a pull-request preflight that combines deterministic checks
+        with targeted AI reviews. The checks catch routine regressions; the AI
+        reviews surface architecture, documentation, security, and interface
+        risks for human judgment.
       </p>
     </article>
-    <article>
+    <article class="editorial-row">
       <h3><a href="https://dailysurf.fr" target="_blank" rel="noopener">DailySurf</a></h3>
       <p>
-        Outside DxO, I build DailySurf, a mobile app for surfers to record
-        sessions, remember the conditions, and follow their progress over time.
+        Outside DxO, I co-founded DailySurf and serve as CTO. I lead product
+        engineering and have built most of the app. DailySurf helps surfers
+        record sessions, remember conditions, and follow their progress.
       </p>
     </article>
   </div>
 </section>
 
-<section class="home-section" aria-labelledby="recent-articles-title">
-  <h2 id="recent-articles-title">Articles</h2>
-  <div class="simple-article-list">
-    <article>
-      <h3><a href="{{ '/articles/kayrros-dynamic-world/' | relative_url }}">Dynamic World, revisited</a></h3>
-      <p>A land-cover model built during my internship at Kayrros, focused on temporal consistency and keeping the model small enough to use in production.</p>
-    </article>
-    <article>
-      <h3><a href="{{ '/articles/phd/' | relative_url }}">Detecting tree phenology from space</a></h3>
-      <p>An unpublished research note on using harmonic analysis to map seasonal forest behaviour from Sentinel-2 time series.</p>
-    </article>
-    <article>
-      <h3><a href="{{ '/articles/quit-phd.html' | relative_url }}">Why I decided to quit my PhD</a></h3>
-      <p>A personal account of leaving academia and choosing to work on products.</p>
-    </article>
+<section class="editorial-section home-articles" aria-labelledby="recent-articles-title">
+  <div class="section-heading">
+    <h2 id="recent-articles-title">Articles</h2>
   </div>
-  <p><a href="{{ '/blog.html' | relative_url }}">All articles →</a></p>
+  <div class="section-content">
+    <div class="home-article-list">
+      <article class="home-article-row">
+        <time datetime="2026-07-22">2026</time>
+        <h3><a href="{{ '/articles/what-if-steve-jobs-was-wrong/' | relative_url }}">What if Steve Jobs was wrong all along?</a></h3>
+        <p>Smartphones, AI, and the fact that products evolve faster than people do.</p>
+      </article>
+      <article class="home-article-row">
+        <time datetime="2025-03-16">2025</time>
+        <h3><a href="{{ '/articles/quit-phd.html' | relative_url }}">Why I decided to quit my PhD</a></h3>
+        <p>A personal account of leaving academia and choosing to work on products.</p>
+      </article>
+      <article class="home-article-row">
+        <time datetime="2025-01-01">2025</time>
+        <h3><a href="{{ '/articles/phd/' | relative_url }}">Detecting tree phenology from space</a></h3>
+        <p>An unpublished research note on harmonic analysis and Sentinel-2 time series.</p>
+      </article>
+      <article class="home-article-row">
+        <time datetime="2022-09-01">2022</time>
+        <h3><a href="{{ '/articles/kayrros-dynamic-world/' | relative_url }}">Dynamic World, revisited</a></h3>
+        <p>A compact land-cover model built during my internship at Kayrros.</p>
+      </article>
+    </div>
+    <p class="all-articles-link"><a href="{{ '/blog.html' | relative_url }}">All articles <span aria-hidden="true">→</span></a></p>
+  </div>
 </section>
