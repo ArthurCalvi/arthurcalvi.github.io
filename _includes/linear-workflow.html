@@ -1,0 +1,97 @@
+<figure
+  class="linear-workflow"
+  id="linear-workflow-diagram"
+  data-linear-workflow
+  aria-labelledby="linear-workflow-title"
+  aria-describedby="linear-workflow-description"
+>
+  <figcaption class="linear-workflow-caption">
+    <span class="linear-workflow-kicker">Linear issue lifecycle</span>
+    <strong id="linear-workflow-title">One issue, one visible chain of responsibility</strong>
+    <span id="linear-workflow-description">
+      As the issue moves, the active human, AI agent, and delivery gate remain explicit.
+    </span>
+  </figcaption>
+
+  <div class="linear-workflow-legend" aria-label="Diagram legend">
+    <span class="linear-workflow-role is-human">Human</span>
+    <span class="linear-workflow-role is-agent">AI agent</span>
+    <span class="linear-workflow-role is-gate">Gate</span>
+  </div>
+
+  <ol class="linear-workflow-track" aria-label="Linear status flow">
+    <li class="linear-workflow-status" style="--workflow-step: 0">
+      <span class="linear-workflow-number">01</span>
+      <strong>Intake</strong>
+      <span class="linear-workflow-action">Capture the idea</span>
+      <span class="linear-workflow-roles">
+        <span class="linear-workflow-role is-human">Human</span>
+      </span>
+    </li>
+    <li class="linear-workflow-status" style="--workflow-step: 1">
+      <span class="linear-workflow-number">02</span>
+      <strong>Discovery</strong>
+      <span class="linear-workflow-action">Build shared context</span>
+      <span class="linear-workflow-roles">
+        <span class="linear-workflow-role is-human">Human</span>
+        <span class="linear-workflow-role is-agent">AI agent</span>
+      </span>
+    </li>
+    <li class="linear-workflow-status" style="--workflow-step: 2">
+      <span class="linear-workflow-number">03</span>
+      <strong>Todo</strong>
+      <span class="linear-workflow-action">Ready to delegate</span>
+      <span class="linear-workflow-roles">
+        <span class="linear-workflow-role is-gate">Ready gate</span>
+      </span>
+    </li>
+    <li class="linear-workflow-status" style="--workflow-step: 3">
+      <span class="linear-workflow-number">04</span>
+      <strong>In Progress</strong>
+      <span class="linear-workflow-action">Implement and test</span>
+      <span class="linear-workflow-roles">
+        <span class="linear-workflow-role is-agent">AI agent</span>
+      </span>
+    </li>
+    <li class="linear-workflow-status" style="--workflow-step: 4">
+      <span class="linear-workflow-number">05</span>
+      <strong>In Review</strong>
+      <span class="linear-workflow-action">Prove the result</span>
+      <span class="linear-workflow-roles">
+        <span class="linear-workflow-role is-agent">AI agent</span>
+        <span class="linear-workflow-role is-gate">Gates</span>
+        <span class="linear-workflow-role is-human">Human</span>
+      </span>
+    </li>
+    <li class="linear-workflow-status" style="--workflow-step: 5">
+      <span class="linear-workflow-number">06</span>
+      <strong>Done</strong>
+      <span class="linear-workflow-action">Accept the outcome</span>
+      <span class="linear-workflow-roles">
+        <span class="linear-workflow-role is-human">Human</span>
+      </span>
+    </li>
+  </ol>
+
+  <div class="linear-workflow-blocked">
+    <strong>Blocked</strong>
+    <span>
+      A dependency, decision, access problem, or failed gate pauses the issue without hiding why.
+    </span>
+  </div>
+
+  <div class="linear-workflow-gates" aria-label="Workflow gates">
+    <div>
+      <strong>Ready gate</strong>
+      <span>Before Todo: goal, scope, constraints, and expected evidence are explicit.</span>
+    </div>
+    <div>
+      <strong>Delivery gates</strong>
+      <span>In Review: local preflight, pull-request checks, and CI prove the change.</span>
+    </div>
+    <div>
+      <strong>Human judgment</strong>
+      <span>Before Done: a person accepts the outcome and the remaining trade-offs.</span>
+    </div>
+  </div>
+</figure>

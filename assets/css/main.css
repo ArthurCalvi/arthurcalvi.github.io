@@ -663,6 +663,211 @@ p {
   font-size: 1.12em;
 }
 
+.linear-workflow {
+  width: min(62rem, calc(100vw - (2 * var(--page-pad))));
+  margin: clamp(3rem, 7vw, 5rem) 0;
+  font-family: var(--sans);
+}
+
+.linear-workflow-caption {
+  display: grid;
+  max-width: 43rem;
+  gap: 0.35rem;
+}
+
+.linear-workflow-kicker {
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.linear-workflow-caption strong {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+}
+
+.linear-workflow-caption > span:last-child {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.linear-workflow-legend,
+.linear-workflow-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.linear-workflow-legend {
+  margin: 1.6rem 0 0.8rem;
+}
+
+.linear-workflow-role {
+  display: inline-flex;
+  min-height: 1.45rem;
+  align-items: center;
+  padding: 0.16rem 0.45rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.linear-workflow-role.is-human {
+  color: var(--ink);
+}
+
+.linear-workflow-role.is-agent {
+  color: var(--accent);
+}
+
+.linear-workflow-role.is-gate {
+  color: var(--rust);
+}
+
+.linear-workflow-track {
+  position: relative;
+  display: grid;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  list-style: none;
+}
+
+.linear-workflow-track::after {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  content: "";
+  opacity: 0.72;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.linear-workflow.is-animated .linear-workflow-track::after {
+  animation: linear-workflow-progress 4.8s linear forwards;
+}
+
+.linear-workflow-status {
+  display: flex;
+  min-width: 0;
+  min-height: 11rem;
+  flex-direction: column;
+  padding: 1rem 0.75rem 0.9rem;
+  border-right: 1px solid var(--line);
+  background: rgba(248, 245, 237, 0.18);
+}
+
+.linear-workflow-status:last-child {
+  border-right: 0;
+}
+
+.linear-workflow.is-animated .linear-workflow-status {
+  animation: linear-workflow-step 0.8s ease both;
+  animation-delay: calc(var(--workflow-step) * 0.8s);
+}
+
+.linear-workflow-number {
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.linear-workflow-status > strong {
+  margin-top: 0.55rem;
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 1.65vw, 1.35rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.linear-workflow-action {
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.linear-workflow-roles {
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.linear-workflow-roles .linear-workflow-role {
+  font-size: 0.53rem;
+}
+
+.linear-workflow-blocked {
+  display: grid;
+  margin-top: 0.8rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line);
+  grid-template-columns: minmax(6rem, 0.2fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.linear-workflow-blocked strong {
+  color: var(--rust);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.linear-workflow-blocked span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.linear-workflow-gates {
+  display: grid;
+  margin-top: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.linear-workflow-gates div {
+  display: grid;
+  padding: 0.85rem 1rem 0 0;
+  border-right: 1px solid var(--line);
+  gap: 0.25rem;
+}
+
+.linear-workflow-gates div + div {
+  padding-left: 1rem;
+}
+
+.linear-workflow-gates div:last-child {
+  border-right: 0;
+}
+
+.linear-workflow-gates strong {
+  font-size: 0.67rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.linear-workflow-gates span {
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
 .article-figure {
   width: min(62rem, calc(100vw - (2 * var(--page-pad))));
   margin: 3rem 0;
@@ -980,6 +1185,34 @@ p {
   }
 }
 
+@keyframes linear-workflow-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes linear-workflow-step {
+  0% {
+    background: rgba(248, 245, 237, 0.18);
+    transform: translateY(0);
+  }
+  24%,
+  72% {
+    background: rgba(29, 106, 74, 0.1);
+    transform: translateY(-0.18rem);
+  }
+  100% {
+    background: rgba(248, 245, 237, 0.18);
+    transform: translateY(0);
+  }
+}
+
+@keyframes linear-workflow-progress-vertical {
+  to {
+    transform: scaleY(1);
+  }
+}
+
 @media (max-width: 900px) {
   .editorial-section {
     grid-template-columns: minmax(7rem, 0.24fr) minmax(0, 1fr);
@@ -1117,6 +1350,68 @@ p {
     padding-top: 4.5rem;
   }
 
+  .linear-workflow {
+    width: 100%;
+  }
+
+  .linear-workflow-track {
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 1px solid var(--line-dark);
+    grid-template-columns: 1fr;
+  }
+
+  .linear-workflow-status {
+    min-height: 0;
+    padding: 1rem 0.4rem 1rem 1rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .linear-workflow-status:last-child {
+    border-bottom: 0;
+  }
+
+  .linear-workflow-track::after {
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: -2px;
+    width: 3px;
+    height: auto;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  .linear-workflow.is-animated .linear-workflow-track::after {
+    animation-name: linear-workflow-progress-vertical;
+  }
+
+  .linear-workflow-roles {
+    margin-top: 0.75rem;
+    padding-top: 0;
+  }
+
+  .linear-workflow-blocked {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .linear-workflow-gates {
+    grid-template-columns: 1fr;
+  }
+
+  .linear-workflow-gates div,
+  .linear-workflow-gates div + div {
+    padding: 0.8rem 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .linear-workflow-gates div:last-child {
+    border-bottom: 0;
+  }
+
   .site-footer {
     align-items: flex-start;
     flex-direction: column;
@@ -1139,6 +1434,16 @@ p {
   .home-hero-parallax {
     transform: none;
     will-change: auto;
+  }
+
+  .linear-workflow-track::after {
+    display: none;
+  }
+
+  .linear-workflow-status,
+  .linear-workflow.is-animated .linear-workflow-status {
+    animation: none;
+    transform: none;
   }
 
   .nav-links a::after,

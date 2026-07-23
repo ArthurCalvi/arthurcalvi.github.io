@@ -14,7 +14,7 @@
   <meta property="og:url" content="{{ page.url | absolute_url }}" />
   {% if page.cover_image %}<meta property="og:image" content="{{ page.cover_image | absolute_url }}" />{% endif %}
   <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml" />
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
   {% if page.math %}
   <script>
     MathJax = {
@@ -39,10 +39,13 @@
     </div>
   </footer>
   {% if page.section == 'home' %}
-  <script src="{{ '/assets/js/hero-parallax.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/hero-parallax.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
   {% endif %}
   {% if page.image_comparison %}
-  <script src="{{ '/assets/js/image-comparison.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/image-comparison.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  {% endif %}
+  {% if page.linear_workflow %}
+  <script src="{{ '/assets/js/linear-workflow.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
   {% endif %}
 </body>
 </html>

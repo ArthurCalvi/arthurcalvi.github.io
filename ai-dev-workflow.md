@@ -1,9 +1,10 @@
 ---
 layout: article
-title: AI Dev workflow
+title: AI-native development with Linear
 section: home
-description: How we are organizing planning, implementation, verification, and review when AI agents contribute to software.
+description: How we use Linear to coordinate human decisions, AI agents, and software delivery gates.
 permalink: /ai-dev-workflow/
+linear_workflow: true
 ---
 
 AI can write code quickly. The harder problem is keeping that work connected to the real product, the current decisions, and the evidence required to ship it.
@@ -11,6 +12,8 @@ AI can write code quickly. The harder problem is keeping that work connected to 
 At DxO, we are experimenting with a development workflow in which one person can direct several AI workstreams without giving up responsibility for the result. The human sets the outcome, priorities, and architecture. Each agent receives a bounded issue, reads the relevant sources, makes a change, verifies it, and returns evidence.
 
 Linear acts as the shared control plane. It records what matters now, who owns it, what it depends on, and what will count as done. The code and pull requests remain in GitHub. Builds and delivery evidence remain in CI. Documentation stays in the systems where it is maintained. Linear connects these sources into one plan; it does not try to replace them.
+
+{% include linear-workflow.html %}
 
 ## Work becomes ready before it is delegated
 
