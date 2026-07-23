@@ -455,19 +455,6 @@ p {
   padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(5rem, 9vw, 8rem);
 }
 
-.articles-section + .articles-section {
-  margin-top: clamp(5rem, 9vw, 8rem);
-}
-
-.articles-section-title {
-  margin: 0 0 1.5rem;
-  font-family: var(--serif);
-  font-size: clamp(2rem, 3vw, 2.75rem);
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-
 .article-index {
   border-top: 1px solid var(--ink);
 }
@@ -481,7 +468,7 @@ p {
   border-bottom: 1px solid var(--line);
 }
 
-.article-index h3 {
+.article-index h2 {
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(1.75rem, 2.8vw, 2.65rem);
@@ -491,12 +478,12 @@ p {
   transition: color 180ms ease, transform 220ms ease;
 }
 
-.article-index article:hover h3 {
+.article-index article:hover h2 {
   color: var(--accent);
   transform: translateX(0.2rem);
 }
 
-.article-index h3 a {
+.article-index h2 a {
   text-decoration: none;
 }
 
@@ -1342,7 +1329,7 @@ p {
   }
 
   .home-article-row h3,
-  .article-index h3 {
+  .article-index h2 {
     margin-bottom: 0.6rem;
   }
 
@@ -1462,7 +1449,7 @@ p {
   .nav-links a::after,
   .editorial-row h3,
   .home-article-row h3,
-  .article-index h3,
+  .article-index h2,
   .all-articles-link a {
     transition: none;
   }
