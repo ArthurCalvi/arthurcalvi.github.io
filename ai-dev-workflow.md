@@ -1,6 +1,7 @@
 ---
 layout: article
 title: AI-native development with Linear
+date: 2026-07-23
 section: home
 description: How I use Linear to coordinate human decisions, AI agents, and delivery gates—and help other R&D teams adapt the workflow.
 permalink: /ai-dev-workflow/
