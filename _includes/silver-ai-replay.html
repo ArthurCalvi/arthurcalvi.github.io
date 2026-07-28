@@ -1,0 +1,98 @@
+<div class="silver-ai-replay" data-replay-enhanced hidden>
+  <div class="silver-ai-player" data-player hidden>
+    <h3 class="silver-ai-replay-title" data-story-title></h3>
+    <p class="silver-ai-status" data-status aria-live="polite"></p>
+
+    <div class="silver-ai-visual-column">
+      <div class="silver-ai-image-shell">
+        <div class="silver-ai-stage" data-stage role="img" aria-label="">
+          <img data-image-layer="a" src="" alt="" aria-hidden="true" />
+          <img data-image-layer="b" src="" alt="" aria-hidden="true" />
+        </div>
+
+        <div class="silver-ai-mask-cue" data-mask-cue aria-hidden="true">
+          <img data-mask-image src="" alt="" />
+          <span class="silver-ai-mask-label">
+            <span>Area selected</span>
+            <strong data-mask-label></strong>
+          </span>
+        </div>
+
+        <div class="silver-ai-tone-overlay" data-tone-overlay aria-hidden="true">
+          <div class="silver-ai-tone-meta">
+            <span>Luminance histogram</span>
+            <strong data-tone-callout></strong>
+          </div>
+          <div
+            class="silver-ai-histogram"
+            data-histogram-bars
+            role="presentation"
+          ></div>
+        </div>
+
+        <div class="silver-ai-comparison" data-comparison hidden>
+          <div class="silver-ai-comparison-stage">
+            <img data-compare-before src="" alt="" />
+            <div class="silver-ai-comparison-after">
+              <img data-compare-after src="" alt="" />
+            </div>
+            <span class="silver-ai-comparison-label silver-ai-comparison-label--before">Original</span>
+            <span class="silver-ai-comparison-label silver-ai-comparison-label--after">Final</span>
+            <input
+              class="silver-ai-comparison-control"
+              data-compare-control
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              aria-label="Reveal the original and final photographs"
+            />
+            <span class="silver-ai-comparison-divider" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="silver-ai-entry-view silver-ai-single-action" data-start-view hidden>
+          <blockquote class="silver-ai-start-prompt" data-start-prompt></blockquote>
+          <button class="silver-ai-primary-button" type="button" data-start-replay>
+            Start replay
+          </button>
+        </div>
+
+        <aside
+          class="silver-ai-agent-activity"
+          data-agent-activity
+          aria-label="Silver AI edit activity"
+          aria-hidden="true"
+        >
+          <div class="silver-ai-agent-activity-heading">
+            <span>Agent trace</span>
+            <span data-agent-progress></span>
+          </div>
+          <div class="silver-ai-agent-conversation">
+            <div class="silver-ai-agent-message silver-ai-agent-message--user">
+              <span data-agent-speaker></span>
+              <p data-agent-prompt></p>
+            </div>
+            <div class="silver-ai-agent-message silver-ai-agent-message--assistant">
+              <span>Silver AI</span>
+              <p data-agent-response></p>
+            </div>
+          </div>
+          <div class="silver-ai-agent-tool-call">
+            <span>Tool call</span>
+            <strong data-agent-tool></strong>
+          </div>
+        </aside>
+
+        <button class="silver-ai-image-play" type="button" data-play>
+          Play
+        </button>
+      </div>
+
+      <div class="silver-ai-entry-view silver-ai-suggestion-actions" data-suggestion-view hidden>
+        <p class="silver-ai-suggestion-prompt" data-suggestion-prompt></p>
+        <div class="silver-ai-direction-picker" data-direction-picker aria-label="Choose an editing direction"></div>
+      </div>
+    </div>
+  </div>
+</div>

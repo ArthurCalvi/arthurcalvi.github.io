@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "package_id": "silver-ai-edit-replays-2026-07-27",
+  "title": "Silver AI edit replays",
+  "description": "Five real Silver AI edits reconstructed from visible commentary, actual tool calls, intermediate previews, and saved final images.",
+  "created_on": "2026-07-27",
+  "asset_notes": {
+    "format": "WebP",
+    "color_space": "sRGB",
+    "metadata": "Stripped from every public derivative, including camera and location metadata.",
+    "original_max_side_px": 1600,
+    "final_max_side_px": 1600,
+    "intermediate_max_side_px": 1024
+  },
+  "content_notes": {
+    "reasoning": "Each reasoning_summary is a concise public-facing rationale reconstructed from the assistant's visible commentary and factual tool outcomes. Private chain-of-thought and raw internal logs are not included.",
+    "tool_use": "Tool names are presented as user-facing editing concepts. Internal IDs, coordinates, schemas, metrics, and private paths are omitted.",
+    "provenance": "The three coastal-cliff alternatives began from the same verified starting preview and are independent edits, not a cumulative chain."
+  },
+  "examples": [
+    {
+      "id": "dramatic-mountain-print",
+      "scene_id": "coastal-cliff",
+      "title": "Dramatic mountain print",
+      "original_image": "images/coastal-cliff/original.webp",
+      "original_alt": "A color photograph of a steep coastal cliff beneath layered clouds and sea mist.",
+      "choice_prompt": "The steep cliff already gives us a strong diagonal, while the mist and bright water leave room for very different readings. Which direction should we print?",
+      "selected_prompt": "I chose: Dramatic mountain print — Make the cliff and cloud deck carry the frame: a high-contrast landscape preset, darker sky through Color Filter and local control, lifted mist, and a restrained cool selenium finish. The resemblance is to classic Zone System mountain printing, not a claim of authorship.",
+      "opening_commentary": "Let's print this as a dramatic mountain study: deepen the cloud ceiling, keep the mist luminous, and let the cliff hold the eye.",
+      "steps": [
+        {
+          "index": 1,
+          "title": "Build a low-key base",
+          "tool_use": "Preset — Low Key",
+          "reasoning_summary": "Start with a dense, graphic print so the cliff and cloud shelf carry the frame.",
+          "image": "images/coastal-cliff/dramatic-mountain-print/step-01-low-key-base.webp",
+          "alt": "The cliff scene after applying a dark, high-contrast black-and-white base.",
+          "evidence": {
+            "callout": "Low-key base"
+          }
+        },
+        {
+          "index": 2,
+          "title": "Separate cloud and cliff",
+          "tool_use": "Color Filter",
+          "reasoning_summary": "Create more separation in the cloud deck without flattening the luminous mist.",
+          "image": "images/coastal-cliff/dramatic-mountain-print/step-02-cloud-separation.webp",
+          "alt": "The cloud deck gains separation from the dark cliff.",
+          "evidence": {
+            "callout": "Cloud separation"
+          }
+        },
+        {
+          "index": 3,
+          "title": "Hold the cloud deck",
+          "tool_use": "Detected sky + Local Selective Tones",
+          "reasoning_summary": "Target the sky and hold its tones locally so the clouds keep shape instead of becoming a blank highlight.",
+          "image": "images/coastal-cliff/dramatic-mountain-print/step-03-hold-cloud-deck.webp",
+          "alt": "A local sky adjustment adds detail and tonal shape to the clouds.",
+          "evidence": {
+            "callout": "Cloud detail held",
+            "focus_label": "Cloud deck",
+            "mask_image": "evidence/dramatic-cloud-deck.webp"
+          }
+        },
+        {
+          "index": 4,
+          "title": "Lift the sea mist",
+          "tool_use": "Local Basic Adjustments",
+          "reasoning_summary": "Lift the mist just enough to preserve distance and keep the lower-left atmosphere alive.",
+          "image": "images/coastal-cliff/dramatic-mountain-print/step-04-lift-sea-mist.webp",
+          "alt": "The sea mist and distant shoreline become more luminous.",
+          "evidence": {
+            "callout": "Sea mist lifted",
+            "focus_label": "Sea mist",
+            "mask_image": "evidence/dramatic-sea-mist.webp"
+          }
+        },
+        {
+          "index": 5,
+          "title": "Add a cool selenium finish",
+          "tool_use": "Toning",
+          "reasoning_summary": "Use a restrained cool bias to unify the dramatic print without losing its neutral black-and-white character.",
+          "image": "images/coastal-cliff/dramatic-mountain-print/step-05-cool-selenium-finish.webp",
+          "alt": "The black-and-white print gains a subtle cool selenium tone.",
+          "evidence": {
+            "callout": "Cool selenium tone"
+          }
+        },
+        {
+          "index": 6,
+          "title": "Finish with fine grain",
+          "tool_use": "Film Grain",
+          "reasoning_summary": "Add fine texture. The first pass was reported as visually subtle, so Silver AI made one stronger move in the same direction and stopped when the warning repeated.",
+          "image": "images/coastal-cliff/dramatic-mountain-print/step-06-fine-film-grain.webp",
+          "alt": "The dramatic print after its final restrained film-grain pass.",
+          "evidence": {
+            "callout": "Fine grain checked"
+          }
+        }
+      ],
+      "final_image": "images/coastal-cliff/dramatic-mountain-print/final.webp",
+      "final_alt": "A dramatic cool black-and-white coastal cliff print with a dark cloud ceiling and luminous sea mist.",
+      "final_text": "The dramatic mountain print is in place: a darker cloud ceiling, a lifted veil of sea mist, and a cool selenium finish keep the cliff dominant without losing atmosphere. I kept the grain fine and restrained so the texture supports the print rather than competing with the clouds."
+    },
+    {
+      "id": "worn-coastal-postcard",
+      "scene_id": "coastal-cliff",
+      "title": "Worn coastal postcard",
+      "original_image": "images/coastal-cliff/original.webp",
+      "original_alt": "A color photograph of a steep coastal cliff beneath layered clouds and sea mist.",
+      "choice_prompt": "The cliff gives us a strong diagonal, while mist and cloud carry the atmosphere. Which reading should we make dominant?",
+      "selected_prompt": "I chose: Worn coastal postcard — Turn the scene into a slightly cheeky vintage seaside print with a warm tone, lighter water and haze, restrained grain, and a worn paper edge.",
+      "opening_commentary": "Let's print this as a warm, slightly weathered seaside postcard—lighter water and mist, with the cliff kept as the dark anchor.",
+      "steps": [
+        {
+          "index": 1,
+          "title": "Age the print",
+          "tool_use": "Preset — Yellowed vintage print",
+          "reasoning_summary": "Establish the warm paper tone and worn edge that make the photograph read like an old travel postcard.",
+          "image": "images/coastal-cliff/worn-coastal-postcard/step-01-aged-postcard-base.webp",
+          "alt": "The coastal scene rendered as a yellowed vintage print with a worn black border.",
+          "evidence": {
+            "callout": "Aged paper tone"
+          }
+        },
+        {
+          "index": 2,
+          "title": "Recover tonal shape",
+          "tool_use": "Selective Tones",
+          "reasoning_summary": "The base pushed the sky toward paper-white, so hold the highlights and open the middle and shadow tones.",
+          "image": "images/coastal-cliff/worn-coastal-postcard/step-02-open-tones.webp",
+          "alt": "Cloud and cliff tones regain shape within the aged postcard treatment.",
+          "evidence": {
+            "callout": "Highlights recovered"
+          }
+        },
+        {
+          "index": 3,
+          "title": "Open the water and mist",
+          "tool_use": "Local Basic Adjustments",
+          "reasoning_summary": "Lighten and soften the water and haze while preserving the cliff as the dark anchor.",
+          "image": "images/coastal-cliff/worn-coastal-postcard/step-03-lighter-water-and-mist.webp",
+          "alt": "The sea and mist become lighter while the cliff remains dark.",
+          "evidence": {
+            "callout": "Water and mist opened",
+            "focus_label": "Water and mist",
+            "mask_image": "evidence/postcard-water-mist.webp"
+          }
+        },
+        {
+          "index": 4,
+          "title": "Restrain the texture",
+          "tool_use": "Film Grain",
+          "reasoning_summary": "Replace the assertive preset texture with a softer grain that supports the worn print rather than dominating it.",
+          "image": "images/coastal-cliff/worn-coastal-postcard/step-04-softened-grain.webp",
+          "alt": "The final aged postcard treatment with softened film grain.",
+          "evidence": {
+            "callout": "Softer grain"
+          }
+        }
+      ],
+      "final_image": "images/coastal-cliff/worn-coastal-postcard/final.webp",
+      "final_alt": "A warm yellowed coastal postcard print with luminous mist, restrained grain, and a worn edge.",
+      "final_text": "The coastal postcard look is in place: warm yellowed toning, a lighter sea and mist, softened grain, and a worn paper edge. The cliff remains the dark anchor, so the frame still has shape beneath the nostalgic finish."
+    },
+    {
+      "id": "luminous-mountain-mist",
+      "scene_id": "coastal-cliff",
+      "title": "Luminous mountain mist",
+      "original_image": "images/coastal-cliff/original.webp",
+      "original_alt": "A color photograph of a steep coastal cliff beneath layered clouds and sea mist.",
+      "choice_prompt": "The cliff gives us a strong diagonal, while the mist and bright sea opening create a natural focal point. Which reading should we print?",
+      "selected_prompt": "I chose: Luminous mountain mist — Keep the cliff detailed but let the glowing haze carry the photograph, using a softer landscape base, open midtones, held cloud highlights, and gentle local separation.",
+      "opening_commentary": "We'll print this as a luminous coastal study: keep the cliff's texture, open the sea mist, and let the clouds stay soft rather than heavy.",
+      "steps": [
+        {
+          "index": 1,
+          "title": "Start with soft sepia",
+          "tool_use": "Preset — Soft Sepia",
+          "reasoning_summary": "Choose a gentle atmospheric base that protects the glowing haze and keeps contrast quiet.",
+          "image": "images/coastal-cliff/luminous-mountain-mist/step-01-soft-sepia-base.webp",
+          "alt": "The cliff scene after applying a soft sepia black-and-white base.",
+          "evidence": {
+            "callout": "Soft sepia base"
+          }
+        },
+        {
+          "index": 2,
+          "title": "Remove preset grain",
+          "tool_use": "Film Grain — Disabled",
+          "reasoning_summary": "The base introduced more surface texture than the misty reading needed, so remove it before shaping the tones.",
+          "image": "images/coastal-cliff/luminous-mountain-mist/step-02-remove-preset-grain.webp",
+          "alt": "The soft sepia scene after removing the preset's grain.",
+          "evidence": {
+            "callout": "Preset grain removed"
+          }
+        },
+        {
+          "index": 3,
+          "title": "Open the middle tones",
+          "tool_use": "Basic Adjustments",
+          "reasoning_summary": "Lift the middle tones, hold the cloud highlights, and keep enough structure for the cliff to remain readable.",
+          "image": "images/coastal-cliff/luminous-mountain-mist/step-03-open-middle-tones.webp",
+          "alt": "The haze becomes more luminous while the cloud highlights remain controlled.",
+          "evidence": {
+            "callout": "Midtones opened"
+          }
+        },
+        {
+          "index": 4,
+          "title": "Define the cliff gently",
+          "tool_use": "Detected cliff + Local Basic Adjustments",
+          "reasoning_summary": "Add a quiet local lift in definition rather than a hard punch, keeping the mist as the subject.",
+          "image": "images/coastal-cliff/luminous-mountain-mist/step-04-gentle-cliff-definition.webp",
+          "alt": "A gentle local adjustment improves cliff definition behind the mist.",
+          "evidence": {
+            "callout": "Cliff defined gently",
+            "focus_label": "Cliff",
+            "mask_image": "evidence/luminous-cliff.webp"
+          }
+        }
+      ],
+      "final_image": "images/coastal-cliff/luminous-mountain-mist/final.webp",
+      "final_alt": "A soft luminous sepia coastal print with open haze, controlled cloud light, and a gently defined cliff.",
+      "final_text": "The luminous mountain mist pass is applied: a soft sepia base, open middle tones, held cloud light, and a gentle local definition pass on the cliff. The haze now carries the frame while the textured diagonal remains readable, with the extra preset grain kept out so the print stays airy."
+    },
+    {
+      "id": "lisboa-red-tram",
+      "scene_id": "lisboa-tram",
+      "title": "Lisboa red tram",
+      "original_image": "images/lisboa-tram/original.webp",
+      "original_alt": "A red Lisboa tram moving through a softly blurred city street.",
+      "prompts": [
+        "I love this image taken in Lisboa! Could you use selective colorization to create a fun edit?",
+        "Let's change preset for another one, still vintage but not that yellow."
+      ],
+      "opening_commentary": "Let's make a playful Lisboa postcard: keep the scene decisively monochrome and let one meaningful color carry the joke.",
+      "steps": [
+        {
+          "index": 1,
+          "title": "Build a worn postcard base",
+          "turn": 1,
+          "tool_use": "Preset — Yellowed vintage print",
+          "reasoning_summary": "Use a deliberately aged monochrome base so one restored color can carry the visual joke.",
+          "image": "images/lisboa-tram/red-tram-accent/step-01-yellowed-postcard-base.webp",
+          "alt": "The tram scene converted to a yellowed black-and-white postcard treatment.",
+          "evidence": {
+            "callout": "Vintage base"
+          }
+        },
+        {
+          "index": 2,
+          "title": "Restore the tram's red",
+          "turn": 1,
+          "tool_use": "Detected tram + Local Selective Colorization",
+          "reasoning_summary": "The tram is the natural focal point, so restore its original red while leaving the city monochrome.",
+          "image": "images/lisboa-tram/red-tram-accent/step-02-red-tram-accent.webp",
+          "alt": "The red tram stands out against a yellowed monochrome Lisboa street.",
+          "evidence": {
+            "callout": "Tram red restored",
+            "focus_label": "Tram",
+            "mask_image": "evidence/lisboa-tram-first.webp"
+          }
+        },
+        {
+          "index": 3,
+          "title": "Revise the vintage tone",
+          "turn": 2,
+          "tool_use": "Preset — Soft Sepia",
+          "reasoning_summary": "Respond to the follow-up by replacing the strong yellow cast with a softer brown vintage print.",
+          "image": "images/lisboa-tram/red-tram-accent/step-03-soft-sepia-revision.webp",
+          "alt": "The tram scene changes from yellowed postcard to a softer sepia black-and-white base.",
+          "evidence": {
+            "callout": "Yellow cast reduced"
+          }
+        },
+        {
+          "index": 4,
+          "title": "Restore the accent after the preset change",
+          "turn": 2,
+          "tool_use": "Detected tram + Local Selective Colorization",
+          "reasoning_summary": "Reapply the tram's red after changing the global preset so the selective-color focal point remains intact.",
+          "image": "images/lisboa-tram/red-tram-accent/step-04-restored-red-tram.webp",
+          "alt": "The red tram returns as the only strong color against a soft sepia city.",
+          "evidence": {
+            "callout": "Red accent preserved",
+            "focus_label": "Tram",
+            "mask_image": "evidence/lisboa-tram-revision.webp"
+          }
+        }
+      ],
+      "turn_outputs": [
+        "The Lisboa tram is now the playful red accent, while the city stays monochrome. I kept the warm yellowed print and worn postcard edge, so it feels like a cheeky vintage souvenir.",
+        "I switched to 027 Soft Sepia—a gentler brown vintage tone without the strong yellow cast. The tram's red is back as the selective-color accent, while the background stays softly monochrome."
+      ],
+      "final_image": "images/lisboa-tram/red-tram-accent/final.webp",
+      "final_alt": "A Lisboa tram in vivid red against a softly sepia monochrome city street.",
+      "final_text": "I switched to 027 Soft Sepia—a gentler brown vintage tone without the strong yellow cast. The tram's red is back as the selective-color accent, while the background stays softly monochrome."
+    },
+    {
+      "id": "monumental-inscription",
+      "scene_id": "monumental-architecture",
+      "title": "Monumental Inscription",
+      "original_image": "images/monumental-architecture/original.webp",
+      "original_alt": "A color photograph looking upward along classical stone columns, a carved pediment, and a Latin inscription.",
+      "prompts": [
+        "Surprise me",
+        "Could you give it a more poetic and soft look? This architecture is producing some very interesting progressive shadows."
+      ],
+      "opening_commentary": "The inscription and repeating columns give this a carved, poster-like rhythm, so I'm choosing a Monumental Inscription print: hard architectural separation, then a warm paper tone and a local lift for the lettering.",
+      "steps": [
+        {
+          "index": 1,
+          "title": "Carve the architectural rhythm",
+          "turn": 1,
+          "tool_use": "Preset — Full Contrast and Structure",
+          "reasoning_summary": "The repeating columns and inscription suggest a bold, carved print, so establish strong architectural separation first.",
+          "image": "images/monumental-architecture/monumental-inscription/step-01-full-contrast-structure.webp",
+          "alt": "The classical facade converted to a crisp, high-contrast black-and-white architectural print.",
+          "evidence": {
+            "callout": "Architectural separation"
+          }
+        },
+        {
+          "index": 2,
+          "title": "Turn stone into warm paper",
+          "turn": 1,
+          "tool_use": "Toning",
+          "reasoning_summary": "Add a restrained brown-sepia paper tone while keeping the relief and column shadows legible.",
+          "image": "images/monumental-architecture/monumental-inscription/step-02-warm-paper-tone.webp",
+          "alt": "The architectural print gains a subtle warm brown paper tone.",
+          "evidence": {
+            "callout": "Warm paper tone"
+          }
+        },
+        {
+          "index": 3,
+          "title": "Bring the inscription into the composition",
+          "turn": 1,
+          "tool_use": "Detected inscription + Local Basic Adjustments",
+          "reasoning_summary": "Lift the Latin band directionally so the lettering joins the visual rhythm instead of reading as incidental surface detail.",
+          "image": "images/monumental-architecture/monumental-inscription/step-03-lift-inscription.webp",
+          "alt": "A local adjustment makes the carved inscription brighter and more legible.",
+          "evidence": {
+            "callout": "Inscription lifted",
+            "focus_label": "Inscription",
+            "mask_image": "evidence/monumental-inscription.webp"
+          }
+        },
+        {
+          "index": 4,
+          "title": "Let progressive shadows carry the mood",
+          "turn": 2,
+          "tool_use": "Basic Adjustments",
+          "reasoning_summary": "Answer the follow-up by easing back hard contrast and structure, protecting the long shadow transitions, and making the print more lyrical.",
+          "image": "images/monumental-architecture/monumental-inscription/step-04-soften-progressive-shadows.webp",
+          "alt": "The warm architectural print becomes softer, with gentler transitions across the column shadows.",
+          "evidence": {
+            "callout": "Shadows softened"
+          }
+        }
+      ],
+      "turn_outputs": [
+        "Monumental Inscription. I pushed the building toward a carved, high-contrast architectural print, added a restrained brown-sepia paper tone, and lifted the inscription with a directional local adjustment so the lettering joins the visual rhythm of the columns.",
+        "I softened the stone and relief into a gentler, more poetic print, easing back the hard structure while protecting the long shadow transitions. The architecture now feels less monumental and more atmospheric—the progressive shadows can carry the mood."
+      ],
+      "final_image": "images/monumental-architecture/monumental-inscription/final.webp",
+      "final_alt": "A poetic warm-sepia architectural print with a lifted Latin inscription and long progressive column shadows.",
+      "final_text": "I softened the stone and relief into a gentler, more poetic print, easing back the hard structure while protecting the long shadow transitions. The architecture now feels less monumental and more atmospheric—the progressive shadows can carry the mood."
+    }
+  ]
+}
