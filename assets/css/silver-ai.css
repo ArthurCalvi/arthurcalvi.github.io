@@ -227,6 +227,21 @@
   max-width: 75rem !important;
 }
 
+@media (min-width: 761px) {
+  /*
+   * Keep the complete replay inside shorter desktop viewports. The portrait
+   * calculation reserves 10rem for the direction row and breathing room, then
+   * converts the remaining 4:3 height budget back into a 3:4 image width.
+   */
+  .silver-ai-story--portrait .silver-ai-visual-column {
+    width: min(100%, 42rem, calc(75svh - 7.5rem)) !important;
+  }
+
+  .silver-ai-story--landscape .silver-ai-visual-column {
+    width: min(100%, 75rem, calc(150svh - 15rem)) !important;
+  }
+}
+
 .silver-ai-stage,
 .silver-ai-comparison-stage {
   width: 100%;
