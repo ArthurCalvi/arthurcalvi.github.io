@@ -21,15 +21,13 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
       <p class="silver-ai-deck">
         <a href="https://nikcollection.dxo.com/nik-silver-efex/" target="_blank" rel="noopener">Nik Silver Efex</a>
         is an established reference for professional black-and-white photo
-        editing. A year ago, I formed a cross-functional team at DxO Labs to
-        explore how an agent could edit photographs inside it through ordinary
-        language. I lead the project from research to productization, supervise
-        the team’s work, and contribute directly to agent design, evaluation,
-        benchmark creation, and integration. The work now spans image
-        understanding, tool design, agent behaviour, product integration, and
-        feedback from real edits, with contributions from many people across
-        DxO. Silver AI will soon be available as a research preview in Nik
-        Silver Efex.
+        editing. A year ago, I formed a cross-functional team at DxO Labs
+        around a simple question: can a photographer describe an intention
+        while an agent turns it into a controlled, inspectable edit? Silver AI
+        is our research preview. I lead the project from research to
+        productization and contribute directly to agent design, evaluation,
+        benchmarks, and integration, alongside many people across DxO. It will
+        soon be available in Nik Silver Efex.
       </p>
       <ul class="silver-ai-project-tags" aria-label="Project details">
         <li>Started in 2025</li>
@@ -146,13 +144,13 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
       </div>
     </div>
     <aside class="silver-ai-example-note">
-      <p class="silver-ai-example-note-label">Language → operations</p>
+      <p class="silver-ai-example-note-label">From intent to edit</p>
       <p>
-        Here, “dramatic,” “worn,” and “luminous” are not editing commands.
-        The agent translates each direction into Silver Efex operations—presets,
-        tones, grain, and local adjustments. After each step, the histogram at
-        the bottom is computed from the displayed frame, making the global shift
-        between light and dark tones visible.
+        The photographer chooses a direction, not a list of settings.
+        “Dramatic,” “worn,” and “luminous” are translated into Silver Efex
+        operations—presets, tones, grain, and local adjustments. After each
+        step, the histogram is computed from the displayed frame, making the
+        movement between light and dark tones visible while the edit unfolds.
       </p>
     </aside>
   </section>
@@ -211,15 +209,15 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
       </div>
     </div>
     <aside class="silver-ai-example-note">
-      <p class="silver-ai-example-note-label">Two tools, one local edit</p>
+      <p class="silver-ai-example-note-label">One simple fix we found</p>
       <p>
-        We first exposed local adjustments as one overloaded tool: it had to
-        define the mask and apply the effect at the same time. My team and I
-        split that into two bounded calls. The first creates the mask, returns
-        its ID, and names the compatible next action; the second applies the
-        effect inside that mask. On the internal evaluation used for this
-        redesign, tool-sequencing errors fell from 14% to below 1%. This is a
-        benchmark result, not a product-wide reliability rate.
+        Local adjustments originally asked one tool call to decide both where
+        to edit and what to change. One simple fix was to split that into two
+        calls: select the area, then apply the effect. The first call also makes
+        the compatible next step explicit. It is a small contract change among
+        many, but in one internal evaluation it reduced tool-sequencing errors
+        from 14% to below 1%. That result covers this sequence only, not the
+        reliability of Silver AI as a whole.
       </p>
     </aside>
   </section>
@@ -277,12 +275,13 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
       </div>
     </div>
     <aside class="silver-ai-example-note">
-      <p class="silver-ai-example-note-label">Tool order</p>
+      <p class="silver-ai-example-note-label">Presets come first</p>
       <p>
-        That follow-up exposes a small systems problem. Replacing the global
-        preset also removes the local colour treatment, so the agent has to
-        restore the tram after changing the base. Good results depend on
-        state, tool order, and feedback—not only on understanding the request.
+        This sequence follows Silver Efex’s own logic. Presets are designed as
+        starting points: applying one resets the previous adjustments so the
+        photographer can explore a new direction from a clean base. The agent
+        follows the same model. It applies Soft Sepia first, then rebuilds the
+        local selective-colour treatment that keeps the tram red.
       </p>
     </aside>
   </section>
@@ -290,10 +289,13 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
   <footer class="silver-ai-research-note">
     <p class="silver-ai-example-note-label">Research preview</p>
     <p>
-      The project spans image analysis, agent and tool design, evaluation,
-      benchmark creation, product integration, release systems, and feedback
-      from real edits. This page shows only the visible interaction; parts of
-      the perceptual and artistic-direction systems remain confidential.
+      These examples show the visible loop: offer directions when intent is
+      open, take a position when invited, and act directly when the request is
+      precise. Making that loop reliable spans image analysis, agent and tool
+      design, evaluation, benchmark creation, product integration, release
+      systems, and feedback from real edits. This page shows only the visible
+      interaction; parts of the perceptual and artistic-direction systems
+      remain confidential.
     </p>
   </footer>
 </article>

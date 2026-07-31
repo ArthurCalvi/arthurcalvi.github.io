@@ -265,10 +265,10 @@
         },
         {
           "index": 3,
-          "title": "Revise the vintage tone",
+          "title": "Choose a new starting look",
           "turn": 2,
           "tool_use": "Preset — Soft Sepia",
-          "reasoning_summary": "Respond to the follow-up by replacing the strong yellow cast with a softer brown vintage print.",
+          "reasoning_summary": "In Silver Efex, a preset defines the starting direction. Choose Soft Sepia first to replace the strong yellow cast with a softer brown vintage base.",
           "image": "images/lisboa-tram/red-tram-accent/step-03-soft-sepia-revision.webp",
           "alt": "The tram scene changes from yellowed postcard to a softer sepia black-and-white base.",
           "evidence": {
@@ -277,10 +277,10 @@
         },
         {
           "index": 4,
-          "title": "Restore the accent after the preset change",
+          "title": "Rebuild the local accent",
           "turn": 2,
           "tool_use": "Detected tram + Local Selective Colorization",
-          "reasoning_summary": "Reapply the tram's red after changing the global preset so the selective-color focal point remains intact.",
+          "reasoning_summary": "Presets intentionally reset the previous adjustments, so rebuild the tram's red on top of the new base to keep the selective-color focal point.",
           "image": "images/lisboa-tram/red-tram-accent/step-04-restored-red-tram.webp",
           "alt": "The red tram returns as the only strong color against a soft sepia city.",
           "evidence": {
