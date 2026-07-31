@@ -3,7 +3,7 @@ layout: default
 title: Silver AI
 date: 2026-07-27
 section: articles
-description: A DxO Labs research preview of an agent that translates photographic intent into controlled, inspectable edits in Nik Silver Efex.
+description: Silver AI is an upcoming DxO Labs research preview for Nik Silver Efex, an established reference for professional black-and-white photo editing.
 permalink: /silver-ai/
 silver_ai: true
 cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dramatic-mountain-print/final.webp
@@ -16,15 +16,25 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
 >
   <header class="silver-ai-hero">
     <div class="silver-ai-hero-copy">
-      <p class="silver-ai-kicker">DxO Labs · Research preview</p>
+      <p class="silver-ai-kicker">DxO Labs · Upcoming research preview</p>
       <h1>Silver AI</h1>
       <p class="silver-ai-deck">
-        A year ago, my team at DxO Labs and I started exploring how an agent
-        could edit photographs in Nik Silver Efex through ordinary language.
-        I lead the project, with contributions from many people across DxO.
+        <a href="https://nikcollection.dxo.com/nik-silver-efex/" target="_blank" rel="noopener">Nik Silver Efex</a>
+        is an established reference for professional black-and-white photo
+        editing. A year ago, I formed a cross-functional team at DxO Labs to
+        explore how an agent could edit photographs inside it through ordinary
+        language. I lead the project from research to productization, supervise
+        the team’s work, and contribute directly to agent design, evaluation,
+        benchmark creation, and integration. The work now spans image
+        understanding, tool design, agent behaviour, product integration, and
+        feedback from real edits, with contributions from many people across
+        DxO. Silver AI will soon be available as a research preview in Nik
+        Silver Efex.
       </p>
       <ul class="silver-ai-project-tags" aria-label="Project details">
         <li>Started in 2025</li>
+        <li>Cross-functional R&amp;D</li>
+        <li>Research → product</li>
         <li>Codex app-server</li>
         <li>GPT-5.6 Luna</li>
         <li>Nik Silver Efex</li>
@@ -201,13 +211,15 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
       </div>
     </div>
     <aside class="silver-ai-example-note">
-      <p class="silver-ai-example-note-label">Local adjustments</p>
+      <p class="silver-ai-example-note-label">Two tools, one local edit</p>
       <p>
-        Some changes should affect only part of the image. Before lifting the
-        inscription, the agent creates a selection; the red overlay is the real
-        area returned by the editing tool. The next request continues from that
-        image state, keeping the local adjustment while softening the overall
-        contrast.
+        We first exposed local adjustments as one overloaded tool: it had to
+        define the mask and apply the effect at the same time. My team and I
+        split that into two bounded calls. The first creates the mask, returns
+        its ID, and names the compatible next action; the second applies the
+        effect inside that mask. On the internal evaluation used for this
+        redesign, tool-sequencing errors fell from 14% to below 1%. This is a
+        benchmark result, not a product-wide reliability rate.
       </p>
     </aside>
   </section>
@@ -278,10 +290,10 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
   <footer class="silver-ai-research-note">
     <p class="silver-ai-example-note-label">Research preview</p>
     <p>
-      We improve the system through benchmarks, prompts, tool descriptions,
-      schemas, and feedback from real edits. This page shows only the visible
-      interaction; parts of the perceptual and artistic-direction systems
-      remain confidential.
+      The project spans image analysis, agent and tool design, evaluation,
+      benchmark creation, product integration, release systems, and feedback
+      from real edits. This page shows only the visible interaction; parts of
+      the perceptual and artistic-direction systems remain confidential.
     </p>
   </footer>
 </article>

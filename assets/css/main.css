@@ -295,11 +295,15 @@ p {
 }
 
 .editorial-row {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(14rem, 0.42fr) minmax(0, 1fr);
   gap: clamp(2rem, 6vw, 6rem);
   padding: 2.25rem 0;
   border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  isolation: isolate;
+  transition: background-color 180ms ease;
 }
 
 .editorial-row h3 {
@@ -314,6 +318,30 @@ p {
 
 .editorial-row h3 a {
   text-decoration: none;
+}
+
+.editorial-row h3 a::after,
+.home-article-row h3 a::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+}
+
+.editorial-row h3 a:focus-visible::after,
+.home-article-row h3 a:focus-visible::after {
+  outline: 2px solid var(--accent);
+  outline-offset: 0.35rem;
+}
+
+.editorial-row:hover,
+.home-article-row:hover {
+  background: rgba(29, 106, 74, 0.045);
+}
+
+.editorial-row .article-listing-copy a {
+  position: relative;
+  z-index: 2;
 }
 
 .editorial-row h3 a:hover {
@@ -405,12 +433,16 @@ p {
 }
 
 .home-article-row {
+  position: relative;
   display: grid;
   grid-template-columns: 4.5rem minmax(14rem, 0.75fr) minmax(0, 1fr);
   gap: clamp(1.25rem, 4vw, 3.5rem);
   align-items: baseline;
   padding: 1.8rem 0;
   border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  isolation: isolate;
+  transition: background-color 180ms ease;
 }
 
 .home-article-row time,

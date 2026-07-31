@@ -338,7 +338,7 @@
           "index": 3,
           "title": "Bring the inscription into the composition",
           "turn": 1,
-          "tool_use": "Detected inscription + Local Basic Adjustments",
+          "tool_use": "Create inscription mask → Apply local adjustment",
           "reasoning_summary": "Lift the Latin band directionally so the lettering joins the visual rhythm instead of reading as incidental surface detail.",
           "image": "images/monumental-architecture/monumental-inscription/step-03-lift-inscription.webp",
           "alt": "A local adjustment makes the carved inscription brighter and more legible.",

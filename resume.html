@@ -9,57 +9,66 @@ permalink: /resume.html
 <div class="resume-contact">
   <span>Paris, France</span>
   <a href="mailto:arthur.calvi@icloud.com">arthur.calvi@icloud.com</a>
+  <a href="https://www.linkedin.com/in/arthur-calvi" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="https://github.com/ArthurCalvi" target="_blank" rel="noopener">GitHub</a>
   <button type="button" onclick="window.print()">Print or save as PDF</button>
 </div>
 
 <p class="resume-intro">
-  I am an AI engineer and product builder. I studied mathematics and machine
-  learning at École normale supérieure Paris-Saclay, then pursued a PhD in
-  remote sensing at CNRS, Inria, and LSCE, leaving the programme before
-  completion. At DxO Labs, I lead a small team working on AI products, internal
-  tools, evaluation, and the engineering processes around them. Outside DxO, I
-  co-founded DailySurf and lead its product engineering.
+  I am an AI engineer and product builder. I work on agent design, evaluation,
+  product engineering, and the systems teams use to ship AI. At DxO Labs, I
+  lead the AI Acceleration Team. Outside DxO, I co-founded DailySurf and lead
+  product engineering. Previously, I studied mathematics and machine learning
+  at École normale supérieure Paris-Saclay and worked in remote sensing at
+  Kayrros, CNRS, Inria, and LSCE.
 </p>
 
 <section class="resume-section" aria-labelledby="experience-title">
   <h2 id="experience-title">Experience</h2>
   <div class="resume-list">
     <article>
-      <div class="resume-when">Current</div>
+      <div class="resume-when">2023–present</div>
       <div>
         <h3>Head of AI Acceleration Team</h3>
         <p class="resume-place">DxO Labs · Paris</p>
-        <p>Lead a small team working on AI in products, engineering, and support.</p>
+        <p>Lead a small team working across product AI, internal systems, evaluation, and engineering workflows.</p>
         <ul>
-          <li>Design specialist agents and the software around them.</li>
-          <li>Build evaluation and release processes using tests and real product results.</li>
-          <li>Help other teams adapt their tools and processes to AI.</li>
-          <li>Set up an AI-native workflow with Linear for planning, implementation, verification, and review; now advise other R&amp;D teams on adapting the model.</li>
+          <li>Formed and now lead the cross-functional team behind <a href="{{ '/silver-ai/' | relative_url }}">Silver AI</a>, which will soon be available as a research preview in Nik Silver Efex. I supervise research and productization while contributing directly to agent design, evaluations, benchmarks, and product integration.</li>
+          <li>Led a production AI assistant for Consumer Support that combines tickets with product documentation, support macros, release notes, and compatibility data to help agents draft grounded replies.</li>
+          <li>Led a reusable localization workflow for DxO’s new website and marketing assets, preserving page structure and product terminology across French, German, Japanese, and Simplified Chinese, with glossary lookup and native-speaker review.</li>
+          <li>Built a multilingual video-localization pipeline for product tutorials, from transcription and terminology correction through translation review and handoff to synthesized voice tracks.</li>
+          <li>Built an <a href="{{ '/ai-dev-workflow/' | relative_url }}">AI development workflow with Linear</a> combining human decisions, coding agents, automated gates, CI, and review. It is now used for a new R&amp;D project and by Information Security and Marketing.</li>
         </ul>
       </div>
     </article>
     <article>
       <div class="resume-when">Current</div>
       <div>
-        <h3>Founding CTO and product engineer</h3>
-        <p class="resume-place">DailySurf</p>
-        <p>Design and build a mobile app for recording surf sessions and following progress over time.</p>
+        <h3>Co-founder, CTO and product engineer</h3>
+        <p class="resume-place"><a href="https://dailysurf.fr" target="_blank" rel="noopener">DailySurf</a></p>
+        <p>Lead product engineering for an iOS surf app currently in beta with 250 testers.</p>
+        <ul>
+          <li>Built the app with TypeScript, React Native, Expo, and Supabase.</li>
+          <li>Used beta conversations and usage patterns to pivot from forecast browsing towards <a href="{{ '/articles/dailysurf/' | relative_url }}">Le Guetteur</a>, which ranks surf windows against conditions, level, availability, and travel time. Evaluation is ongoing.</li>
+        </ul>
       </div>
     </article>
     <article>
-      <div class="resume-when">PhD</div>
+      <div class="resume-when">2022–2025</div>
       <div>
         <h3>Former PhD candidate</h3>
         <p class="resume-place">CNRS · Inria · LSCE</p>
-        <p>Worked on forest disturbance, phenology, and large satellite time series.</p>
+        <p>Researched forest phenology and disturbance from national-scale satellite time series, comparing interpretable seasonal features with learned embeddings. The programme ended before completion.</p>
+        <p>Read the <a href="{{ '/articles/phd/' | relative_url }}">research case study</a> or <a href="{{ '/articles/quit-phd.html' | relative_url }}">why I left the PhD</a>.</p>
       </div>
     </article>
     <article>
-      <div class="resume-when">2022</div>
+      <div class="resume-when">Apr–Oct 2022</div>
       <div>
         <h3>Machine-learning research intern</h3>
         <p class="resume-place">Kayrros</p>
-        <p>Built lightweight land-cover models for satellite imagery, with an emphasis on temporal consistency and production use.</p>
+        <p>Developed and evaluated land-cover segmentation models for stability across dates, seasons, and biomes. The work reached production use in two biomass studies.</p>
+        <p><a href="{{ '/articles/kayrros-dynamic-world/' | relative_url }}">Read the case study</a>.</p>
       </div>
     </article>
   </div>
@@ -69,14 +78,32 @@ permalink: /resume.html
   <h2 id="education-title">Education</h2>
   <div class="resume-list">
     <article>
-      <div class="resume-when">ENS Paris-Saclay</div>
+      <div class="resume-when">2018–2022</div>
       <div>
         <h3>École normale supérieure Paris-Saclay</h3>
         <p class="resume-place">Mathematics and machine learning</p>
-        <p>Normalien; M2 Mathematics, Vision, Learning (MVA), with an interface year in engineering sciences. Prix de l’interdisciplinarité 2023.</p>
+        <p>Normalien; M2 Mathematics, Vision, Learning (MVA), with an interface year at Mines Paris – PSL in engineering sciences. Prix de l’interdisciplinarité 2023.</p>
       </div>
     </article>
   </div>
 </section>
 
-<p class="resume-footnote">Research notes and essays are listed under <a href="{{ '/blog.html' | relative_url }}">Articles</a>.</p>
+<section class="resume-section" aria-labelledby="skills-title">
+  <h2 id="skills-title">Technical focus</h2>
+  <div class="resume-list">
+    <article>
+      <div class="resume-when">Tools</div>
+      <div>
+        <p>Agent systems, evaluation, MCP, Python, TypeScript, React Native, Expo, Supabase, Linear, and remote sensing.</p>
+      </div>
+    </article>
+    <article>
+      <div class="resume-when">Languages</div>
+      <div>
+        <p>French — native. English — C1 Advanced. Spanish — basic.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<p class="resume-footnote">Research notes, product work, and essays are listed under <a href="{{ '/blog.html' | relative_url }}">Articles</a>.</p>
