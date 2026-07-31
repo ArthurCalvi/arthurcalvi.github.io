@@ -6,7 +6,14 @@ date: 2026-07-28
 section: articles
 category: Product
 cover_image: /assets/images/dailysurf-guetteur-opportunity.webp
+dailysurf_demo: true
 ---
+
+<p class="dailysurf-beta-cta">
+  <strong>DailySurf is currently in beta.</strong>
+  If you would like to try it, you can
+  <a href="https://www.dailysurf.fr/#beta">join through the form on dailysurf.fr</a>.
+</p>
 
 DailySurf began, loosely, in Bouznika, Morocco. I was there in June for a trip with [Surf Progress](https://surf-progress.com/), where I met Thibaut de Gueyer. Thibaut is a surf coach and the creator of Surf Progress. He has built a large online community around clear, practical teaching for beginner and intermediate surfers. He had organised the trip, and we got along quickly. We were both building things, and ideas came easily.
 
@@ -14,7 +21,11 @@ The actual project started a few months later, after I had returned to Paris. In
 
 By the following July, after many changes, we opened the beta.
 
-The beta began around two simple jobs: help people explore places to surf, and keep a useful memory of their sessions.
+The question we are testing now is simple: could DailySurf look for the right moment on the surfer’s behalf? We call this *Le Guetteur*—the lookout.
+
+{% include dailysurf-guetteur-demo.html %}
+
+We did not start there. The beta began around two simpler jobs: help people explore places to surf, and keep a useful memory of their sessions.
 
 <div class="article-screen-grid" role="group" aria-label="Two DailySurf beta screens">
   <figure>
@@ -35,12 +46,7 @@ The beta made this clear during a period of poor surf conditions. Usage dropped.
 
 That left much of the work with the surfer. They still had to inspect forecasts, compare spots, consider their level, check their calendar, and sometimes find out whether equipment rental was available. The app could present information, but it was not yet removing the search.
 
-This led us to a new direction that we call *Le Guetteur*—the lookout. The idea is to search for suitable surfing windows on the user’s behalf, using the conditions alongside the surfer’s level, preferences, availability, and practical constraints such as travel time or rental. Instead of repeatedly checking the app, the surfer could be told when a realistic opportunity appears.
-
-<figure class="article-figure article-figure--portrait">
-  <img src="{{ '/assets/images/dailysurf-guetteur-opportunity.webp' | relative_url }}" alt="A DailySurf opportunity screen for Capbreton showing travel time, suitability for a beginner, availability, expected conditions, and an overall potential score" width="900" height="1957" loading="lazy" />
-  <figcaption>An early Guetteur screen brings the decision into one place: whether the spot fits the surfer, the journey, their availability, and the expected conditions.</figcaption>
-</figure>
+That is what led us back to the question above. Behind the simple surface, the evaluator scans several days of forecasts, builds three-hour daylight windows, removes spots that do not fit the surfer or the practical constraints, and ranks what remains using swell, wind, tide, travel time, and level. Sometimes the useful answer is simply that there is no good window yet.
 
 We are still testing this direction. We need to learn which signals matter, how personal the suggestions should be, and when an alert is helpful rather than noisy.
 

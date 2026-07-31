@@ -18,6 +18,9 @@
   {% if page.silver_ai %}
   <link rel="stylesheet" href="{{ '/assets/css/silver-ai.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
   {% endif %}
+  {% if page.dailysurf_demo %}
+  <link rel="stylesheet" href="{{ '/assets/css/dailysurf-guetteur.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
+  {% endif %}
   {% if page.math %}
   <script>
     MathJax = {
@@ -52,6 +55,9 @@
   {% endif %}
   {% if page.silver_ai %}
   <script src="{{ '/assets/js/silver-ai-replay.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  {% endif %}
+  {% if page.dailysurf_demo %}
+  <script src="{{ '/assets/js/dailysurf-guetteur.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
   {% endif %}
 </body>
 </html>

@@ -1,0 +1,453 @@
+{
+  "capturedAt": "2026-07-29",
+  "fixedDriveMinutes": 60,
+  "photoBaseUrl": "https://atuksyhoaouvvjuvybub.supabase.co/storage/v1/object/public/spot-photos",
+  "mapTiles": {
+    "urlTemplate": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    "attribution": "© OpenStreetMap contributors",
+    "attributionUrl": "https://www.openstreetmap.org/copyright"
+  },
+  "timelinePresentation": {
+    "kind": "illustrative_reconstruction",
+    "days": 7,
+    "threshold": 70,
+    "disclosure": "The highlighted score, window and conditions come from the stored snapshot. The surrounding days are reconstructed to explain the seven-day search."
+  },
+  "areas": {
+    "basque": {
+      "label": "Basque Coast",
+      "departure": "Bayonne",
+      "departurePoint": {
+        "lat": 43.4945144,
+        "lng": -1.4736657
+      },
+      "contextSpots": [
+        {
+          "spot": "Anglet – plage de Marinella",
+          "coordinates": {
+            "lat": 43.5,
+            "lng": -1.54
+          }
+        },
+        {
+          "spot": "Biarritz – Grande Plage",
+          "coordinates": {
+            "lat": 43.49,
+            "lng": -1.56
+          }
+        },
+        {
+          "spot": "Biarritz – Milady",
+          "coordinates": {
+            "lat": 43.465,
+            "lng": -1.575
+          }
+        },
+        {
+          "spot": "Bidart Centre",
+          "coordinates": {
+            "lat": 43.4369,
+            "lng": -1.59707
+          }
+        },
+        {
+          "spot": "Guéthary – Parlementia",
+          "coordinates": {
+            "lat": 43.424,
+            "lng": -1.61
+          }
+        }
+      ],
+      "opportunities": [
+        {
+          "spot": "Biarritz – Côte des Basques",
+          "region": "Pyrénées-Atlantiques",
+          "coordinates": {
+            "lat": 43.47106,
+            "lng": -1.568128
+          },
+          "photo": {
+            "path": "spots/fr-biarritz-cote-des-basques/hero-700748854a80.jpg",
+            "alt": "Côte des Basques shoreline and waves seen from the cliffs",
+            "credit": "Véronique Vaillant",
+            "creditUrl": "https://maps.google.com/maps/contrib/102063539628867926436",
+            "width": 1280,
+            "height": 957,
+            "position": "50% 50%"
+          },
+          "levels": ["beginner", "intermediate"],
+          "availability": "afternoon",
+          "window": "15:00–18:00",
+          "snapshotDate": "28 July 2026",
+          "driveMinutes": 44,
+          "potential": 96,
+          "potentialTimeline": {
+            "startDate": "2026-07-25",
+            "selectedIndex": 3,
+            "scores": [48, 55, 72, 96, 81, 64, 76]
+          },
+          "state": "active",
+          "waveHeightM": 1,
+          "periodS": 7.5,
+          "windKmh": 10,
+          "waterTempC": 25.5,
+          "tide": "Rising",
+          "summary": "Soft rights and lefts over sand, with a few rocks."
+        },
+        {
+          "spot": "Erretegia – Bidart",
+          "region": "Pyrénées-Atlantiques",
+          "coordinates": {
+            "lat": 43.445919,
+            "lng": -1.589934
+          },
+          "photo": {
+            "path": "spots/fr-erretegia-bidart/hero-742b24c25bf3.jpg",
+            "alt": "The Atlantic cove and cliffs at Erretegia in Bidart",
+            "credit": "Sarah Garcia",
+            "creditUrl": "https://maps.google.com/maps/contrib/104113260365668409665",
+            "width": 1280,
+            "height": 960,
+            "position": "50% 65%"
+          },
+          "levels": ["beginner"],
+          "availability": "afternoon",
+          "window": "15:00–18:00",
+          "snapshotDate": "28 July 2026",
+          "driveMinutes": 49,
+          "potential": 95,
+          "potentialTimeline": {
+            "startDate": "2026-07-25",
+            "selectedIndex": 3,
+            "scores": [46, 53, 70, 95, 79, 62, 74]
+          },
+          "state": "active",
+          "waveHeightM": 1,
+          "periodS": 7.5,
+          "windKmh": 10,
+          "waterTempC": 25.1,
+          "tide": "Rising",
+          "summary": "A moderate beach break in a small cove between two cliffs."
+        },
+        {
+          "spot": "Bidart – Pavillon Royal",
+          "region": "Pyrénées-Atlantiques",
+          "coordinates": {
+            "lat": 43.452,
+            "lng": -1.585
+          },
+          "photo": {
+            "path": "spots/fr-bidart-pavillon-royal/hero-e906719c15a9.jpg",
+            "alt": "Pavillon Royal beach and its Atlantic sandbars",
+            "credit": "Rachel",
+            "creditUrl": "https://maps.google.com/maps/contrib/108355985807223654552",
+            "width": 1200,
+            "height": 568,
+            "position": "50% 50%"
+          },
+          "levels": ["beginner", "intermediate", "advanced"],
+          "availability": "afternoon",
+          "window": "15:00–18:00",
+          "snapshotDate": "28 July 2026",
+          "driveMinutes": 48,
+          "potential": 94,
+          "potentialTimeline": {
+            "startDate": "2026-07-25",
+            "selectedIndex": 3,
+            "scores": [51, 58, 75, 94, 82, 68, 79]
+          },
+          "state": "active",
+          "waveHeightM": 1,
+          "periodS": 7.5,
+          "windKmh": 10,
+          "waterTempC": 25.1,
+          "tide": "Rising",
+          "summary": "Several sandbar peaks, from mellow to more demanding."
+        }
+      ]
+    },
+    "landes": {
+      "label": "Landes",
+      "departure": "Seignosse",
+      "departurePoint": {
+        "lat": 43.68866,
+        "lng": -1.37328
+      },
+      "contextSpots": [
+        {
+          "spot": "Hossegor – La Sud",
+          "coordinates": {
+            "lat": 43.66,
+            "lng": -1.44
+          }
+        },
+        {
+          "spot": "Hossegor – La Gravière",
+          "coordinates": {
+            "lat": 43.67275,
+            "lng": -1.441156
+          }
+        },
+        {
+          "spot": "Capbreton – La Piste",
+          "coordinates": {
+            "lat": 43.637,
+            "lng": -1.446
+          }
+        },
+        {
+          "spot": "Vieux-Boucau",
+          "coordinates": {
+            "lat": 43.788,
+            "lng": -1.408
+          }
+        },
+        {
+          "spot": "Messanges-Plage",
+          "coordinates": {
+            "lat": 43.815799,
+            "lng": -1.404275
+          }
+        }
+      ],
+      "opportunities": [
+        {
+          "spot": "Moliets-Plage",
+          "region": "Landes",
+          "coordinates": {
+            "lat": 43.858,
+            "lng": -1.395
+          },
+          "photo": {
+            "path": "spots/fr-moliets-plage/hero-0b21bc74a0ae.jpg",
+            "alt": "The open Atlantic beach and waves at Moliets",
+            "credit": "Michael Stuetzle",
+            "creditUrl": "https://maps.google.com/maps/contrib/111435434441589978153",
+            "width": 1200,
+            "height": 900,
+            "position": "50% 50%"
+          },
+          "levels": ["beginner"],
+          "availability": "after_work",
+          "window": "18:00–21:00",
+          "snapshotDate": "28 July 2026",
+          "driveMinutes": 29,
+          "potential": 79,
+          "potentialTimeline": {
+            "startDate": "2026-07-25",
+            "selectedIndex": 3,
+            "scores": [46, 63, 72, 79, 27, 31, 58]
+          },
+          "state": "expired",
+          "waveHeightM": 0.98,
+          "periodS": 7.6,
+          "windKmh": 15,
+          "waterTempC": 25,
+          "tide": "Falling",
+          "summary": "Mellow peaks over a gently sloping sandy bottom."
+        },
+        {
+          "spot": "Capbreton – Santocha",
+          "region": "Landes",
+          "coordinates": {
+            "lat": 43.646399,
+            "lng": -1.445172
+          },
+          "photo": {
+            "path": "spots/fr-capbreton-santocha/hero-c0a63ddabe47.jpg",
+            "alt": "The shorebreak and sea wall at Santocha in Capbreton",
+            "credit": "Antje Seidenfaden",
+            "creditUrl": "https://maps.google.com/maps/contrib/113730336916595654316",
+            "width": 1200,
+            "height": 1594,
+            "position": "50% 34%"
+          },
+          "levels": ["beginner", "intermediate", "advanced"],
+          "availability": "after_work",
+          "window": "17:00–20:00",
+          "snapshotDate": "29 July 2026",
+          "driveMinutes": 12,
+          "potential": 25,
+          "potentialTimeline": {
+            "startDate": "2026-07-26",
+            "selectedIndex": 3,
+            "scores": [29, 44, 62, 25, 73, 61, 47]
+          },
+          "state": "degraded",
+          "waveHeightM": 0.64,
+          "periodS": 6.95,
+          "windKmh": 14,
+          "waterTempC": 25.2,
+          "tide": "Falling",
+          "summary": "Accessible sandbar peaks near the Capbreton waterfront."
+        },
+        {
+          "spot": "Seignosse – Le Penon",
+          "region": "Landes",
+          "coordinates": {
+            "lat": 43.709308,
+            "lng": -1.43657
+          },
+          "photo": {
+            "path": "spots/fr-seignosse-le-penon/hero-4be44b18714a.jpg",
+            "alt": "Lines of Atlantic swell approaching Le Penon in Seignosse",
+            "credit": "Cédric Lafay",
+            "creditUrl": "https://maps.google.com/maps/contrib/115250245013971702073",
+            "width": 1280,
+            "height": 960,
+            "position": "50% 50%"
+          },
+          "levels": ["beginner", "intermediate", "advanced"],
+          "availability": "after_work",
+          "window": "17:00–20:00",
+          "snapshotDate": "29 July 2026",
+          "driveMinutes": 9,
+          "potential": 25,
+          "potentialTimeline": {
+            "startDate": "2026-07-26",
+            "selectedIndex": 3,
+            "scores": [28, 42, 60, 25, 71, 59, 45]
+          },
+          "state": "degraded",
+          "waveHeightM": 0.64,
+          "periodS": 6.95,
+          "windKmh": 14,
+          "waterTempC": 24.8,
+          "tide": "Falling",
+          "summary": "A shifting beach break that is more approachable in summer."
+        },
+        {
+          "spot": "Seignosse – Les Estagnots",
+          "region": "Landes",
+          "coordinates": {
+            "lat": 43.686755,
+            "lng": -1.440721
+          },
+          "photo": {
+            "path": "spots/fr-seignosse-les-estagnots/hero-456e812fb9e3.jpg",
+            "alt": "The wide sandy beach at Les Estagnots in Seignosse",
+            "credit": "Johann Maire",
+            "creditUrl": "https://maps.google.com/maps/contrib/113815461055290411368",
+            "width": 1280,
+            "height": 432,
+            "position": "50% 50%"
+          },
+          "levels": ["beginner", "intermediate"],
+          "availability": "after_work",
+          "window": "17:00–20:00",
+          "snapshotDate": "29 July 2026",
+          "driveMinutes": 9,
+          "potential": 25,
+          "potentialTimeline": {
+            "startDate": "2026-07-26",
+            "selectedIndex": 3,
+            "scores": [27, 40, 58, 25, 69, 57, 43]
+          },
+          "state": "degraded",
+          "waveHeightM": 0.64,
+          "periodS": 6.95,
+          "windKmh": 14,
+          "waterTempC": 24.8,
+          "tide": "Falling",
+          "summary": "A powerful autumn beach break that can be gentler in summer."
+        }
+      ]
+    },
+    "morbihan": {
+      "label": "Morbihan",
+      "departure": "Vannes",
+      "departurePoint": {
+        "lat": 47.6586772,
+        "lng": -2.7599079
+      },
+      "contextSpots": [
+        {
+          "spot": "Sainte-Barbe",
+          "coordinates": {
+            "lat": 47.6,
+            "lng": -3.14
+          }
+        },
+        {
+          "spot": "Port Blanc",
+          "coordinates": {
+            "lat": 47.523636,
+            "lng": -3.154747
+          }
+        }
+      ],
+      "opportunities": [
+        {
+          "spot": "Kerhilio",
+          "region": "Morbihan",
+          "coordinates": {
+            "lat": 47.611626,
+            "lng": -3.168693
+          },
+          "photo": {
+            "path": "spots/fr-kerhilio/hero-d619291b4684.jpg",
+            "alt": "The exposed Atlantic beach and sandbars at Kerhilio",
+            "credit": "Wen LIN",
+            "creditUrl": "https://maps.google.com/maps/contrib/102829313629381735530",
+            "width": 1200,
+            "height": 900,
+            "position": "50% 50%"
+          },
+          "levels": ["intermediate"],
+          "availability": "morning",
+          "window": "07:00–10:00",
+          "snapshotDate": "19 July 2026",
+          "driveMinutes": 33,
+          "potential": 0,
+          "potentialTimeline": {
+            "startDate": "2026-07-16",
+            "selectedIndex": 3,
+            "scores": [45, 28, 12, 0, 4, 31, 61]
+          },
+          "state": "degraded",
+          "waveHeightM": 0.12,
+          "periodS": 7.75,
+          "windKmh": 22,
+          "waterTempC": 22.9,
+          "tide": "Rising",
+          "summary": "An exposed Erdeven beach that needs more Atlantic energy."
+        },
+        {
+          "spot": "Plouharnel – Mane Guen",
+          "region": "Morbihan",
+          "coordinates": {
+            "lat": 47.576594,
+            "lng": -3.139109
+          },
+          "photo": {
+            "path": "spots/fr-plouharnel-mane-gwen/hero-b7993928d434.jpg",
+            "alt": "The broad Atlantic shoreline and peaks at Mane Guen",
+            "credit": "Kai-Patrick Francis",
+            "creditUrl": "https://maps.google.com/maps/contrib/102961651803656750849",
+            "width": 1200,
+            "height": 899,
+            "position": "50% 50%"
+          },
+          "levels": ["beginner", "intermediate", "advanced"],
+          "availability": "morning",
+          "window": "07:00–10:00",
+          "snapshotDate": "19 July 2026",
+          "driveMinutes": 39,
+          "potential": 0,
+          "potentialTimeline": {
+            "startDate": "2026-07-16",
+            "selectedIndex": 3,
+            "scores": [49, 31, 15, 0, 6, 32, 64]
+          },
+          "state": "degraded",
+          "waveHeightM": 0.12,
+          "periodS": 7.75,
+          "windKmh": 18,
+          "waterTempC": 22.9,
+          "tide": "Rising",
+          "summary": "A long sandbar zone with several peaks."
+        }
+      ]
+    }
+  }
+}
