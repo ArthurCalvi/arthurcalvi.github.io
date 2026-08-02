@@ -50,8 +50,28 @@
   color: var(--rust);
 }
 
-.silver-ai-hero + .silver-ai-demo-section {
+.silver-ai-hero + .silver-ai-demo-section,
+.silver-ai-origin-note + .silver-ai-demo-section {
   border-top: 0;
+}
+
+.silver-ai-origin-note {
+  display: grid;
+  width: min(calc(100% - (2 * var(--page-pad))), 72rem);
+  margin: 0 auto;
+  padding: clamp(2.2rem, 4vw, 3.5rem) 0;
+  border-bottom: 1px solid var(--silver-rule);
+  gap: clamp(0.8rem, 3vw, 2.5rem);
+  grid-template-columns: 9rem minmax(0, 1fr);
+}
+
+.silver-ai-origin-note > p:last-child {
+  max-width: 48rem;
+  margin: 0;
+  color: #35423b;
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 1.55vw, 1.3rem);
+  line-height: 1.55;
 }
 
 .silver-ai-example-note {
@@ -703,6 +723,10 @@
 
   .silver-ai-project-tags {
     gap: 0.55rem 1rem;
+  }
+
+  .silver-ai-origin-note {
+    grid-template-columns: 1fr;
   }
 
   .silver-ai-demo-heading {

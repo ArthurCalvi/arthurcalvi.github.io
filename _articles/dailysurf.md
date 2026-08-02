@@ -12,7 +12,7 @@ dailysurf_demo: true
 <p class="dailysurf-beta-cta">
   <strong>DailySurf is currently in beta.</strong>
   If you would like to try it, you can
-  <a href="https://www.dailysurf.fr/#beta">join through the form on dailysurf.fr</a>.
+  <a href="https://www.dailysurf.fr/">join through the form on dailysurf.fr</a>.
 </p>
 
 DailySurf began, loosely, in Bouznika, Morocco. I was there in June for a trip with [Surf Progress](https://surf-progress.com/), where I met Thibaut de Gueyer. Thibaut is a surf coach and the creator of Surf Progress. He has built a large online community around clear, practical teaching for beginner and intermediate surfers. He had organised the trip, and we got along quickly. We were both building things, and ideas came easily.

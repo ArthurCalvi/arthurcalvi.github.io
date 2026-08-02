@@ -1,0 +1,198 @@
+<figure
+  class="disturbance-graph"
+  id="disturbance-attribution-diagram"
+  data-disturbance-graph
+  aria-labelledby="disturbance-graph-title"
+  aria-describedby="disturbance-graph-description"
+>
+  <figcaption class="disturbance-graph-caption">
+    <span class="disturbance-graph-caption-copy">
+      <span class="disturbance-graph-kicker">Schematic example</span>
+      <strong id="disturbance-graph-title">From scattered records to one candidate event</strong>
+      <span id="disturbance-graph-description">
+        Each marker is a record from a different source. The framework connects compatible evidence,
+        finds communities, refines them into clusters, and proposes an attribution for review. Select
+        either final cluster to inspect its attribution.
+      </span>
+    </span>
+    <button class="disturbance-replay" type="button" data-disturbance-replay hidden>
+      <svg viewBox="0 0 20 20" aria-hidden="true">
+        <path d="M15.7 6.1A6.5 6.5 0 1 0 16.5 12" />
+        <path d="M15.7 2.8v3.7h-3.8" />
+      </svg>
+      Replay
+    </button>
+  </figcaption>
+
+  <div class="disturbance-graph-legend" aria-label="Diagram legend">
+    <span><i class="disturbance-legend-mark is-reference" aria-hidden="true"></i>Reference map</span>
+    <span><i class="disturbance-legend-mark is-observation" aria-hidden="true"></i>Observation</span>
+    <span><i class="disturbance-legend-mark is-raster" aria-hidden="true"></i>Raster signal</span>
+    <span><i class="disturbance-legend-link" aria-hidden="true"></i>Weighted link</span>
+  </div>
+
+  <div class="disturbance-graph-phases" aria-label="Current animation phase">
+    <span style="--phase-step: 0"><small>01</small>Communities</span>
+    <span style="--phase-step: 1"><small>02</small>HDBSCAN</span>
+    <span style="--phase-step: 2"><small>03</small>Attribution</span>
+  </div>
+
+  <div class="disturbance-graph-stage">
+    <div class="disturbance-graph-map">
+      <svg
+        viewBox="0 0 720 420"
+        role="img"
+        aria-labelledby="disturbance-graph-svg-title disturbance-graph-svg-description"
+      >
+        <title id="disturbance-graph-svg-title">Graph-based forest disturbance attribution</title>
+        <desc id="disturbance-graph-svg-description">
+          Records from several sources appear on a schematic map. Weighted links connect records
+          that are close in space and time. Community and cluster boundaries then identify groups.
+        </desc>
+        <defs>
+          <marker id="disturbance-vote-arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#1d6a4a" />
+          </marker>
+          <marker id="disturbance-vote-arrow-rust" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#b95c3e" />
+          </marker>
+        </defs>
+
+        <rect class="disturbance-map-field" x="1" y="1" width="718" height="418" />
+        <path class="disturbance-map-contour" d="M-20 89 C105 35 167 111 280 77 S478 29 760 81" />
+        <path class="disturbance-map-contour" d="M-18 287 C92 230 172 310 288 271 S505 216 753 277" />
+        <path class="disturbance-map-contour" d="M60 446 C136 330 230 355 331 327 S545 347 680 286" />
+        <text class="disturbance-map-label" x="28" y="36">Illustrative records</text>
+
+        <g class="disturbance-community is-primary">
+          <path d="M93 97 C156 48 300 54 385 108 C439 143 435 253 359 291 C277 332 122 307 74 230 C43 180 54 128 93 97 Z" />
+        </g>
+        <g class="disturbance-community is-secondary">
+          <path d="M448 199 C510 160 624 171 683 234 C730 285 696 362 631 387 C552 417 438 367 423 292 C416 254 422 217 448 199 Z" />
+        </g>
+
+        <g class="disturbance-graph-edges" aria-hidden="true">
+          <line class="disturbance-edge is-strong" style="--edge-step: 0" pathLength="1" x1="181" y1="133" x2="247" y2="202" />
+          <line class="disturbance-edge is-strong" style="--edge-step: 1" pathLength="1" x1="247" y1="202" x2="321" y2="129" />
+          <line class="disturbance-edge is-medium" style="--edge-step: 2" pathLength="1" x1="247" y1="202" x2="323" y2="257" />
+          <line class="disturbance-edge is-weak" style="--edge-step: 3" pathLength="1" x1="181" y1="133" x2="321" y2="129" />
+          <line class="disturbance-edge is-strong" style="--edge-step: 4" pathLength="1" x1="532" y1="284" x2="608" y2="231" />
+          <line class="disturbance-edge is-weak" style="--edge-step: 5" pathLength="1" x1="532" y1="284" x2="469" y2="331" />
+        </g>
+
+        <g
+          class="disturbance-cluster is-primary is-selected"
+          data-disturbance-cluster="primary"
+          role="button"
+          tabindex="0"
+          aria-label="Show the attribution for HDBSCAN cluster 01"
+          aria-pressed="true"
+        >
+          <title>HDBSCAN cluster 01</title>
+          <path d="M151 106 C194 78 310 79 350 121 C385 158 371 253 323 278 C265 308 174 283 139 230 C114 191 118 132 151 106 Z" />
+          <text class="disturbance-cluster-label" x="142" y="102">Cluster 01</text>
+        </g>
+        <g
+          class="disturbance-cluster is-secondary"
+          data-disturbance-cluster="secondary"
+          role="button"
+          tabindex="0"
+          aria-label="Show the attribution for HDBSCAN cluster 02"
+          aria-pressed="false"
+        >
+          <title>HDBSCAN cluster 02</title>
+          <path d="M503 243 C544 199 627 194 655 242 C680 284 638 339 579 351 C526 362 482 323 491 275 C493 262 497 251 503 243 Z" />
+          <text class="disturbance-cluster-label" x="501" y="236">Cluster 02</text>
+        </g>
+
+        <g class="disturbance-vote-flows is-selected" data-disturbance-vote-flows="primary" aria-hidden="true">
+          <line class="disturbance-vote-flow is-biotic" style="--vote-step: 0" pathLength="1" x1="181" y1="133" x2="236" y2="191" />
+          <line class="disturbance-vote-flow is-drought" style="--vote-step: 1" pathLength="1" x1="321" y1="129" x2="258" y2="191" />
+          <line class="disturbance-vote-flow is-biotic" style="--vote-step: 2" pathLength="1" x1="323" y1="257" x2="259" y2="211" />
+        </g>
+        <g class="disturbance-vote-flows" data-disturbance-vote-flows="secondary" aria-hidden="true">
+          <line class="disturbance-vote-flow is-fire" style="--vote-step: 0" pathLength="1" x1="608" y1="231" x2="545" y2="274" />
+          <line class="disturbance-vote-flow is-drought" style="--vote-step: 1" pathLength="1" x1="469" y1="331" x2="520" y2="293" />
+        </g>
+
+        <g class="disturbance-node is-observation" style="--node-step: 0" transform="translate(181 133)">
+          <circle r="11" />
+          <text x="18" y="-2">Health</text>
+          <text class="disturbance-node-date" x="18" y="16">Biotic · 2019</text>
+        </g>
+        <g class="disturbance-node is-reference is-target is-selected-target" data-disturbance-target="primary" style="--node-step: 1" transform="translate(247 202)">
+          <rect x="-13" y="-10" width="26" height="20" rx="3" />
+          <rect class="disturbance-target-ring" x="-19" y="-16" width="38" height="32" rx="6" />
+          <text x="21" y="-2">Map</text>
+          <text class="disturbance-node-date" x="21" y="16">Ambiguous · 2018</text>
+        </g>
+        <g class="disturbance-node is-raster" style="--node-step: 2" transform="translate(321 129)">
+          <path d="M0 -12 L12 0 L0 12 L-12 0 Z" />
+          <text x="19" y="-2">Drought</text>
+          <text class="disturbance-node-date" x="19" y="16">2018</text>
+        </g>
+        <g class="disturbance-node is-observation" style="--node-step: 3" transform="translate(323 257)">
+          <circle r="11" />
+          <text x="18" y="-2">Health</text>
+          <text class="disturbance-node-date" x="18" y="16">Biotic · 2020</text>
+        </g>
+        <g class="disturbance-node is-reference is-target" data-disturbance-target="secondary" style="--node-step: 4" transform="translate(532 284)">
+          <rect x="-13" y="-10" width="26" height="20" rx="3" />
+          <rect class="disturbance-target-ring" x="-19" y="-16" width="38" height="32" rx="6" />
+          <text x="21" y="-2">Map</text>
+          <text class="disturbance-node-date" x="21" y="16">2020</text>
+        </g>
+        <g class="disturbance-node is-observation is-fire" style="--node-step: 5" transform="translate(608 231)">
+          <circle r="11" />
+          <text x="18" y="-2">Fire</text>
+          <text class="disturbance-node-date" x="18" y="16">2020</text>
+        </g>
+        <g class="disturbance-node is-raster" style="--node-step: 6" transform="translate(469 331)">
+          <path d="M0 -12 L12 0 L0 12 L-12 0 Z" />
+          <text x="19" y="-2">Drought</text>
+          <text class="disturbance-node-date" x="19" y="16">2019</text>
+        </g>
+        <g class="disturbance-node is-observation is-noise" style="--node-step: 7" transform="translate(501 91)">
+          <circle r="11" />
+          <text x="18" y="-2">Health</text>
+          <text class="disturbance-node-date" x="18" y="16">2017</text>
+        </g>
+      </svg>
+    </div>
+
+    <aside class="disturbance-graph-result" aria-label="Output of the selected cluster" aria-live="polite">
+      <span class="disturbance-result-kicker" data-disturbance-result-kicker>Selected cluster 01</span>
+      <strong>Candidate attribution</strong>
+      <dl>
+        <div style="--result-step: 0">
+          <dt>Extent</dt>
+          <dd data-disturbance-result-extent>Cluster envelope</dd>
+        </div>
+        <div style="--result-step: 1">
+          <dt>Period</dt>
+          <dd data-disturbance-result-period>2018–2020</dd>
+        </div>
+      </dl>
+      <div class="disturbance-vote-result" aria-label="Illustrative reliability-weighted cause vote">
+        <span>Illustrative cause vote</span>
+        <div class="disturbance-vote-row" data-disturbance-vote-row data-tone="accent" style="--vote-width: 88%; --result-step: 0">
+          <strong data-disturbance-vote-label>Biotic</strong><i aria-hidden="true"></i><em data-disturbance-vote-note>Most support</em>
+        </div>
+        <div class="disturbance-vote-row" data-disturbance-vote-row data-tone="rust" style="--vote-width: 43%; --result-step: 1">
+          <strong data-disturbance-vote-label>Drought</strong><i aria-hidden="true"></i><em data-disturbance-vote-note>Alternative</em>
+        </div>
+        <div class="disturbance-vote-row" data-disturbance-vote-row data-tone="muted" style="--vote-width: 18%; --result-step: 2">
+          <strong data-disturbance-vote-label>Unknown</strong><i aria-hidden="true"></i><em data-disturbance-vote-note>Uncertainty kept</em>
+        </div>
+      </div>
+      <p>Candidate for human validation against the satellite time series.</p>
+    </aside>
+  </div>
+
+  <ol class="disturbance-graph-steps" aria-label="Attribution stages">
+    <li style="--process-step: 0"><strong>Graph</strong><span>Nearby records become weighted links</span></li>
+    <li style="--process-step: 1"><strong>Communities</strong><span>Louvain finds coarse disturbance complexes</span></li>
+    <li style="--process-step: 2"><strong>HDBSCAN</strong><span>Dense groups refine each community</span></li>
+    <li style="--process-step: 3"><strong>Attribute</strong><span>Sources vote on the reference record</span></li>
+  </ol>
+</figure>

@@ -3,13 +3,19 @@ layout: page
 title: PhD Work
 section: work
 eyebrow: Previous work
-description: Forest phenology from space, harmonic analysis, and the decision to leave academia.
+description: Research on detecting, segmenting, and classifying forest disturbances from satellite imagery.
 permalink: /phd/
 ---
 
-My PhD work explored forest phenology from Sentinel-2 time series using harmonic
-analysis. I left academia, but the technical work and the personal lessons
-remain important.
+My PhD focused on detecting, segmenting, and classifying forest disturbances
+from satellite imagery. I worked on combining heterogeneous disturbance
+datasets, localising events in space and time, and using forest phenology to
+distinguish seasonal variation from genuine forest change.
 
+The broader disturbance work remained unfinished and unpublished. I have
+documented two technical strands, along with the personal account of leaving
+academia:
+
+- [Joining Forest Disturbance Records with Graph Theory]({{ '/articles/joining-forest-disturbance-records/' | relative_url }})
 - [Detecting Tree Phenology from Space]({{ '/articles/phd/' | relative_url }})
 - [Why I Decided to Quit My PhD]({{ '/articles/quit-phd.html' | relative_url }})

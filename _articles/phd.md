@@ -12,9 +12,17 @@ audio_autoplay: false
 math: true
 ---
 
-Deciduous and evergreen forests do not reflect light in the same way through the year. The usual approach is to reduce each satellite time series to a few seasonal numbers. I wanted to know whether a representation learned from a much larger satellite archive could replace this feature engineering, while keeping the rest of the experiment unchanged.
+Deciduous and evergreen forests do not reflect light in the same way through the year. During my PhD, I built a harmonic baseline that reduced irregular Sentinel-2 time series to a few seasonal numbers. I later revisited the same experiment to ask whether a representation learned from a much larger satellite archive could replace this feature engineering, while keeping the data splits and classifiers unchanged.
 
 This is an unpublished research project. The results below come from a working manuscript, not a peer-reviewed paper.
+
+The work brought together the SIERRA project-team at ENS, CNRS, and Inria, and the Laboratoire des Sciences du Climat et de l'Environnement at Université Paris-Saclay. The manuscript was prepared with Sarah Brood and Alexandre d'Aspremont.
+
+[Read the working manuscript (PDF)]({{ '/assets/papers/alphaearth-phenology-working-manuscript.pdf' | relative_url }}) or [browse the code and reproducibility material](https://github.com/ArthurCalvi/S2-Tree-Phenology).
+
+This study was one part of a broader PhD on detecting, segmenting, and classifying forest disturbances from satellite imagery. Phenology mattered because a disturbance system first has to distinguish abnormal forest change from normal seasonal variation.
+
+The companion article, [Joining forest disturbance records with graph theory]({{ '/articles/joining-forest-disturbance-records/' | relative_url }}), describes how I combined incomplete event records before attempting to build that disturbance dataset.
 
 {% include figure.html src='/assets/images/phenology-satellite-embedding-map.webp' alt='Three aligned views of southeast France: a true-colour satellite image, a multicolour AlphaEarth embedding, and an orange-and-blue deciduous-evergreen classification' caption='The same landscape seen as Sentinel-2 imagery, an AlphaEarth embedding, and a deciduous–evergreen classification. The preview is intentionally unmasked, so every pixel receives a class.' %}
 
@@ -61,3 +69,5 @@ Embeddings reduced the need to design seasonal features by hand, but they did no
 The Mediterranean result made this especially clear. Broadleaf evergreens, pines, dry summers, and green understory can produce overlapping signals. At that point, a more complex model may help less than newer observations and a sharper definition of what counts as deciduous or evergreen.
 
 This experiment changed where I would spend the next unit of effort. The learned embeddings were already strong enough for lightweight local training. The next improvement would probably come from better supervision and regional validation, not from adding another layer to the classifier.
+
+The public repository contains the original harmonic pipeline and the later AlphaEarth comparison. The PDF and repository are research material, not a publication.

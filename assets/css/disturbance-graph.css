@@ -1,0 +1,930 @@
+.disturbance-graph {
+  width: min(62rem, calc(100vw - (2 * var(--page-pad))));
+  margin: clamp(3rem, 7vw, 5rem) 0;
+  font-family: var(--sans);
+}
+
+.disturbance-graph-caption {
+  display: grid;
+  align-items: end;
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 45rem) auto;
+}
+
+.disturbance-graph-caption-copy {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.disturbance-graph-kicker,
+.disturbance-result-kicker {
+  color: var(--rust);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.disturbance-graph-caption-copy > strong {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+}
+
+.disturbance-graph-caption-copy > span:last-child {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.disturbance-replay {
+  display: inline-flex;
+  min-height: 2.35rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line-dark);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.65rem;
+  font-weight: 700;
+  gap: 0.4rem;
+  justify-self: end;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.disturbance-replay:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.disturbance-replay:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.disturbance-replay svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.disturbance-graph-legend {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1.55rem 0 0.8rem;
+  gap: 0.55rem 1.15rem;
+}
+
+.disturbance-graph-legend > span {
+  display: inline-flex;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.67rem;
+  font-weight: 650;
+  gap: 0.4rem;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.disturbance-legend-mark {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  flex: 0 0 auto;
+}
+
+.disturbance-legend-mark.is-reference {
+  border: 1.5px solid var(--ink);
+  border-radius: 2px;
+  background: var(--paper-light);
+}
+
+.disturbance-legend-mark.is-observation {
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.disturbance-legend-mark.is-raster {
+  border: 1.5px solid var(--rust);
+  background: var(--paper-light);
+  transform: rotate(45deg) scale(0.76);
+}
+
+.disturbance-legend-link {
+  width: 1.35rem;
+  border-top: 2px solid var(--line-dark);
+}
+
+.disturbance-graph-phases {
+  display: grid;
+  margin-top: 0.8rem;
+  border-top: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.disturbance-graph-phases span {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  padding: 0.65rem 0.8rem;
+  color: var(--muted);
+  font-size: 0.67rem;
+  font-weight: 700;
+  gap: 0.55rem;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.disturbance-graph-phases span + span {
+  border-left: 1px solid var(--line);
+}
+
+.disturbance-graph-phases span:last-child {
+  background: var(--accent);
+  color: var(--paper-light);
+}
+
+.disturbance-graph-phases small {
+  color: currentColor;
+  font-size: 0.58rem;
+  opacity: 0.68;
+}
+
+.disturbance-graph-stage {
+  display: grid;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-dark);
+  background: rgba(248, 245, 237, 0.45);
+  grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.34fr);
+}
+
+.disturbance-graph-map {
+  min-width: 0;
+  border-right: 1px solid var(--line);
+}
+
+.disturbance-graph-map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.disturbance-map-field {
+  fill: rgba(248, 245, 237, 0.54);
+  stroke: none;
+}
+
+.disturbance-map-contour {
+  fill: none;
+  stroke: rgba(101, 112, 105, 0.18);
+  stroke-width: 2;
+}
+
+.disturbance-map-label,
+.disturbance-node text {
+  font-family: var(--sans);
+}
+
+.disturbance-map-label {
+  fill: var(--muted);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.disturbance-community path {
+  fill: rgba(29, 106, 74, 0.025);
+  stroke: rgba(29, 106, 74, 0.62);
+  stroke-dasharray: 9 8;
+  stroke-width: 2.5;
+}
+
+.disturbance-community.is-secondary path {
+  fill: rgba(185, 92, 62, 0.02);
+  stroke: rgba(185, 92, 62, 0.48);
+}
+
+.disturbance-cluster path {
+  fill: rgba(29, 106, 74, 0.09);
+  stroke: rgba(29, 106, 74, 0.72);
+  stroke-width: 2;
+}
+
+.disturbance-cluster.is-secondary path {
+  fill: rgba(185, 92, 62, 0.065);
+  stroke: rgba(185, 92, 62, 0.62);
+}
+
+.disturbance-cluster-label {
+  fill: var(--accent);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 1.2px;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.disturbance-cluster.is-secondary .disturbance-cluster-label {
+  fill: var(--rust);
+}
+
+.disturbance-edge {
+  stroke: var(--line-dark);
+  stroke-linecap: round;
+}
+
+.disturbance-edge.is-strong {
+  --edge-opacity: 0.82;
+  stroke-width: 5;
+}
+
+.disturbance-edge.is-medium {
+  --edge-opacity: 0.64;
+  stroke-width: 3.5;
+}
+
+.disturbance-edge.is-weak {
+  --edge-opacity: 0.4;
+  stroke-dasharray: 8 7;
+  stroke-width: 2.5;
+}
+
+.disturbance-vote-flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 4;
+}
+
+.disturbance-vote-flow.is-biotic {
+  stroke: var(--accent);
+  marker-end: url(#disturbance-vote-arrow-green);
+}
+
+.disturbance-vote-flow.is-drought,
+.disturbance-vote-flow.is-fire {
+  stroke: var(--rust);
+  marker-end: url(#disturbance-vote-arrow-rust);
+}
+
+.disturbance-vote-flows[data-disturbance-vote-flows="secondary"] .disturbance-vote-flow.is-drought {
+  stroke: var(--accent);
+  marker-end: url(#disturbance-vote-arrow-green);
+}
+
+.disturbance-vote-flows:not(.is-selected) .disturbance-vote-flow {
+  opacity: 0;
+}
+
+.disturbance-node > circle,
+.disturbance-node > rect,
+.disturbance-node > path {
+  vector-effect: non-scaling-stroke;
+}
+
+.disturbance-node.is-reference > rect:not(.disturbance-target-ring) {
+  fill: var(--paper-light);
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+
+.disturbance-node.is-observation > circle {
+  fill: var(--accent);
+  stroke: var(--paper-light);
+  stroke-width: 2.5;
+}
+
+.disturbance-node.is-observation.is-fire > circle {
+  fill: var(--rust);
+}
+
+.disturbance-node.is-raster > path {
+  fill: var(--paper-light);
+  stroke: var(--rust);
+  stroke-width: 2.5;
+}
+
+.disturbance-node .disturbance-target-ring {
+  fill: none;
+  opacity: 0;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  transition: opacity 0.22s ease;
+}
+
+.disturbance-node.is-selected-target .disturbance-target-ring {
+  opacity: 1;
+}
+
+.disturbance-node text {
+  fill: var(--ink);
+  font-size: 21px;
+  font-weight: 650;
+}
+
+.disturbance-node .disturbance-node-date {
+  fill: var(--muted);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.disturbance-node.is-noise {
+  opacity: 0.38;
+}
+
+.disturbance-graph-result {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.disturbance-graph-result > strong {
+  max-width: 10ch;
+  margin-top: 0.55rem;
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+.disturbance-graph-result dl {
+  margin: clamp(1.5rem, 4vw, 2.5rem) 0 0;
+}
+
+.disturbance-graph-result dl div {
+  display: grid;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--line);
+  gap: 0.1rem;
+}
+
+.disturbance-graph-result dt {
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.disturbance-graph-result dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.03rem;
+  line-height: 1.3;
+}
+
+.disturbance-vote-result {
+  display: grid;
+  margin-top: 1.15rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+  gap: 0.58rem;
+}
+
+.disturbance-vote-result > span {
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.disturbance-vote-row {
+  display: grid;
+  min-width: 0;
+  align-items: center;
+  gap: 0.45rem;
+  grid-template-columns: 3.4rem minmax(2.5rem, 1fr) auto;
+}
+
+.disturbance-vote-row strong {
+  font-size: 0.68rem;
+}
+
+.disturbance-vote-row i {
+  position: relative;
+  height: 3px;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.disturbance-vote-row i::after {
+  position: absolute;
+  width: var(--vote-width);
+  background: var(--accent);
+  content: "";
+  inset: 0 auto 0 0;
+  transform-origin: left;
+}
+
+.disturbance-vote-row[data-tone="rust"] i::after {
+  background: var(--rust);
+}
+
+.disturbance-vote-row[data-tone="muted"] i::after {
+  background: var(--line-dark);
+}
+
+.disturbance-vote-row em {
+  color: var(--muted);
+  font-size: 0.56rem;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.disturbance-graph-result > p {
+  margin: auto 0 0;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.disturbance-graph-steps {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--line);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+}
+
+.disturbance-graph-steps li {
+  display: grid;
+  min-width: 0;
+  margin: 0;
+  padding: 1rem 0.85rem 1rem 0;
+  gap: 0.22rem;
+}
+
+.disturbance-graph-steps li + li {
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--line);
+}
+
+.disturbance-graph-steps strong {
+  color: var(--accent);
+  font-size: 0.67rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.disturbance-graph-steps span {
+  color: var(--muted);
+  font-size: 0.67rem;
+  line-height: 1.4;
+}
+
+.disturbance-graph.is-ready .disturbance-node,
+.disturbance-graph.is-ready .disturbance-edge,
+.disturbance-graph.is-ready .disturbance-community,
+.disturbance-graph.is-ready .disturbance-cluster,
+.disturbance-graph.is-ready .disturbance-vote-flow,
+.disturbance-graph.is-ready .disturbance-graph-result > *,
+.disturbance-graph.is-ready .disturbance-graph-result dl div,
+.disturbance-graph.is-ready .disturbance-vote-row,
+.disturbance-graph.is-ready .disturbance-graph-steps li {
+  opacity: 0;
+}
+
+.disturbance-graph.is-ready .disturbance-graph-phases span:last-child {
+  background: transparent;
+  color: var(--muted);
+}
+
+.disturbance-graph.is-ready .disturbance-vote-row i::after {
+  transform: scaleX(0);
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-node {
+  animation: disturbance-node-in 0.48s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  animation-delay: calc(0.12s + (var(--node-step) * 0.1s));
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-node.is-noise {
+  animation-name: disturbance-node-in-muted;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-edge {
+  animation: disturbance-edge-in 0.72s ease-out both;
+  animation-delay: calc(1.05s + (var(--edge-step) * 0.08s));
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-edge.is-weak {
+  stroke-dasharray: 0.08 0.07;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-community {
+  animation:
+    disturbance-region-in 0.65s ease 1.45s both,
+    disturbance-community-settle 0.45s ease 2.85s forwards;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-community.is-secondary {
+  animation-delay: 1.6s, 2.85s;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-cluster {
+  animation: disturbance-region-in 0.65s ease 2.75s both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-cluster.is-secondary {
+  animation-delay: 2.9s;
+}
+
+.disturbance-graph.is-ready.is-animated:not(.is-interactive) .disturbance-vote-flows.is-selected .disturbance-vote-flow {
+  animation: disturbance-vote-in 0.7s ease-out both;
+  animation-delay: calc(3.9s + (var(--vote-step) * 0.13s));
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.disturbance-graph.is-ready.is-animated:not(.is-interactive) .disturbance-node.is-target.is-selected-target .disturbance-target-ring {
+  animation: disturbance-target-pulse 0.8s ease 4.15s both;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-graph-phases span {
+  animation: disturbance-phase-pass 1.2s ease both;
+  animation-delay: calc(1.3s + (var(--phase-step) * 1.35s));
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-graph-phases span:last-child {
+  animation-name: disturbance-phase-final;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-graph-result > .disturbance-result-kicker,
+.disturbance-graph.is-ready.is-animated .disturbance-graph-result > strong,
+.disturbance-graph.is-ready.is-animated .disturbance-graph-result > p {
+  animation: disturbance-result-in 0.55s ease both;
+  animation-delay: 4.15s;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-graph-result > strong {
+  animation-delay: 4.28s;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-graph-result dl {
+  animation: disturbance-result-in 0.4s ease both;
+  animation-delay: 4.35s;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-graph-result dl div {
+  animation: disturbance-result-in 0.45s ease both;
+  animation-delay: calc(4.42s + (var(--result-step) * 0.12s));
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-vote-result {
+  animation: disturbance-result-in 0.45s ease 4.62s both;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-vote-row {
+  animation: disturbance-result-in 0.4s ease both;
+  animation-delay: calc(4.72s + (var(--result-step) * 0.13s));
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-vote-row i::after {
+  animation: disturbance-vote-bar-in 0.55s ease both;
+  animation-delay: calc(4.78s + (var(--result-step) * 0.13s));
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-graph-result > p {
+  animation-delay: 5.15s;
+}
+
+.disturbance-graph.is-ready.is-animated .disturbance-graph-steps li {
+  animation: disturbance-step-in 0.5s ease both;
+  animation-delay: calc(0.35s + (var(--process-step) * 1.25s));
+}
+
+.disturbance-graph.is-interactive .disturbance-cluster {
+  opacity: 0.38;
+  animation: none;
+  cursor: pointer;
+  pointer-events: all;
+  transition: opacity 0.22s ease;
+}
+
+.disturbance-graph.is-interactive .disturbance-node,
+.disturbance-graph.is-interactive .disturbance-edge,
+.disturbance-graph.is-interactive .disturbance-community,
+.disturbance-graph.is-interactive .disturbance-vote-flow {
+  pointer-events: none;
+}
+
+.disturbance-graph.is-interactive .disturbance-cluster:hover,
+.disturbance-graph.is-interactive .disturbance-cluster:focus-visible,
+.disturbance-graph.is-interactive .disturbance-cluster.is-selected {
+  opacity: 1;
+}
+
+.disturbance-graph.is-interactive .disturbance-cluster path {
+  transition: fill 0.22s ease, stroke-width 0.22s ease;
+}
+
+.disturbance-graph.is-interactive .disturbance-cluster:hover path,
+.disturbance-graph.is-interactive .disturbance-cluster:focus-visible path,
+.disturbance-graph.is-interactive .disturbance-cluster.is-selected path {
+  stroke-width: 3.5;
+}
+
+.disturbance-graph.is-interactive .disturbance-cluster:focus,
+.disturbance-graph.is-interactive .disturbance-cluster:focus-visible {
+  outline: none;
+}
+
+.disturbance-graph.is-interactive .disturbance-cluster:focus-visible path {
+  filter: drop-shadow(0 0 3px rgba(29, 106, 74, 0.28));
+}
+
+.disturbance-graph.is-interactive .disturbance-vote-flow {
+  opacity: 0;
+  animation: none;
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+  transition: opacity 0.28s ease;
+}
+
+.disturbance-graph.is-interactive .disturbance-vote-flows.is-selected .disturbance-vote-flow {
+  opacity: 0.95;
+}
+
+.disturbance-graph.is-interactive .disturbance-graph-result.is-updated {
+  animation: disturbance-panel-switch 0.34s ease both;
+}
+
+@keyframes disturbance-node-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes disturbance-node-in-muted {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.38;
+  }
+}
+
+@keyframes disturbance-edge-in {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 1;
+  }
+  to {
+    opacity: var(--edge-opacity);
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes disturbance-region-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes disturbance-community-settle {
+  to {
+    opacity: 0.42;
+  }
+}
+
+@keyframes disturbance-vote-in {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 1;
+  }
+  to {
+    opacity: 0.95;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes disturbance-target-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    stroke-width: 2.5;
+  }
+  50% {
+    opacity: 0.55;
+    stroke-width: 6;
+  }
+}
+
+@keyframes disturbance-phase-pass {
+  0%,
+  100% {
+    background: transparent;
+    color: var(--muted);
+  }
+  15%,
+  78% {
+    background: rgba(29, 106, 74, 0.1);
+    color: var(--accent);
+  }
+}
+
+@keyframes disturbance-phase-final {
+  0% {
+    background: transparent;
+    color: var(--muted);
+  }
+  15%,
+  100% {
+    background: var(--accent);
+    color: var(--paper-light);
+  }
+}
+
+@keyframes disturbance-vote-bar-in {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes disturbance-panel-switch {
+  from {
+    opacity: 0.55;
+    transform: translateY(0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes disturbance-result-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.45rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes disturbance-step-in {
+  from {
+    opacity: 0;
+    background: transparent;
+  }
+  45% {
+    opacity: 1;
+    background: rgba(29, 106, 74, 0.08);
+  }
+  to {
+    opacity: 1;
+    background: transparent;
+  }
+}
+
+@media (max-width: 780px) {
+  .disturbance-graph {
+    width: 100%;
+  }
+
+  .disturbance-graph-caption {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .disturbance-replay {
+    justify-self: start;
+  }
+
+  .disturbance-graph-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .disturbance-graph-map {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .disturbance-graph-result > strong {
+    max-width: none;
+  }
+
+  .disturbance-graph-result > p {
+    margin-top: 1rem;
+  }
+
+  .disturbance-graph-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .disturbance-graph-steps li:nth-child(3) {
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .disturbance-graph-steps li:nth-child(4) {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 440px) {
+  .disturbance-graph-phases span {
+    justify-content: center;
+    padding: 0.6rem 0.35rem;
+    font-size: 0.6rem;
+    gap: 0.3rem;
+    letter-spacing: 0.045em;
+  }
+
+  .disturbance-graph-phases small {
+    font-size: 0.52rem;
+  }
+
+  .disturbance-graph-legend {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .disturbance-vote-row {
+    grid-template-columns: 3.2rem minmax(2rem, 1fr) auto;
+  }
+
+  .disturbance-graph-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .disturbance-graph-steps li,
+  .disturbance-graph-steps li + li,
+  .disturbance-graph-steps li:nth-child(3) {
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .disturbance-graph-steps li:first-child {
+    border-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .disturbance-replay {
+    display: none;
+  }
+
+  .disturbance-graph *,
+  .disturbance-graph.is-ready * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .disturbance-graph.is-ready .disturbance-node,
+  .disturbance-graph.is-ready .disturbance-edge,
+  .disturbance-graph.is-ready .disturbance-community,
+  .disturbance-graph.is-ready .disturbance-cluster,
+  .disturbance-graph.is-ready .disturbance-vote-flow,
+  .disturbance-graph.is-ready .disturbance-graph-result > *,
+  .disturbance-graph.is-ready .disturbance-graph-result dl div,
+  .disturbance-graph.is-ready .disturbance-vote-row,
+  .disturbance-graph.is-ready .disturbance-graph-steps li {
+    opacity: 1;
+  }
+
+  .disturbance-graph.is-ready .disturbance-vote-row i::after {
+    transform: scaleX(1);
+  }
+
+  .disturbance-graph.is-ready .disturbance-node.is-noise {
+    opacity: 0.38;
+  }
+}

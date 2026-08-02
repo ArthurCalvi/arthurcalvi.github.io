@@ -646,6 +646,21 @@ p {
   color: #3f4a44;
 }
 
+.resume-project-title {
+  margin: 1.25rem 0 0;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.055em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.resume-project-title a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
 .resume-list ul {
   margin: 0.75rem 0 0;
   padding-left: 1.15rem;

@@ -21,6 +21,9 @@
   {% if page.dailysurf_demo %}
   <link rel="stylesheet" href="{{ '/assets/css/dailysurf-guetteur.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
   {% endif %}
+  {% if page.disturbance_graph %}
+  <link rel="stylesheet" href="{{ '/assets/css/disturbance-graph.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
+  {% endif %}
   {% if page.math %}
   <script>
     MathJax = {
@@ -58,6 +61,9 @@
   {% endif %}
   {% if page.dailysurf_demo %}
   <script src="{{ '/assets/js/dailysurf-guetteur.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  {% endif %}
+  {% if page.disturbance_graph %}
+  <script src="{{ '/assets/js/disturbance-graph.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
   {% endif %}
 </body>
 </html>

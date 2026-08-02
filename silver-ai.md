@@ -3,7 +3,7 @@ layout: default
 title: Silver AI
 date: 2026-07-27
 section: articles
-description: Silver AI is an upcoming DxO Labs research preview for Nik Silver Efex, an established reference for professional black-and-white photo editing.
+description: Silver AI grew from a two-person prototype into a cross-functional DxO Labs research and product effort for an upcoming Nik Silver Efex research preview.
 permalink: /silver-ai/
 silver_ai: true
 cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dramatic-mountain-print/final.webp
@@ -21,16 +21,16 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
       <p class="silver-ai-deck">
         <a href="https://nikcollection.dxo.com/nik-silver-efex/" target="_blank" rel="noopener">Nik Silver Efex</a>
         is an established reference for professional black-and-white photo
-        editing. A year ago, I formed a cross-functional team at DxO Labs
-        around a simple question: can a photographer describe an intention
-        while an agent turns it into a controlled, inspectable edit? Silver AI
-        is our research preview. I lead the project from research to
-        productization and contribute directly to agent design, evaluation,
-        benchmarks, and integration, alongside many people across DxO. It will
-        soon be available in Nik Silver Efex.
+        editing. Silver AI is an upcoming research preview that lets a
+        photographer express an editing intent in ordinary language while an
+        agent turns it into controlled, inspectable actions. I lead the project
+        and contribute directly to the agent, evaluations, benchmarks, and
+        integration alongside the team.
       </p>
       <ul class="silver-ai-project-tags" aria-label="Project details">
         <li>Started in 2025</li>
+        <li>Two-month prototype</li>
+        <li>API · MCP · harness</li>
         <li>Cross-functional R&amp;D</li>
         <li>Research → product</li>
         <li>Codex app-server</li>
@@ -47,6 +47,20 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
       />
     </figure>
   </header>
+
+  <aside class="silver-ai-origin-note" aria-label="How Silver AI started">
+    <p class="silver-ai-example-note-label">How it started</p>
+    <p>
+      The project began when DxO’s CEO asked me to explore whether AI could
+      control our software. I spent two months building a proof of concept with
+      a senior engineer who knew Silver Efex deeply. He created the application
+      API, we designed the MCP interface together, and I built the agent
+      harness. The prototype gave us enough evidence to continue. Six months
+      into the project, I formed the cross-functional team I now lead. We are
+      integrating the system into Nik Silver Efex while continuing the research
+      and evaluation ahead of its release as a research preview.
+    </p>
+  </aside>
 
   <section class="silver-ai-demo-section silver-ai-demo-section--portrait" aria-labelledby="silver-ai-suggestions-title">
     <div class="silver-ai-demo-heading">

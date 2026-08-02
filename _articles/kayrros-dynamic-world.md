@@ -1,7 +1,7 @@
 ---
 layout: article
 title: Dynamic World, revisited
-description: What I learned by training a land-cover model for stability across dates, seasons, and biomes.
+description: A compact 1.6-million-parameter U-Net trained for stability across dates, seasons, and biomes.
 date: 2022-09-01
 section: kayrros
 category: Remote Sensing
@@ -32,6 +32,8 @@ The model used six optical bands shared by Sentinel-2 and Landsat—red, green, 
 ## Change one part at a time
 
 The baseline was a shallow U-Net with three levels of downsampling. I tested nine versions under the same training setup. Some replaced the usual skip connections with dedicated paths for RGB texture, spectral indices, and elevation. Others added attention, MultiRes blocks, or Atrous Spatial Pyramid Pooling (ASPP) to give the model more spatial context.
+
+The compact U-Net I trained had about 1.6 million parameters. The larger alternatives we were comparing it with were around 20 million. That difference mattered because the model had to run repeatedly over large areas and many dates. Efficiency was part of the system design, not just a smaller number on a model summary.
 
 The maps also had to remain readable at pixel level. The aligned view below shows one area near Mount Kenya: the satellite composite and the V7 prediction occupy exactly the same frame, so field boundaries and errors can be inspected directly.
 
