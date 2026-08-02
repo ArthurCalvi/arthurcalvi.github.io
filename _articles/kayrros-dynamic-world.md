@@ -13,7 +13,7 @@ A land-cover map can look correct on one date and still be useless for measuring
 
 During my 2022 internship at Kayrros, I revisited the nine-class problem used by Dynamic World with a narrower question: which training and architecture choices make a sequence of land-cover maps stable enough to support change analysis? This was an internal research and production project, not a claim to outperform Dynamic World as a global product.
 
-{% include figure.html src='/assets/images/dynamic-world-stability.webp' alt='Five satellite views of the same agricultural landscape above two rows of land-cover maps; V7 remains broadly consistent while V1 changes substantially between dates' caption='The central trade-off. V1 retained more spatial detail but changed with season and atmosphere. V7 was coarser and more stable—a useful property when the next step is change detection.' %}
+{% include figure.html src='/assets/images/dynamic-world-stability.webp' alt='Five satellite views of the same agricultural landscape above two rows of land-cover maps; V7 remains broadly consistent while V1 changes substantially between dates' caption='The central trade-off. V1 retained more spatial detail but changed with season and atmosphere. V7 was coarser and more stable, which was useful when the next step was change detection.' %}
 
 _Internship at Kayrros, supervised by Aurélien De Truchis._
 
@@ -27,7 +27,7 @@ This did not tell the model that every nearby image was equally true. It asked t
 
 {% include figure.html src='/assets/images/dynamic-world-temporal-augmentation.webp' alt='A tree-and-shrub label map above five dated satellite observations, each paired with a grayscale confidence mask that fades under clouds or inconsistent vegetation' caption='One annotation, five nearby observations. The confidence maps at the bottom downweight cloudy or spectrally inconsistent pixels instead of treating every date as equally reliable.' %}
 
-The model used six optical bands shared by Sentinel-2 and Landsat—red, green, blue, near-infrared, and two short-wave infrared bands—along with spectral indices and terrain derived from SRTM30. The reported experiments used Sentinel-2; adaptation to Landsat remained unfinished.
+The model used six optical bands shared by Sentinel-2 and Landsat: red, green, blue, near-infrared, and two short-wave infrared bands. It also used spectral indices and terrain derived from SRTM30. The reported experiments used Sentinel-2; adaptation to Landsat remained unfinished.
 
 ## Change one part at a time
 

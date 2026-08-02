@@ -3,7 +3,7 @@ layout: default
 title: Silver AI
 date: 2026-07-27
 section: articles
-description: Silver AI grew from a two-person prototype into a cross-functional DxO Labs research and product effort for an upcoming Nik Silver Efex research preview.
+description: Silver AI is a DxO Labs research preview that turns a photographer's intent into visible, editable actions in Nik Silver Efex.
 permalink: /silver-ai/
 silver_ai: true
 cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dramatic-mountain-print/final.webp
@@ -12,7 +12,7 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
 <article
   class="silver-ai-page"
   data-silver-ai-page
-  data-manifest-url="{{ '/assets/silver-ai/edit-replays-2026-07-27/manifest.json' | relative_url }}"
+  data-manifest-url="{{ '/assets/silver-ai/edit-replays-2026-07-27/manifest.json' | relative_url }}?v=20260802"
 >
   <header class="silver-ai-hero">
     <div class="silver-ai-hero-copy">
@@ -20,19 +20,16 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
       <h1>Silver AI</h1>
       <p class="silver-ai-deck">
         <a href="https://nikcollection.dxo.com/nik-silver-efex/" target="_blank" rel="noopener">Nik Silver Efex</a>
-        is an established reference for professional black-and-white photo
-        editing. Silver AI is an upcoming research preview that lets a
-        photographer express an editing intent in ordinary language while an
-        agent turns it into controlled, inspectable actions. I lead the project
-        and contribute directly to the agent, evaluations, benchmarks, and
-        integration alongside the team.
+        is a reference for professional black-and-white photo editing. Silver
+        AI is an agent between the photographer and the software. It turns an
+        editing intent into visible, editable actions inside Silver Efex. The
+        three examples below show it suggesting a direction, responding to an
+        open request, and making a precise edit.
       </p>
       <ul class="silver-ai-project-tags" aria-label="Project details">
         <li>Started in 2025</li>
-        <li>Two-month prototype</li>
-        <li>API · MCP · harness</li>
-        <li>Cross-functional R&amp;D</li>
-        <li>Research → product</li>
+        <li>Research preview</li>
+        <li>Agent · MCP</li>
         <li>Codex app-server</li>
         <li>GPT-5.6 Luna</li>
         <li>Nik Silver Efex</li>
@@ -48,28 +45,14 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
     </figure>
   </header>
 
-  <aside class="silver-ai-origin-note" aria-label="How Silver AI started">
-    <p class="silver-ai-example-note-label">How it started</p>
-    <p>
-      The project began when DxO’s CEO asked me to explore whether AI could
-      control our software. I spent two months building a proof of concept with
-      a senior engineer who knew Silver Efex deeply. He created the application
-      API, we designed the MCP interface together, and I built the agent
-      harness. The prototype gave us enough evidence to continue. Six months
-      into the project, I formed the cross-functional team I now lead. We are
-      integrating the system into Nik Silver Efex while continuing the research
-      and evaluation ahead of its release as a research preview.
-    </p>
-  </aside>
-
   <section class="silver-ai-demo-section silver-ai-demo-section--portrait" aria-labelledby="silver-ai-suggestions-title">
     <div class="silver-ai-demo-heading">
       <div>
         <p class="silver-ai-location">Suggestions</p>
-        <h2 id="silver-ai-suggestions-title">Seixal, Madeira — dawn</h2>
+        <h2 id="silver-ai-suggestions-title">Seixal, Madeira at dawn</h2>
         <p>
           I took this at dawn, while the cliff was still dark and the first
-          light was opening the mist. There is no single obvious edit, so the
+          light began to reveal the mist. There is no single obvious edit, so the
           agent proposes three directions before touching the image.
         </p>
       </div>
@@ -98,7 +81,7 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
           <article>
             <h3>Dramatic mountain print</h3>
             <p class="silver-ai-fallback-prompt">
-              I chose: Dramatic mountain print — Make the cliff and cloud deck carry the frame: a high-contrast landscape preset, darker sky through Color Filter and local control, lifted mist, and a restrained cool selenium finish. The resemblance is to classic Zone System mountain printing, not a claim of authorship.
+              I chose: Dramatic mountain print. Make the cliff and cloud deck carry the frame with a high-contrast landscape preset, a darker sky through Color Filter and local control, lifted mist, and a restrained cool selenium finish.
             </p>
             <figure>
               <img
@@ -118,7 +101,7 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
           <article>
             <h3>Worn coastal postcard</h3>
             <p class="silver-ai-fallback-prompt">
-              I chose: Worn coastal postcard — Turn the scene into a slightly cheeky vintage seaside print with a warm tone, lighter water and haze, restrained grain, and a worn paper edge.
+              I chose: Worn coastal postcard. Turn the scene into a slightly cheeky vintage seaside print with a warm tone, lighter water and haze, restrained grain, and a worn paper edge.
             </p>
             <figure>
               <img
@@ -138,7 +121,7 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
           <article>
             <h3>Luminous mountain mist</h3>
             <p class="silver-ai-fallback-prompt">
-              I chose: Luminous mountain mist — Keep the cliff detailed but let the glowing haze carry the photograph, using a softer landscape base, open midtones, held cloud highlights, and gentle local separation.
+              I chose: Luminous mountain mist. Keep the cliff detailed but let the glowing haze carry the photograph, using a softer landscape base, open midtones, held cloud highlights, and gentle local separation.
             </p>
             <figure>
               <img
@@ -162,12 +145,28 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
       <p>
         The photographer chooses a direction, not a list of settings.
         “Dramatic,” “worn,” and “luminous” are translated into Silver Efex
-        operations—presets, tones, grain, and local adjustments. After each
+        operations: presets, tones, grain, and local adjustments. After each
         step, the histogram is computed from the displayed frame, making the
         movement between light and dark tones visible while the edit unfolds.
       </p>
     </aside>
   </section>
+
+  <aside class="silver-ai-origin-note" aria-label="How Silver AI became a research preview">
+    <p class="silver-ai-example-note-label">From prototype to research preview</p>
+    <p>
+      The project began when DxO’s CEO asked me to explore whether AI could
+      control our software. I built a proof of concept over two months with a
+      senior engineer who knew Silver Efex deeply. He created the application
+      API, we designed the MCP interface together, and I built the agent
+      harness. The result gave us enough evidence to continue. Six months into
+      the project, I formed the cross-functional team I now lead. We are now
+      integrating Silver AI into Nik Silver Efex while continuing the research,
+      evaluation, and benchmark work needed for a research preview. I lead this
+      work. I also contribute directly to the agent, evaluations, benchmarks,
+      and product integration alongside the team.
+    </p>
+  </aside>
 
   <section class="silver-ai-demo-section silver-ai-demo-section--portrait" aria-labelledby="silver-ai-surprise-title">
     <div class="silver-ai-demo-heading">
@@ -176,7 +175,7 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
         <h2 id="silver-ai-surprise-title">La Madeleine, Paris</h2>
         <p>
           I photographed La Madeleine from below, where the columns create a
-          slow sequence of shadows. I began with “Surprise me.” The first
+          rhythm of progressive shadows. I began with “Surprise me.” The first
           result was hard and monumental; I then asked for something softer
           and more poetic.
         </p>
@@ -218,7 +217,7 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
           <p><strong>Arthur</strong> Surprise me</p>
           <p><strong>Silver AI</strong> Monumental Inscription. I pushed the building toward a carved, high-contrast architectural print, added a restrained brown-sepia paper tone, and lifted the inscription with a directional local adjustment so the lettering joins the visual rhythm of the columns.</p>
           <p><strong>Arthur · Follow-up</strong> Could you give it a more poetic and soft look? This architecture is producing some very interesting progressive shadows.</p>
-          <p><strong>Silver AI</strong> I softened the stone and relief into a gentler, more poetic print, easing back the hard structure while protecting the long shadow transitions. The architecture now feels less monumental and more atmospheric—the progressive shadows can carry the mood.</p>
+          <p><strong>Silver AI</strong> I softened the stone and relief into a gentler, more poetic print, easing back the hard structure while protecting the long shadow transitions. The architecture now feels less monumental and more atmospheric. The progressive shadows can carry the mood.</p>
         </div>
       </div>
     </div>
@@ -284,7 +283,7 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
           <p><strong>Arthur</strong> I love this image taken in Lisboa! Could you use selective colorization to create a fun edit?</p>
           <p><strong>Silver AI</strong> The Lisboa tram is now the playful red accent, while the city stays monochrome. I kept the warm yellowed print and worn postcard edge, so it feels like a cheeky vintage souvenir.</p>
           <p><strong>Arthur · Follow-up</strong> Let's change preset for another one, still vintage but not that yellow.</p>
-          <p><strong>Silver AI</strong> I switched to 027 Soft Sepia—a gentler brown vintage tone without the strong yellow cast. The tram's red is back as the selective-color accent, while the background stays softly monochrome.</p>
+          <p><strong>Silver AI</strong> I switched to 027 Soft Sepia, a gentler brown vintage tone without the strong yellow cast. The tram's red is back as the selective-color accent, while the background stays softly monochrome.</p>
         </div>
       </div>
     </div>
@@ -295,7 +294,7 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
         starting points: applying one resets the previous adjustments so the
         photographer can explore a new direction from a clean base. The agent
         follows the same model. It applies Soft Sepia first, then rebuilds the
-        local selective-colour treatment that keeps the tram red.
+        local selective-color treatment that keeps the tram red.
       </p>
     </aside>
   </section>
@@ -303,13 +302,12 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
   <footer class="silver-ai-research-note">
     <p class="silver-ai-example-note-label">Research preview</p>
     <p>
-      These examples show the visible loop: offer directions when intent is
-      open, take a position when invited, and act directly when the request is
-      precise. Making that loop reliable spans image analysis, agent and tool
-      design, evaluation, benchmark creation, product integration, release
-      systems, and feedback from real edits. This page shows only the visible
-      interaction; parts of the perceptual and artistic-direction systems
-      remain confidential.
+      These examples show the visible loop. The agent offers directions when
+      the intent is open, takes a position when invited, and acts directly when
+      the request is precise. Behind that interaction, the team works on image
+      analysis, tool design, evaluations, benchmarks, product integration, and
+      feedback from real edits. This page shows only the visible part of the
+      system. Some perceptual and artistic-direction work remains confidential.
     </p>
   </footer>
 </article>

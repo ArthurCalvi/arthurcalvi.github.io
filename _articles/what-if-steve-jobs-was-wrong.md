@@ -45,7 +45,7 @@ AI systems must be simple enough for both people and machines to understand and 
 
 It may take decades to develop a healthy relationship with AI. That does not make the technology a mistake. It means that builders begin the change, but society has to finish it.
 
-The most important question is therefore not whether Steve Jobs—or OpenAI—was wrong.
+The most important question is therefore not whether Steve Jobs or OpenAI was wrong.
 
 It is this: as technology removes more friction from our lives, what do we want to preserve?
 

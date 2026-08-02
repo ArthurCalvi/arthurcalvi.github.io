@@ -35,7 +35,7 @@
 
 .guetteur-demo-scene {
   position: relative;
-  min-height: clamp(19rem, 38vw, 26rem);
+  min-height: clamp(16rem, 27vw, 20rem);
   overflow: hidden;
   border-bottom: 1px solid var(--ink);
   isolation: isolate;
@@ -68,7 +68,7 @@
   display: flex;
   min-height: inherit;
   max-width: 43rem;
-  padding: clamp(2rem, 5vw, 4rem);
+  padding: clamp(1.6rem, 3vw, 2.5rem);
   flex-direction: column;
   justify-content: flex-end;
 }
@@ -91,7 +91,7 @@
   margin: 0.7rem 0 0.8rem;
   color: var(--paper-light);
   font-family: var(--serif);
-  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
   font-weight: 400;
   letter-spacing: -0.055em;
   line-height: 0.95;
@@ -110,7 +110,7 @@
   z-index: 3;
   display: grid;
   margin: -1px 0 0;
-  padding: clamp(1.1rem, 2.5vw, 1.6rem) clamp(1.2rem, 4vw, 2.2rem);
+  padding: clamp(0.85rem, 1.8vw, 1.1rem) clamp(1.2rem, 4vw, 2.2rem);
   border-bottom: 1px solid var(--line);
   gap: 0.75rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -132,7 +132,7 @@
 }
 
 .guetteur-demo-controls select {
-  min-height: 3rem;
+  min-height: 2.65rem;
   border: 1px solid var(--line-dark);
   border-radius: 0;
   font: inherit;
@@ -159,13 +159,13 @@
 }
 
 .guetteur-demo-results {
-  padding: clamp(1.4rem, 4vw, 2.5rem) 0 clamp(1.3rem, 3vw, 2rem);
+  padding: clamp(1rem, 2vw, 1.4rem) 0 clamp(1.1rem, 2vw, 1.5rem);
 }
 
 .guetteur-demo-results-head {
   display: flex;
-  min-height: 4rem;
-  padding: 0 clamp(1.2rem, 4vw, 2.5rem) 1.2rem;
+  min-height: 3.2rem;
+  padding: 0 clamp(1.2rem, 4vw, 2.5rem) 0.8rem;
   align-items: flex-end;
   justify-content: space-between;
   gap: 1.5rem;
@@ -213,7 +213,7 @@
 }
 
 .guetteur-map {
-  margin: 0 0 1rem;
+  margin: 0 0 0.8rem;
 }
 
 .guetteur-map-head {
@@ -227,7 +227,7 @@
 
 .guetteur-map-frame {
   position: relative;
-  height: clamp(11rem, 18vw, 12.5rem);
+  height: clamp(8.5rem, 13vw, 9.75rem);
   overflow: hidden;
   border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--ink);
@@ -455,6 +455,7 @@ button.guetteur-map-marker:hover .guetteur-map-marker-label {
   max-width: 100%;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
+  scroll-padding-inline: var(--guetteur-gutter);
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
 }
@@ -466,9 +467,9 @@ button.guetteur-map-marker:hover .guetteur-map-marker-label {
 .guetteur-demo-track {
   display: grid;
   width: 100%;
-  padding: 0;
-  gap: 0;
-  grid-auto-columns: 100%;
+  padding: 0 var(--guetteur-gutter);
+  gap: 1.1rem;
+  grid-auto-columns: min(44rem, calc(100% - clamp(4rem, 12vw, 8rem)));
   grid-auto-flow: column;
 }
 
@@ -495,7 +496,7 @@ button.guetteur-map-marker:hover .guetteur-map-marker-label {
 
 .guetteur-opportunity-media {
   position: relative;
-  height: clamp(8.5rem, 15vw, 10rem);
+  height: clamp(7.5rem, 12vw, 8.75rem);
   margin: 0;
   overflow: hidden;
   border-bottom: 1px solid var(--ink);
@@ -557,7 +558,7 @@ button.guetteur-map-marker:hover .guetteur-map-marker-label {
   z-index: 1;
   display: grid;
   margin: 0;
-  padding: 1rem var(--guetteur-gutter) 0.55rem;
+  padding: 0.8rem var(--guetteur-gutter) 0.45rem;
   align-items: start;
   gap: 1rem;
   grid-area: heading;
@@ -569,7 +570,7 @@ button.guetteur-map-marker:hover .guetteur-map-marker-label {
   margin: 0;
   color: var(--guetteur-ink);
   font-family: var(--serif);
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-size: clamp(1.7rem, 2.7vw, 2.3rem);
   line-height: 1;
 }
 
@@ -581,7 +582,7 @@ button.guetteur-map-marker:hover .guetteur-map-marker-label {
 
 .guetteur-opportunity-score strong {
   font-family: var(--serif);
-  font-size: clamp(2.4rem, 4.5vw, 3.3rem);
+  font-size: clamp(2.1rem, 3.4vw, 2.8rem);
   font-weight: 400;
   letter-spacing: -0.06em;
   line-height: 0.85;
@@ -610,7 +611,7 @@ button.guetteur-map-marker:hover .guetteur-map-marker-label {
   z-index: 1;
   display: grid;
   margin: 0;
-  padding: 0 var(--guetteur-gutter) 0.9rem;
+  padding: 0 var(--guetteur-gutter) 0.7rem;
   gap: 1rem;
   grid-area: recommendation;
   grid-template-columns: minmax(0, 1.5fr) minmax(7rem, 0.5fr);
@@ -643,7 +644,7 @@ button.guetteur-map-marker:hover .guetteur-map-marker-label {
   position: relative;
   z-index: 1;
   margin: 0;
-  padding: 0.8rem var(--guetteur-gutter) 0.75rem;
+  padding: 0.65rem var(--guetteur-gutter) 0.6rem;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   grid-area: timeline;
@@ -669,7 +670,7 @@ button.guetteur-map-marker:hover .guetteur-map-marker-label {
 
 .guetteur-timeline-plot {
   position: relative;
-  height: clamp(4.5rem, 7vw, 5.5rem);
+  height: clamp(3.8rem, 5.5vw, 4.5rem);
 }
 
 .guetteur-timeline-plot svg {
@@ -751,7 +752,7 @@ button.guetteur-map-marker:hover .guetteur-map-marker-label {
 .guetteur-opportunity-conditions {
   position: relative;
   z-index: 1;
-  padding: 0.8rem var(--guetteur-gutter) 1rem;
+  padding: 0.65rem var(--guetteur-gutter) 0.8rem;
   grid-area: conditions;
 }
 
@@ -837,7 +838,12 @@ button.guetteur-map-marker:hover .guetteur-map-marker-label {
 
   .guetteur-demo-track {
     padding: 0;
+    gap: 0;
     grid-auto-columns: 100%;
+  }
+
+  .guetteur-demo-viewport {
+    scroll-padding-inline: 0;
   }
 
   .guetteur-opportunity {

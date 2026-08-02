@@ -12,20 +12,20 @@ dailysurf_demo: true
 <p class="dailysurf-beta-cta">
   <strong>DailySurf is currently in beta.</strong>
   If you would like to try it, you can
-  <a href="https://www.dailysurf.fr/">join through the form on dailysurf.fr</a>.
+  <a href="https://www.dailysurf.fr/">join the beta through the form on dailysurf.fr</a>.
 </p>
 
-DailySurf began, loosely, in Bouznika, Morocco. I was there in June for a trip with [Surf Progress](https://surf-progress.com/), where I met Thibaut de Gueyer. Thibaut is a surf coach and the creator of Surf Progress. He has built a large online community around clear, practical teaching for beginner and intermediate surfers. He had organised the trip, and we got along quickly. We were both building things, and ideas came easily.
+DailySurf began with a surfing trip to Bouznika, Morocco. I was there with [Surf Progress](https://surf-progress.com/), where I met Thibaut de Gueyer. Thibaut is a surf coach and the creator of Surf Progress, a large online community built around clear, practical teaching for beginner and intermediate surfers. We got along quickly. We were both building things, and ideas came easily.
 
-The actual project started a few months later, after I had returned to Paris. In November, I called Thibaut and asked: “What if we built a surfing app with AI in it?” His answer was immediate: let’s go.
+The project started five months later, after I had returned to Paris. In November, I called Thibaut and asked: “What if we built a surfing app with AI in it?” His answer was immediate: let’s go.
 
-By the following July, after many changes, we opened the beta.
+By the following July, after many iterations, we opened the beta.
 
-The question we are testing now is simple: could DailySurf look for the right moment on the surfer’s behalf? We call this *Le Guetteur*—the lookout.
+The question we are testing now is simple. Instead of asking surfers to inspect forecasts themselves, can DailySurf find the few sessions that fit their level, schedule, and starting point? We call this feature *Le Guetteur*, French for “the lookout.”
 
 {% include dailysurf-guetteur-demo.html %}
 
-We did not start there. The beta began around two simpler jobs: help people explore places to surf, and keep a useful memory of their sessions.
+We did not start there. The beta began with two simpler jobs: helping people explore places to surf and keeping a useful memory of their sessions.
 
 <div class="article-screen-grid" role="group" aria-label="Two DailySurf beta screens">
   <figure>
@@ -38,16 +38,16 @@ We did not start there. The beta began around two simpler jobs: help people expl
   </figure>
 </div>
 
-AI helped us build and revise the app quickly. Things that would once have required more time and people became easier to try. But this speed can also be misleading. Building software is not the same as building a product people need.
+AI helped us build and revise the app quickly. Ideas that would once have required more time and people became easier to test. But that speed can be misleading. Building software is not the same as building a product people need.
 
-The difficult part remained familiar. We had to talk to surfers, watch how they used the beta, and look at usage. We had to understand which parts were useful and, more importantly, what problem we were actually trying to solve.
+The difficult part remained familiar. We had to talk to surfers, watch how they used the beta, and study usage. We had to understand which parts were useful and, more importantly, which problem we were actually trying to solve.
 
-The beta made this clear during a period of poor surf conditions. Usage dropped. The obvious explanation was that there was simply no good surf, but it also exposed a weakness in the product: the app was most useful when people already knew that a session might be possible and took the time to check.
+This became clear during a period of poor surf conditions. Usage dropped. The obvious explanation was that there was simply no good surf. But it also exposed a weakness in the product: the app was most useful when people already suspected that a session might be possible and took the time to check.
 
-That left much of the work with the surfer. They still had to inspect forecasts, compare spots, consider their level, check their calendar, and sometimes find out whether equipment rental was available. The app could present information, but it was not yet removing the search.
+That left much of the work with the surfer. They still had to inspect forecasts, compare spots, consider their level, check their calendar, and sometimes find out whether equipment rental was available. The app could present information, but it did not yet do that search for them.
 
-That is what led us back to the question above. Behind the simple surface, the evaluator scans several days of forecasts, builds three-hour daylight windows, removes spots that do not fit the surfer or the practical constraints, and ranks what remains using swell, wind, tide, travel time, and level. Sometimes the useful answer is simply that there is no good window yet.
+That is what led us to Le Guetteur. Behind the simple surface, it scans several days of forecasts and builds three-hour daylight windows. It removes spots that do not fit the surfer or the practical constraints, then ranks what remains using swell, wind, tide, travel time, and level. Sometimes the useful answer is simply that there is no good window yet.
 
 We are still testing this direction. We need to learn which signals matter, how personal the suggestions should be, and when an alert is helpful rather than noisy.
 
-We started with a broad idea: a surfing app with AI. The beta gave us a more precise problem—helping someone notice the few sessions that genuinely fit their life and level. AI changed how quickly we could build. Finding that problem still came from talking to people and observing what happened.
+We started with a broad idea: a surfing app with AI. The beta gave us a more precise problem: helping someone notice the few sessions that genuinely fit their life and level. AI changed how quickly we could build. Finding that problem still came from talking to people and observing what happened.

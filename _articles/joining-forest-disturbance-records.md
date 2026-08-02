@@ -86,7 +86,7 @@ that experiment with AlphaEarth embeddings while keeping the data splits and
 classifiers fixed.
 
 That work is described in
-[Detecting tree phenology from space]({{ '/articles/phd/' | relative_url }}),
+[Mapping deciduous and evergreen forests from space]({{ '/articles/phd/' | relative_url }}),
 with the [code](https://github.com/ArthurCalvi/S2-Tree-Phenology) and
 [working manuscript]({{ '/assets/papers/alphaearth-phenology-working-manuscript.pdf' | relative_url }})
 available separately. Together, the two projects addressed opposite sides of
