@@ -3,15 +3,17 @@ layout: default
 title: Silver AI
 date: 2026-07-27
 section: articles
-description: Silver AI is a DxO Labs research preview that turns a photographer's intent into visible, editable actions in Nik Silver Efex.
+description: Silver AI is an upcoming DxO Labs research preview that turns a photographer's intent into visible, editable actions in Nik Silver Efex.
 permalink: /silver-ai/
 silver_ai: true
+reading_focus: true
 cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dramatic-mountain-print/final.webp
 ---
 
 <article
   class="silver-ai-page"
   data-silver-ai-page
+  data-reading-focus-page
   data-manifest-url="{{ '/assets/silver-ai/edit-replays-2026-07-27/manifest.json' | relative_url }}?v=20260802"
 >
   <header class="silver-ai-hero">
@@ -20,20 +22,22 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
       <h1>Silver AI</h1>
       <p class="silver-ai-deck">
         <a href="https://nikcollection.dxo.com/nik-silver-efex/" target="_blank" rel="noopener">Nik Silver Efex</a>
-        is a reference for professional black-and-white photo editing. Silver
-        AI is an agent between the photographer and the software. It turns an
-        editing intent into visible, editable actions inside Silver Efex. The
-        three examples below show it suggesting a direction, responding to an
-        open request, and making a precise edit.
+        is a reference for professional black-and-white editing. Silver AI
+        turns a photographer’s intent into visible, editable actions. Below
+        are three ways to work with the agent.
       </p>
       <ul class="silver-ai-project-tags" aria-label="Project details">
         <li>Started in 2025</li>
         <li>Research preview</li>
         <li>Agent · MCP</li>
-        <li>Codex app-server</li>
+        <li>Codex app server</li>
         <li>GPT-5.6 Luna</li>
         <li>Nik Silver Efex</li>
       </ul>
+      <a class="article-scroll-cue silver-ai-scroll-cue" href="#silver-ai-suggestions-title">
+        <span>See the examples</span>
+        <span aria-hidden="true">↓</span>
+      </a>
     </div>
     <figure class="silver-ai-hero-figure">
       <img
@@ -152,19 +156,19 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
     </aside>
   </section>
 
-  <aside class="silver-ai-origin-note" aria-label="How Silver AI became a research preview">
+  <aside class="silver-ai-interlude" id="silver-ai-origin" data-reading-focus aria-label="How Silver AI became a research preview">
     <p class="silver-ai-example-note-label">From prototype to research preview</p>
     <p>
       The project began when DxO’s CEO asked me to explore whether AI could
-      control our software. I built a proof of concept over two months with a
-      senior engineer who knew Silver Efex deeply. He created the application
-      API, we designed the MCP interface together, and I built the agent
-      harness. The result gave us enough evidence to continue. Six months into
-      the project, I formed the cross-functional team I now lead. We are now
+      control our software. I built the first proof of concept in two months
+      with a senior engineer who knew Silver Efex deeply. He created the
+      application API, we designed the MCP interface together, and I built the
+      agent harness. The result gave us enough evidence to continue. Six months
+      into the project, I formed the cross-functional team I now lead. We are
       integrating Silver AI into Nik Silver Efex while continuing the research,
-      evaluation, and benchmark work needed for a research preview. I lead this
-      work. I also contribute directly to the agent, evaluations, benchmarks,
-      and product integration alongside the team.
+      evaluation, and benchmark work required for a research preview. I lead
+      the project and contribute directly to the agent, evaluations,
+      benchmarks, and product integration alongside the team.
     </p>
   </aside>
 
@@ -221,19 +225,20 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
         </div>
       </div>
     </div>
-    <aside class="silver-ai-example-note">
-      <p class="silver-ai-example-note-label">One simple fix we found</p>
-      <p>
-        Local adjustments originally asked one tool call to decide both where
-        to edit and what to change. One simple fix was to split that into two
-        calls: select the area, then apply the effect. The first call also makes
-        the compatible next step explicit. It is a small contract change among
-        many, but in one internal evaluation it reduced tool-sequencing errors
-        from 14% to below 1%. That result covers this sequence only, not the
-        reliability of Silver AI as a whole.
-      </p>
-    </aside>
   </section>
+
+  <aside class="silver-ai-interlude" id="silver-ai-simple-fix" data-reading-focus aria-label="One simple engineering fix found during Silver AI research">
+    <p class="silver-ai-example-note-label">One simple fix we found</p>
+    <p>
+      Local adjustments originally asked one tool call to decide both where
+      to edit and what to change. One simple fix was to split that into two
+      calls: select the area, then apply the effect. The first call explicitly
+      points the agent to the compatible second call. It is a small contract
+      change among many, but in one internal evaluation it reduced
+      tool-sequencing errors from 14% to below 1%. That result covers this
+      sequence only, not the reliability of Silver AI as a whole.
+    </p>
+  </aside>
 
   <section class="silver-ai-demo-section silver-ai-demo-section--landscape" aria-labelledby="silver-ai-prompt-title">
     <div class="silver-ai-demo-heading">
@@ -306,8 +311,8 @@ cover_image: /assets/silver-ai/edit-replays-2026-07-27/images/coastal-cliff/dram
       the intent is open, takes a position when invited, and acts directly when
       the request is precise. Behind that interaction, the team works on image
       analysis, tool design, evaluations, benchmarks, product integration, and
-      feedback from real edits. This page shows only the visible part of the
-      system. Some perceptual and artistic-direction work remains confidential.
+      feedback from real edits. This page focuses on that visible interaction;
+      some implementation details are not public.
     </p>
   </footer>
 </article>

@@ -31,7 +31,7 @@
     <span><i class="disturbance-legend-link" aria-hidden="true"></i>Weighted link</span>
   </div>
 
-  <div class="disturbance-graph-phases" aria-label="Current animation phase">
+  <div class="disturbance-graph-phases" aria-label="Animation phases">
     <span style="--phase-step: 0"><small>01</small>Communities</span>
     <span style="--phase-step: 1"><small>02</small>HDBSCAN</span>
     <span style="--phase-step: 2"><small>03</small>Attribution</span>
@@ -84,9 +84,10 @@
           class="disturbance-cluster is-primary is-selected"
           data-disturbance-cluster="primary"
           role="button"
-          tabindex="0"
+          tabindex="-1"
           aria-label="Show the attribution for HDBSCAN cluster 01"
           aria-pressed="true"
+          aria-disabled="true"
         >
           <title>HDBSCAN cluster 01</title>
           <path d="M151 106 C194 78 310 79 350 121 C385 158 371 253 323 278 C265 308 174 283 139 230 C114 191 118 132 151 106 Z" />
@@ -96,9 +97,10 @@
           class="disturbance-cluster is-secondary"
           data-disturbance-cluster="secondary"
           role="button"
-          tabindex="0"
+          tabindex="-1"
           aria-label="Show the attribution for HDBSCAN cluster 02"
           aria-pressed="false"
+          aria-disabled="true"
         >
           <title>HDBSCAN cluster 02</title>
           <path d="M503 243 C544 199 627 194 655 242 C680 284 638 339 579 351 C526 362 482 323 491 275 C493 262 497 251 503 243 Z" />
@@ -173,17 +175,12 @@
           <dd data-disturbance-result-period>2018–2020</dd>
         </div>
       </dl>
-      <div class="disturbance-vote-result" aria-label="Illustrative reliability-weighted cause vote">
-        <span>Illustrative cause vote</span>
-        <div class="disturbance-vote-row" data-disturbance-vote-row data-tone="accent" style="--vote-width: 88%; --result-step: 0">
-          <strong data-disturbance-vote-label>Biotic</strong><i aria-hidden="true"></i><em data-disturbance-vote-note>Most support</em>
-        </div>
-        <div class="disturbance-vote-row" data-disturbance-vote-row data-tone="rust" style="--vote-width: 43%; --result-step: 1">
-          <strong data-disturbance-vote-label>Drought</strong><i aria-hidden="true"></i><em data-disturbance-vote-note>Alternative</em>
-        </div>
-        <div class="disturbance-vote-row" data-disturbance-vote-row data-tone="muted" style="--vote-width: 18%; --result-step: 2">
-          <strong data-disturbance-vote-label>Unknown</strong><i aria-hidden="true"></i><em data-disturbance-vote-note>Uncertainty kept</em>
-        </div>
+      <div class="disturbance-result-cause" aria-label="Normalized cause vote">
+        <span>Normalized vote</span>
+        <p>
+          <strong data-disturbance-result-cause>Biotic</strong>
+          <em data-disturbance-result-confidence>76%</em>
+        </p>
       </div>
       <p>Candidate for human validation against the satellite time series.</p>
     </aside>

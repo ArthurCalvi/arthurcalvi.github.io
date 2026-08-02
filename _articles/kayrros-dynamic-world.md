@@ -11,7 +11,7 @@ image_comparison: true
 
 A land-cover map can look correct on one date and still be useless for measuring change. If a field moves from crops to grass because the next image was taken after harvest, or under a different haze, a downstream system may record an event that never happened.
 
-During my 2022 internship at Kayrros, I revisited the nine-class problem used by Dynamic World with a narrower question: which training and architecture choices make a sequence of land-cover maps stable enough to support change analysis? This was an internal research and production project, not a claim to outperform Dynamic World as a global product.
+During my 2022 internship at [Kayrros](https://www.kayrros.com/about-us/), I revisited the nine-class problem used by [Dynamic World](https://www.dynamicworld.app/), the 10 m near-real-time land-cover product developed by Google and WRI. Its [Earth Engine collection](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1) provides probabilities for nine land-cover classes for individual Sentinel-2 observations. My narrower question was: which training and architecture choices make a sequence of these maps stable enough to support change analysis? This was an internal research and production project, not a claim to outperform Dynamic World as a global product.
 
 {% include figure.html src='/assets/images/dynamic-world-stability.webp' alt='Five satellite views of the same agricultural landscape above two rows of land-cover maps; V7 remains broadly consistent while V1 changes substantially between dates' caption='The central trade-off. V1 retained more spatial detail but changed with season and atmosphere. V7 was coarser and more stable, which was useful when the next step was change detection.' %}
 
@@ -19,7 +19,7 @@ _Internship at Kayrros, supervised by Aurélien De Truchis._
 
 ## Teach the model what should remain stable
 
-Dynamic World's training data began with one label for one satellite observation. I turned each of those static examples into a small time series by retrieving other Sentinel-2 images from the 90 days before and after the annotation date.
+The [Dynamic World paper](https://www.nature.com/articles/s41597-022-01307-4) tied each dense annotation to a Sentinel-2 image from one date. I turned each of those static examples into a small time series by retrieving other Sentinel-2 images from the 90 days before and after the annotation date.
 
 The label stayed the same, but its confidence did not. For each date, I built a soft confidence map from Sentinel-2's scene classification layer and four spectral indices: NDVI, NDMI, NDWI, and NDBI. Cloudy pixels and class-index combinations that looked implausible received less weight. Dates closer to the original annotation were sampled more often.
 
@@ -31,7 +31,13 @@ The model used six optical bands shared by Sentinel-2 and Landsat: red, green, b
 
 ## Change one part at a time
 
-The baseline was a shallow U-Net with three levels of downsampling. I tested nine versions under the same training setup. Some replaced the usual skip connections with dedicated paths for RGB texture, spectral indices, and elevation. Others added attention, MultiRes blocks, or Atrous Spatial Pyramid Pooling (ASPP) to give the model more spatial context.
+I tested nine versions under the same training setup. Some replaced the usual skip connections with dedicated paths for RGB texture, spectral indices, and elevation. Others added attention, MultiRes blocks, or Atrous Spatial Pyramid Pooling (ASPP) to give the model more spatial context.
+
+V1, V7, and V8 are internal labels for this ablation study. They are not releases of the public `GOOGLE/DYNAMICWORLD/V1` dataset.
+
+- **V1** was a three-level U-Net with classical skip connections filtered by attention gates. It recovered detailed edges, but reacted strongly to changes in colour, atmosphere, and season.
+- **V7** kept the attention gates and separated RGB texture, spectral indices, and terrain into dedicated paths. MultiRes blocks added multi-scale context in those paths and the decoder, with dropout at 0.2. It produced coarser maps, but the best temporal stability and balance across classes and biomes.
+- **V8** kept the attention gates and the three feature paths, but used ASPP instead of MultiRes blocks and removed dropout. It led on aggregate accuracy, intersection over union, and Matthews correlation, but was less balanced and sometimes produced checkerboard artefacts.
 
 The compact U-Net I trained had about 1.6 million parameters. The larger alternatives we were comparing it with were around 20 million. That difference mattered because the model had to run repeatedly over large areas and many dates. Efficiency was part of the system design, not just a smaller number on a model summary.
 
@@ -41,7 +47,7 @@ The maps also had to remain readable at pixel level. The aligned view below show
 
 Evaluation used 1,300 areas of 5 by 5 km, labelled by consensus between three experts and spread across 14 biomes. I looked at overall accuracy, mean intersection over union, Matthews correlation, class and biome balance, and a separate stability test across dates.
 
-The versions did not improve along one clean axis. The ASPP model, V8, had the best aggregate accuracy, IoU, and MCC in the report, but it was less balanced across biomes and sometimes produced checkerboard-like artefacts. The MultiRes model, V7, gave the best stability and balance, while producing coarser maps.
+The versions did not improve along one clean axis. V8 won on the aggregate metrics, while V7 was the more stable and balanced model. The right choice depended on what happened after classification.
 
 That trade-off was the main result for me. If the output feeds a time series, the sharpest single-date map is not necessarily the most useful one. Detail, aggregate accuracy, balance, and temporal stability need to be measured separately.
 
@@ -51,7 +57,7 @@ For the operational experiments, I filtered poor observations, aggregated class 
 
 {% include figure.html src='/assets/images/dynamic-world-change-detection.webp' alt='Latest land-cover classification beside a satellite image where pink and red regions mark the first observed change date between June and September 2021' caption='A qualitative Amazonia test. Repeated classifications were converted into a dated change map; the report observed patches as small as three or four Sentinel-2 pixels.' %}
 
-Some observed patches covered only three or four Sentinel-2 pixels, roughly 300–400 m². I would not present that as a validated detection limit. The result remained sensitive to weather, and it had not yet been compared properly with a specialised alert system such as GLAD.
+Some observed patches covered only three or four Sentinel-2 pixels, roughly 300–400 m². I would not present that as a validated detection limit. The result remained sensitive to weather, and I had not yet compared it properly with a purpose-built forest-loss alert system such as the University of Maryland's [GLAD forest alerts](https://glad.umd.edu/dataset/glad-forest-alerts).
 
 The project did reach production use in two biomass-related studies, but several research questions remained open: Landsat transfer, weak labels around small objects and borders, and independent validation of the change detector.
 

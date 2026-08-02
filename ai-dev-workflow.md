@@ -2,47 +2,49 @@
 layout: article
 title: AI-native development with Linear
 date: 2026-07-23
-section: home
-description: How I use Linear to coordinate human decisions, AI agents, and delivery gates, and help other R&D teams adapt the workflow.
+section: articles
+description: How I use Linear, explicit issues, deterministic checks, and independent reviews to turn AI coding into a controlled feedback loop.
 permalink: /ai-dev-workflow/
 linear_workflow: true
 ---
 
-AI can write code quickly. The harder part is keeping that work connected to the product, the current decisions, and the evidence needed to ship it.
+AI needs organisation. Intelligence becomes useful work only when a system gives it direction, makes problems visible, and feeds failures back into the work.
 
-Drawing on public accounts from engineering teams at OpenAI and Anthropic, I set up this workflow in my own team. A person defines the outcome, priorities, and architecture. An agent receives a bounded issue, reads the relevant sources, makes a change, and returns evidence. This makes it possible to run several workstreams while keeping responsibility for the result clear.
+This is not a new idea. [Toyota’s production system](https://global.toyota/en/company/vision-and-philosophy/production-system/) pairs *jidoka*, stopping work when an abnormality appears, with *andon*, making the problem visible. Software teams already use a similar pattern through issues, tests, pull requests, and CI.
 
-I now advise other R&amp;D teams at DxO as they adapt the same principles to their own tools and constraints.
+What changed is the supply of execution. Capable coding agents are now broadly available and inexpensive enough to use repeatedly. Most teams are not yet organised to use them well.
 
-Linear is the shared place where the work is coordinated. It records the current work, its owner, its dependencies, and what will count as done. Code and pull requests stay in GitHub. Builds and delivery evidence stay in CI. Linear connects these sources without trying to replace them.
+Drawing on public work from [OpenAI’s Symphony](https://openai.com/index/open-source-codex-orchestration-symphony/) and [Anthropic’s guidance on agent evaluations](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents), I built this workflow for my team at DxO. I now help other teams adapt the same principles to their own tools and constraints. It is still evolving.
+
+## Linear as the control plane
+
+People and agents need one shared place where work can be found and understood. I use Linear because it is opinionated, pleasant for people, and easy to connect to agent workflows. It holds the issue, its dependencies, its current state, and the evidence expected before it is done.
+
+The code remains in GitHub. Checks remain in the repository and CI. Linear connects them without trying to replace them.
+
+The states are deliberately ordinary: Intake, Discovery, Todo, In Progress, In Review, and Done. An issue can become Blocked at any point.
 
 {% include linear-workflow.html %}
 
-## Make the work clear before delegating it
+## Make the issue executable
 
-A raw idea first needs to become a clear piece of work. During discovery, a person or an agent gathers the live context and writes down the goal, scope, constraints, acceptance criteria, and expected evidence.
+An idea is not ready to delegate. During discovery, a person and an agent inspect the code, compare technologies, understand the architecture, and decide what outcome matters.
 
-Only then is the issue ready for implementation. In this model, Todo is a quality gate rather than a parking lot. An agent should be able to start from the issue and its linked sources without relying on a private conversation that the rest of the team cannot see.
+The issue then records the goal, acceptance criteria, constraints, dependencies, and expected evidence. Todo has a precise meaning: an agent can begin from the issue and its linked sources without depending on a private conversation.
 
-This makes parallel work simpler. Separate agents can work on independent issues while dependencies and decisions remain visible.
+Agents can be rerun and constrained, but their instructions and feedback need to be explicit.
 
-## A short evidence loop
+## Let the system review the work
 
-The human should not need to follow every step or reconstruct the implementation at the end. The workflow uses a local quality gate called `pr-preflight`. It combines deterministic checks, such as linting, builds, tests, and repository rules, with independent AI reviews. Those reviews can examine security, architecture, documentation, and interface risks. One example is a Codex security review.
+The agent can now implement the change. At scale, however, In Review cannot simply become a queue in which a person rereads every generated line.
 
-The loop is short:
+Before opening a pull request, the agent runs a local `pr-preflight` that combines:
 
-1. Read the issue, dependencies, and live sources.
-2. Plan a bounded change, implement it, and add the required tests.
-3. Run `pr-preflight` locally.
-4. Return any findings to the coding agent, revise the change, and rerun the gate.
-5. Open the pull request and run the repository and CI gates again.
-6. Review the result, the trade-offs, and any decision that still needs human judgment.
+- deterministic checks such as linting, builds, tests, repository rules, and LOC ratchets;
+- independent AI reviews for security, architecture, documentation, and interface risks.
 
-Findings return to the main coding agent, which revises the change and reruns the gate until the pull request is ready or a trade-off needs human judgment.
+Failures and review findings return to the implementing agent. It revises the code and runs the gates again.
 
-## The human remains the architect
+This is not a one-shot process, and the gates are not perfect. They improve as the team turns failures into checks. People still choose what to build, make the important trade-offs, and accept the outcome.
 
-AI agents can execute and advise, but the human still owns the product outcome and the overall design of the system. Cross-cutting decisions are discussed by the team and written back into the shared plan. Agents coordinate through issues, dependencies, pull requests, and evidence rather than through hidden conversations.
-
-I am still testing and adapting this model with my team. The point is not autonomy for its own sake. It is to shorten feedback loops while keeping responsibility, decisions, and evidence visible.
+The point is not to trust the AI. It is to build a system whose gates you understand and whose evidence you can inspect.

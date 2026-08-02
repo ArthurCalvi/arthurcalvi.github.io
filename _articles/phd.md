@@ -2,7 +2,7 @@
 layout: article
 title: Mapping deciduous and evergreen forests from space
 description: A controlled France-wide comparison of AlphaEarth embeddings and hand-built Sentinel-2 phenology features.
-date: 2025-01-01
+date: 2025-08-29
 section: phd
 category: Research
 cover_image: /assets/images/phenology-france-map.webp
@@ -17,9 +17,9 @@ The full method and results are available in the [working manuscript (PDF)]({{ '
 
 Deciduous and evergreen forests do not reflect light in the same way through the year. During my PhD, I used that seasonal signal to build a compact representation of irregular Sentinel-2 time series. The representation was interpretable and cheap to train on, but it depended on features designed by hand.
 
-When annual [AlphaEarth embeddings](https://arxiv.org/abs/2507.22291) became available, Sarah Brood, Alexandre d'Aspremont, and I revisited the same task. We kept the labels, spatial folds, feature budget, and lightweight classifiers fixed. Only the representation changed. Because the embeddings were precomputed, the downstream experiment required no local GPU training.
+When Google and Google DeepMind released [AlphaEarth Foundations](https://deepmind.google/blog/alphaearth-foundations-helps-map-our-planet-in-unprecedented-detail/) and its annual [Satellite Embedding dataset](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL), I revisited the same task. I kept the labels, spatial folds, feature budget, and lightweight classifiers fixed. Only the representation changed. Because the embeddings were precomputed, the downstream experiment required no local GPU training.
 
-This is an unpublished research project, not a peer-reviewed paper. The manuscript was prepared across the SIERRA project-team at Inria, CNRS, and ENS-PSL, and LSCE at CEA, CNRS, UVSQ, and Université Paris-Saclay.
+This is an unpublished working manuscript, not a peer-reviewed paper. I am its sole author. Alexandre d'Aspremont, Sarah Brood, and Philippe Ciais reviewed drafts and helped me refine the methodology.
 
 [Browse the research code and experiment material](https://github.com/ArthurCalvi/S2-Tree-Phenology).
 
@@ -41,13 +41,13 @@ $$
 
 This turns a noisy year of observations into a compact description: average greenness, the strength and timing of seasonal variation, and the error left unexplained. Starting from 32 candidates, recursive feature elimination inside the training tiles of each fold retained 14. I call this representation **HARM-14**.
 
-The alternative started from AlphaEarth's 64-dimensional annual embeddings at 10 m resolution. These embeddings summarize spectral, temporal, and local spatial information learned upstream from a much larger satellite archive. The same selection procedure retained 14 dimensions, producing **EMB-14**. Matching the feature count kept the main benchmark deliberately conservative; higher-dimensional embedding variants were examined separately in the manuscript.
+The alternative started from [AlphaEarth's 64-dimensional annual embeddings](https://arxiv.org/abs/2507.22291) at 10 m resolution. These embeddings summarize spectral, temporal, and local spatial information learned upstream from a much larger satellite archive. The same selection procedure retained 14 dimensions, producing **EMB-14**. Matching the feature count kept the main benchmark deliberately conservative; higher-dimensional embedding variants were examined separately in the manuscript.
 
 {% include figure.html src='/assets/images/phenology-harmonic-model.webp' alt='An annual NDVI curve reconstructed from satellite observations using an offset and two harmonic components' caption='The handcrafted baseline compresses an annual vegetation curve into an offset and 12- and 6-month components. Their amplitude, phase, and residual error become inputs to a lightweight classifier.' %}
 
 ## A controlled benchmark
 
-The reference data contained 14.1 million labelled forest pixels across metropolitan France. About 88.6% came from BD Forêt polygons and 11.4% from field or expert sources. I applied a 100 m inward buffer to the BD Forêt polygons before sampling, reducing mixed pixels near their boundaries.
+The reference data contained 14.1 million labelled forest pixels across metropolitan France. About 88.6% came from photo-interpreted polygons in [IGN's BD Forêt](https://cartes.gouv.fr/rechercher-une-donnee/dataset/IGNF_BD-FORET), and 11.4% came from field or expert sources. I applied a 100 m inward buffer to the BD Forêt polygons before sampling, reducing mixed pixels near their boundaries.
 
 The pixels were grouped into 639 non-overlapping tiles, each 2.5 km wide, distributed across 11 ecological regions. Five-fold cross-validation was stratified by ecological region. No tile contributed pixels to both training and validation in the same fold, reducing leakage from local spatial autocorrelation.
 

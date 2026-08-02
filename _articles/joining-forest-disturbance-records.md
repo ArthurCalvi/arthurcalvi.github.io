@@ -32,7 +32,7 @@ source, and one or more possible disturbance classes. I kept ambiguous labels
 as lists instead of forcing an early decision. A polygon marked “storm or
 biotic,” for example, still carried both possibilities into the next stage.
 
-I then represented every reported event as a node in a graph. Two nodes could
+I then represented every reported event as a node in a weighted graph. Two nodes could
 be connected when they were sufficiently close in space and time. The weight
 of the link decreased with distance and delay, increased with the reliability
 of the sources, and was reduced when both records came from the same dataset.
@@ -44,9 +44,9 @@ This was more useful than a conventional database join. There was rarely one
 exact key shared by two sources. What existed instead was a degree of evidence
 that two records might describe the same event.
 
-The graph was processed in two passes. Louvain community detection first found
+The graph was processed in two passes. [Louvain community detection](https://arxiv.org/abs/0803.0476) first found
 coarse groups of connected records, which I treated as disturbance complexes.
-Within each community, HDBSCAN refined the groups using location, time, and
+Within each community, [HDBSCAN](https://hdbscan.readthedocs.io/en/latest/how_hdbscan_works.html) refined the groups using location, time, and
 candidate cause. A penalty discouraged records with different causes from
 joining the same cluster, without making that separation absolute. Strong
 spatial and temporal evidence could still outweigh a disagreement in labels.
@@ -54,8 +54,12 @@ spatial and temporal evidence could still outweigh a disagreement in labels.
 For each polygon in the reference map, the final cluster voted on the cause.
 Votes were weighted by the reliability assigned to each source and normalized
 into a probability for fire, storm, anthropogenic activity, biotic damage,
-drought, or an unknown cause. An isolated and ambiguous record remained unknown. The system
+drought, or an unknown cause. I designed the reference polygon's own ambiguous
+label to add a smaller self-vote instead of counting like an independent observation. An
+isolated and ambiguous record remained unknown. The system
 did not manufacture certainty where the inputs provided none.
+
+{% include disturbance-vote-ledger.html %}
 
 ## What the framework produced
 

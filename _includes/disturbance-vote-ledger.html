@@ -1,0 +1,71 @@
+<section
+  class="disturbance-vote-ledger"
+  data-disturbance-vote-ledger
+  aria-labelledby="disturbance-vote-ledger-title"
+>
+  <header>
+    <span class="disturbance-graph-kicker">Illustrative attribution vote</span>
+    <strong id="disturbance-vote-ledger-title">How the selected cluster votes</strong>
+  </header>
+  <div class="disturbance-vote-weight-note">
+    <p>
+      <strong>First, the graph decides which records belong together.</strong>
+      With the framework's default parameters, each link combines spatial decay,
+      temporal decay, the mean reliability of the two sources, and a penalty for
+      records from the same dataset.
+    </p>
+    <p class="disturbance-vote-formula">
+      <span>Graph link</span>
+      <code>e<sup>−distance / 300 m</sup> × e<sup>−delay / 180 days</sup> × mean reliability × (0.5 same source; 1 otherwise)</code>
+    </p>
+    <p>
+      Louvain uses those link weights; HDBSCAN then refines each community from
+      position, scaled time, and a cause-disagreement penalty. Only after that
+      grouping does the vote below begin. Its weight is the reliability of each
+      source, not the graph-link weight.
+    </p>
+  </div>
+  <div class="disturbance-vote-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Record</th>
+          <th scope="col">Reported cause</th>
+          <th scope="col">Vote weight</th>
+          <th scope="col">Vote added</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-disturbance-source-row style="--ledger-step: 0">
+          <th scope="row" data-disturbance-source-record>Health · 2019</th>
+          <td data-disturbance-source-cause>Biotic</td>
+          <td data-disturbance-source-reliability>0.90</td>
+          <td data-disturbance-source-contribution>+0.90</td>
+        </tr>
+        <tr data-disturbance-source-row style="--ledger-step: 1">
+          <th scope="row" data-disturbance-source-record>Drought · 2018</th>
+          <td data-disturbance-source-cause>Drought</td>
+          <td data-disturbance-source-reliability>0.50</td>
+          <td data-disturbance-source-contribution>+0.50</td>
+        </tr>
+        <tr data-disturbance-source-row style="--ledger-step: 2">
+          <th scope="row" data-disturbance-source-record>Health · 2020</th>
+          <td data-disturbance-source-cause>Biotic</td>
+          <td data-disturbance-source-reliability>0.90</td>
+          <td data-disturbance-source-contribution>+0.90</td>
+        </tr>
+        <tr data-disturbance-source-row style="--ledger-step: 3">
+          <th scope="row" data-disturbance-source-record>Map · 2018</th>
+          <td data-disturbance-source-cause>Biotic / drought</td>
+          <td data-disturbance-source-reliability>0.70 × 0.30</td>
+          <td data-disturbance-source-contribution>+0.21 split</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>
+    <span>Sum, then normalize</span>
+    <strong data-disturbance-ledger-result>Biotic 76% · Drought 24%</strong>
+    <p>This schematic uses the documented vote weights, not a measured result. For the reference map, 0.70 is the source reliability and 0.30 is the deliberately reduced self-vote factor; the result is split between its two possible causes.</p>
+  </footer>
+</section>

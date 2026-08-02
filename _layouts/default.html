@@ -50,6 +50,9 @@
   {% if page.section == 'home' %}
   <script src="{{ '/assets/js/hero-parallax.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
   {% endif %}
+  {% if page.reading_focus %}
+  <script src="{{ '/assets/js/article-reading-focus.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  {% endif %}
   {% if page.image_comparison %}
   <script src="{{ '/assets/js/image-comparison.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
   {% endif %}
